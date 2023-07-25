@@ -1,8 +1,9 @@
+import {Outlet, useLocation } from "react-router-dom";
 import Footer from "./Footer";
-import MensajeBienvenida from "./MensajeBienvenida";
-import OpcionesBienvenida from "./OpcionesBienvenida";
+
 
 function Layout() {
+  const location=useLocation()
   return (
     <div className="md:flex flex flex-col max-w-full min-h-screen ">
       <aside
@@ -22,8 +23,8 @@ function Layout() {
           className="mx-10 relative w-100 text-center  
          shadow-md mt-10 rounded-md  py-5"
         >
-          <MensajeBienvenida/>
-            <OpcionesBienvenida/>
+            <Outlet/>
+            
         </div>
 
         
