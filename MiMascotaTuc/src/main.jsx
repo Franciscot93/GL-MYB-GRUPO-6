@@ -3,11 +3,31 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 import './index.css'
 import Layout from './components/Layout'
+import Inicio from './pages/Inicio'
+import Login,{action as LoguinUsuarioAction} from './pages/Login'
+import NuevoUsuario,{action, action as NuevoUsuarioAction} from './pages/NuevoUsuario'
 
 const router=createBrowserRouter([
   {
     path:'/',
-    element:<Layout/>
+    element:<Layout/>,
+    children:[
+      { 
+        index:true,
+        path:'/',
+        element:<Inicio/>
+      },
+      {
+        path:'/usuario/nuevo',
+        element:<NuevoUsuario/>,
+        action:NuevoUsuarioAction
+      },
+      {
+        path:'/usuario/login',
+        element:<Login/>,
+        action:LoguinUsuarioAction
+      }
+    ]
   }
 ])
 
