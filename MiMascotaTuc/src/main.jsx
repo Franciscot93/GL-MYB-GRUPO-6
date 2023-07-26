@@ -4,7 +4,8 @@ import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 import './index.css'
 import Layout from './components/Layout'
 import Inicio from './pages/Inicio'
-import NuevoUsuario,{action as NuevoUsuarioAction} from './pages/NuevoUsuario'
+import Login,{action as LoguinUsuarioAction} from './pages/Login'
+import NuevoUsuario,{action, action as NuevoUsuarioAction} from './pages/NuevoUsuario'
 
 const router=createBrowserRouter([
   {
@@ -20,6 +21,11 @@ const router=createBrowserRouter([
         path:'/usuario/nuevo',
         element:<NuevoUsuario/>,
         action:NuevoUsuarioAction
+      },
+      {
+        path:'/usuario/login',
+        element:<Login/>,
+        action:LoguinUsuarioAction
       }
     ]
   }
