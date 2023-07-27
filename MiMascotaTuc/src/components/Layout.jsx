@@ -21,7 +21,7 @@ function Layout() {
       <main className="w-100  mt-10 ">
         <div
           className="mx-10 relative w-100 text-center  
-         shadow-md mt-10 rounded-md  py-5"
+         shadow-md mt-2 rounded-md  py-5"
         >
             <Outlet/>
             

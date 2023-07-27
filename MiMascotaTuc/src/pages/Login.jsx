@@ -23,7 +23,7 @@ export async function action({ request }) {
    
     
     console.log(datosUsuario)
-    return redirect('/')
+    return redirect('/usuario/perfilDelUsuario')
   }
 
 

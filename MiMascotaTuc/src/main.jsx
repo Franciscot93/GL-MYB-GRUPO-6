@@ -6,6 +6,7 @@ import Layout from './components/Layout'
 import Inicio from './pages/Inicio'
 import Login,{action as LoguinUsuarioAction} from './pages/Login'
 import NuevoUsuario,{action, action as NuevoUsuarioAction} from './pages/NuevoUsuario'
+import PerfilUsuario from './pages/PerfilUsuario'
 
 const router=createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router=createBrowserRouter([
         path:'/usuario/login',
         element:<Login/>,
         action:LoguinUsuarioAction
+      },
+      {
+        path:'/usuario/perfilDelUsuario',
+        element:<PerfilUsuario/>
       }
     ]
   }
