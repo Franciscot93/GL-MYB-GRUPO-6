@@ -2,6 +2,16 @@ import React from 'react'
 import Usuario from '../components/Usuario'
 import { useState } from 'react'
 import FormularioMascotas from '../components/FormularioMascotas'
+import { Form,useActionData } from "react-router-dom";
+
+export async function action({request}){
+  const formDatosMascota = await request.formData();
+  const datosMascota = Object.fromEntries(formDatosMascota);
+
+  
+  console.log(datosMascota)
+  return null
+}
 
 
 
@@ -43,7 +53,7 @@ function PerfilUsuario({usuario}) {
     </div>
      
 
-   {modal ? <FormularioMascotas animarModal={animarModal} setAnimarModal={setAnimarModal} setModal={setModal}/>:null}
+   {modal ?<Form method='post'> <FormularioMascotas animarModal={animarModal} setAnimarModal={setAnimarModal} setModal={setModal}/></Form>:null}
    
     </>
   )
