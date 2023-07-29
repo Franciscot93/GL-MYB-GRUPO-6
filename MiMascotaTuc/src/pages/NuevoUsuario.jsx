@@ -1,6 +1,7 @@
 import { Form,useNavigate,useActionData,redirect } from "react-router-dom"
 import FormularioDeRegistro from "../components/FormularioDeRegistro"
 import Error from "../components/Error";
+import { agregarUsuario } from "../data/usuarios";
 
 export async function action({ request }) {
     const formDatos = await request.formData();
@@ -26,7 +27,7 @@ export async function action({ request }) {
       return errores;
     }
     
-    console.log(datosUsuario)
+    agregarUsuario(datosUsuario)
     return redirect('/usuario/login')
   }
 

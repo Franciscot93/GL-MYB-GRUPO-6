@@ -4,9 +4,9 @@ import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 import './index.css'
 import Layout from './components/Layout'
 import Inicio from './pages/Inicio'
-import Login,{action as LoguinUsuarioAction} from './pages/Login'
+import Login,{action as loginAction, loader as loginLoader} from './pages/Login'
 import NuevoUsuario,{action as NuevoUsuarioAction} from './pages/NuevoUsuario'
-import PerfilUsuario,{action, action as NuevaMascotaAction} from './pages/PerfilUsuario'
+import PerfilUsuario,{ action as NuevaMascotaAction} from './pages/PerfilUsuario'
 
 const router=createBrowserRouter([
   {
@@ -16,7 +16,8 @@ const router=createBrowserRouter([
       { 
         index:true,
         path:'/',
-        element:<Inicio/>
+        element:<Inicio/>,
+        
       },
       {
         path:'/usuario/nuevo',
@@ -26,8 +27,11 @@ const router=createBrowserRouter([
       {
         path:'/usuario/login',
         element:<Login/>,
-        action:LoguinUsuarioAction
-      },
+        action:loginAction,
+        loader:loginLoader
+        
+        
+      },      
       {
         path:'/usuario/perfilDelUsuario',
         element:<PerfilUsuario/>,

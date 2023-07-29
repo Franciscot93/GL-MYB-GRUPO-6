@@ -1,0 +1,56 @@
+{
+  "usuarios": [
+    {
+      "id": 2,
+      "username": "Karen",
+      "telefono": 138198313,
+      "email": "karen@juan.com",
+      "password": "1234"
+    },
+    {
+      "id": 3,
+      "username": "Josue",
+      "email": "josue@juan.com",
+      "telefono": "31983913",
+      "password": "1234"
+      
+    },
+    {
+      "id": 4,
+      "username": "Miguel",
+      "telefono": 319381983,
+      "email": "miguel@juan.com",
+      "password": "1234"
+    },
+    {
+      "id": 5,
+      "username": "Pedro",
+      "telefono": 1398198938,
+      "email": "pedro@juan.com",
+      "password": "1234"
+    },
+    { "id": 6,
+      "username": "francisco",
+      "email": "asdasd@gasdas.com",
+      "telefono": "123441255",
+      
+      "password": "1234"
+    },
+    { "id": 7,
+      "username": "admin",
+      "password": "111",
+     
+      "email": "asdasd@gasdas.com",
+      "telefono": "3814417465"
+      
+    },
+    { "id": 8,
+      "username": "kkk",
+      "password": "333",
+     
+      "email": "paco_93_2006@hotmail.com",
+      "telefono": "3814417465"
+      
+    }
+  ]
+}

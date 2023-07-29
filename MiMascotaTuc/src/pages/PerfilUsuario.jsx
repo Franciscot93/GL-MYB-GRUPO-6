@@ -2,7 +2,10 @@ import React from 'react'
 import Usuario from '../components/Usuario'
 import { useState } from 'react'
 import FormularioMascotas from '../components/FormularioMascotas'
-import { Form,useActionData } from "react-router-dom";
+import { Form,useActionData, useLocation } from "react-router-dom";
+import { useLoginZustand } from '../store/userZustand';
+
+
 
 export async function action({request}){
   const formDatosMascota = await request.formData();
@@ -19,6 +22,11 @@ function PerfilUsuario({usuario}) {
   const [animarModal,setAnimarModal]=useState(false)
   const [nuevaMascota, setNuevaMascota]=useState(false)
   const [modal,setModal]=useState(false)
+  const {isLoged,setIsLoged}=useLoginZustand()
+  
+  
+console.log(isLoged)
+
   const handleNuevaMascota=()=>{
     setModal(true)
 
@@ -31,14 +39,14 @@ function PerfilUsuario({usuario}) {
     <>
 
     <div className='shadow-md  my-2 mx-3 py-5'>
-      <h3 className='text-2xl text-center text-slate-800 font-semibold'>Bienvenido {usuario}</h3>
+      <h3 className='text-2xl text-center text-slate-800 font-semibold'>Bienvenido {isLoged.username}</h3>
 
     </div>
     <section className='shadow-md flex flex-wrap my-2 mx-3 py-5'>
-      <aside className='w-full md:w-1/5  mt-5 border-indigo-500 '>
-        <Usuario/>
+      <aside className='w-full md:w-2/5  mt-5 border-indigo-500 '>
+        <Usuario />
         </aside>
-        <aside className='md:w-4/5 mt-5 w-full text-center'>
+        <aside className='md:w-3/5 mt-5 w-full text-center'>
           <h2 className='text-xl text-center text-slate-800 font-semibold'>Tus Mascotas </h2>
         
         
