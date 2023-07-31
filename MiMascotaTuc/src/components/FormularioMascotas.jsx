@@ -1,8 +1,4 @@
-
 import BotonCerrarModal from "../img/cerrar.svg";
-
-
-
 
 function FormularioMascotas({ animarModal, setAnimarModal, setModal }) {
   const handleCerrarNuevaMascota = () => {
@@ -23,7 +19,7 @@ function FormularioMascotas({ animarModal, setAnimarModal, setModal }) {
         <h2 className="mb-2 text-3xl font-bold text-slate-200 border-b-2 border-indigo-700 pb-3">
           Nueva Mascota
         </h2>
-        
+
         <div className="container md:flex   md:flex-wrap content-center">
           <div className=" mb-2 mx-3">
             <label
@@ -100,7 +96,6 @@ function FormularioMascotas({ animarModal, setAnimarModal, setModal }) {
               accept="image/*, application/pdf"
               multiple
               className="mt-2 block w-full p-2 rounded-md bg-gray-50"
-              
               name="filesMascota"
             />
           </div>
@@ -117,13 +112,16 @@ function FormularioMascotas({ animarModal, setAnimarModal, setModal }) {
               accept="image/*, application/pdf"
               multiple
               className="mt-2 block w-full p-2 rounded-md bg-gray-50"
-              
               name="picMascota"
             />
           </div>
-          <input onClick={()=>console.log('object')} className='uppercase py-4 px-2 w-full font-semibold  hover:bg-teal-500 hover:cursor-pointer bg-teal-600 text-slate-200 rounded-md' type="submit" value={'añadir Mascota'} />
+          <input
+            onClick={() => console.log("object")}
+            className="uppercase py-4 px-2 w-full font-semibold  hover:bg-teal-500 hover:cursor-pointer bg-teal-600 text-slate-200 rounded-md"
+            type="submit"
+            value={"añadir Mascota"}
+          />
         </div>
-        
       </div>
     </div>
   );

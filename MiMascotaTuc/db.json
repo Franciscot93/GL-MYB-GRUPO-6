@@ -5,7 +5,10 @@
       "username": "Karen",
       "telefono": 138198313,
       "email": "karen@juan.com",
-      "password": "1234"
+      "password": "1234",
+      "mascotas":{
+
+      }
     },
     {
       "id": 3,
@@ -13,7 +16,6 @@
       "email": "josue@juan.com",
       "telefono": "31983913",
       "password": "1234"
-      
     },
     {
       "id": 4,
@@ -29,28 +31,33 @@
       "email": "pedro@juan.com",
       "password": "1234"
     },
-    { "id": 6,
+    {
+      "id": 6,
       "username": "francisco",
       "email": "asdasd@gasdas.com",
       "telefono": "123441255",
-      
       "password": "1234"
     },
-    { "id": 7,
+    {
+      "id": 7,
       "username": "admin",
       "password": "111",
-     
       "email": "asdasd@gasdas.com",
       "telefono": "3814417465"
-      
     },
-    { "id": 8,
+    {
+      "id": 8,
       "username": "kkk",
       "password": "333",
-     
       "email": "paco_93_2006@hotmail.com",
       "telefono": "3814417465"
-      
+    },
+    {
+      "username": "1",
+      "password": "1",
+      "email": "asdasd@gasdas.com",
+      "telefono": "111",
+      "id": 9
     }
   ]
 }

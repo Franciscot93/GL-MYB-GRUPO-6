@@ -5,37 +5,55 @@ import { agregarUsuario } from "../data/usuarios";
 
 export async function action({ request }) {
     const formDatos = await request.formData();
-    const datosUsuario = Object.fromEntries(formDatos);
+    const datosNuevoUsuario = Object.fromEntries(formDatos);
     
     // validacion
-    let regex = new RegExp(
+    const regexEmail = new RegExp(
       "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
     );
-  
+    
+    const regexPassword=new RegExp("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/")
     const email = formDatos.get("email");
-   
+    const password=formDatos.get("password");
+    const repetirPassword=formDatos.get("repetirPassword")
   
     const errores = [];
-  
-    if(!regex.test(email)){
+      
+      console.log(repetirPassword)
+
+    if(!regexPassword.test(password)){
+      console.log(password)
+      console.log('no cumple')
+    }
+
+    if(password!==repetirPassword){
+      errores.push("Las contraseñas no coinciden")
+    }
+    
+    if(!regexEmail.test(email)){
       errores.push('El Email no es valido')
     }
-    if (Object.values(datosUsuario).includes("")) {
+    if (Object.values(datosNuevoUsuario).includes("")) {
       errores.push("Todos los campos son obligatorios");
     }
     if (Object.keys(errores).length) {
       return errores;
     }
     
-    agregarUsuario(datosUsuario)
-    return redirect('/usuario/login')
+    
+    return datosNuevoUsuario
   }
 
 
 function NuevoUsuario() {
    const navigate= useNavigate()
    const errores=useActionData()
-  
+   const datosNuevoUsuario=useActionData()
+   
+
+   const registrarUsuario=()=>
+   agregarUsuario(datosNuevoUsuario)
+   redirect('/usuario/login')
     return (
     <div>
         <h2 className="text-3xl text-center font-bold text-indigo-900 my-5">Formulario de registro</h2>

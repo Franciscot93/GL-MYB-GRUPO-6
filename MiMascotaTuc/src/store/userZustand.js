@@ -1,12 +1,9 @@
-import {create } from 'zustand'
+import { create } from 'zustand'
 
-
-
-export const useLoginZustand = create((set, _get) => ({
-    isLoged:[],
-    setIsLoged: (usuario) => {
-      
-        
-      set({isLoged: usuario})
-    },
-  }));
+export const useLogin = create((set) => ({
+  isLogged: false,
+  login: () => set({ isLogged: true }),
+  logout: () => set({ isLogged: false }),
+  user:[],
+  setUser:(usuario)=>set({user:usuario})
+}))

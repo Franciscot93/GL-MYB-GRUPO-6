@@ -2,53 +2,76 @@ import {
   Form,
   useNavigate,
   useActionData,
-  redirect,useLoaderData
-  
+  redirect,
+  useLoaderData,
 } from "react-router-dom";
 import FormularioLogin from "../components/FormularioLogin";
 import Error from "../components/Error";
 import { obtenerUsuarios } from "../data/usuarios";
-import { useEffect } from "react";
-import { useLoginZustand } from "../store/userZustand";
+import { useEffect} from "react";
+import { useLogin } from "../store/userZustand";
 
-
-export async function loader({params}){
-  console.log(params)
-  const usuario=obtenerUsuarios()
-  return usuario
+export async function loader({ params }) {
+  const usuario = obtenerUsuarios();
+  return usuario;
 }
 
 export async function action({ request }) {
   const formDatos = await request.formData();
-  const datosUsuario = Object.fromEntries(formDatos) ||null
+  const datosUsuario = Object.fromEntries(formDatos) || null;
   
-  if(datosUsuario){
-    return datosUsuario
+  const email = formDatos.get("email")
+  const regexEmail = new RegExp(
+    "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
+  )
+  const erroresDeFormulario = [];
+  if(!regexEmail.test(email)){
+    erroresDeFormulario.push('El Email no es valido')
   }
 
-  return null
+  if (Object.values(datosUsuario).includes("")) {
+    erroresDeFormulario.push("Todos los campos son obligatorios");
+  }
+  if (Object.keys(erroresDeFormulario).length) {
+    return erroresDeFormulario;
+  }
+  
+  if (datosUsuario) {
+    return datosUsuario
+
+  }
+
+  return null;
 }
 
 function Login() {
-  const{ isLoged,setIsLoged}=useLoginZustand()
+  const { login, logout, setUser } = useLogin();
   const navigate = useNavigate();
-  const datos=useLoaderData()
-  const errores=useActionData()
-  
-  const usuario=useActionData()
+  const datos = useLoaderData();
+  const erroresDeFormulario = useActionData();
   
 
-  useEffect(()=>{
-    if(usuario){
-      const user= datos.find(user=>user.username===usuario.username&&user.password===usuario.password)
-      setIsLoged(user)
-      navigate(`/usuario/perfilDelUsuario`)
+  const usuario = useActionData();
+ 
+  useEffect(() => {
+    if (usuario) {
+      const user = datos.find(
+        (user) =>
+          user.email === usuario.email &&
+          user.password === usuario.password
+      );
+      if (user) {
+        console.log(user);
+        login();
+        setUser(user);
+        navigate(`/usuario/perfilDelUsuario/${user.id}`);
+      }
+      
     }
-    console.log(usuario)
-  },[datos])
+  }, [datos]);
 
   return (
-    <div>
+    <main>
       <div className="flex mb-5 justify-end">
         <button
           onClick={() => navigate("/")}
@@ -58,19 +81,19 @@ function Login() {
         </button>
       </div>
 
-      {errores?.length
-        ? errores.map((error, i) => <Error key={i}>{error}</Error>)
+      {erroresDeFormulario?.length
+        ? erroresDeFormulario.map((error, i) => <Error key={i}>{error}</Error>)
         : null}
-
+      
       <Form method="post">
-        <FormularioLogin  />
+        <FormularioLogin />
         <input
           type="submit"
           className="mt-5 w-3/5 shadow bg-emerald-800 uppercase font-bold py-2 hover:bg-emerald-600 duration-100 text-slate-50 rounded-md text-lg"
-          value={"Ingresar"} 
+          value={"Ingresar"}
         />
       </Form>
-    </div>
+    </main>
   );
 }
 

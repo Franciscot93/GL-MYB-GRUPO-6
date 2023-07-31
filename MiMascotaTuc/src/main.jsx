@@ -7,6 +7,7 @@ import Inicio from './pages/Inicio'
 import Login,{action as loginAction, loader as loginLoader} from './pages/Login'
 import NuevoUsuario,{action as NuevoUsuarioAction} from './pages/NuevoUsuario'
 import PerfilUsuario,{ action as NuevaMascotaAction} from './pages/PerfilUsuario'
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 const router=createBrowserRouter([
   {
@@ -33,8 +34,8 @@ const router=createBrowserRouter([
         
       },      
       {
-        path:'/usuario/perfilDelUsuario',
-        element:<PerfilUsuario/>,
+        path:'/usuario/perfilDelUsuario/:perfilDelUsuarioId',
+        element:<ProtectedRoute><PerfilUsuario/></ProtectedRoute>,
         action:NuevaMascotaAction
       }
     ]

@@ -5,15 +5,15 @@ function FormularioLogin() {
         <div className=" mb-4 mx-3">
                 <label
                     className="text-indigo-900 font-semibold text-xl"
-                    htmlFor="username"
-                >Nombre:</label>
+                    htmlFor="email"
+                >E-mail:</label>
                 <input 
                     
-                    id="username"
+                    id="email"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Nombre del usuario"
-                    name="username"
+                    name="email"
                     defaultValue={null}
                 />
             </div>
