@@ -5,5 +5,6 @@ export const useLogin = create((set) => ({
   login: () => set({ isLogged: true }),
   logout: () => set({ isLogged: false }),
   user:[],
-  setUser:(usuario)=>set({user:usuario})
+  setUser:(usuario)=>set({user:usuario}),
+  
 }))

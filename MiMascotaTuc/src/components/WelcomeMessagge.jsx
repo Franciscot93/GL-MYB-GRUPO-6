@@ -1,4 +1,4 @@
-function MensajeBienvenida() {
+function WelcomeMessagge() {
   return (
     <>
     <p className="text-2xl text-slate-800 font-normal">
@@ -14,4 +14,4 @@ function MensajeBienvenida() {
   )
 }
 
-export default MensajeBienvenida
+export default WelcomeMessagge

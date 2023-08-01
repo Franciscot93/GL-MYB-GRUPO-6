@@ -1,4 +1,4 @@
-function FormularioLogin() {
+function LoginForm() {
   return (
     <div>
         <h2 className="text-3xl font-bold text-indigo-900 my-3 text-center">Ingresa tus datos</h2>
@@ -37,4 +37,4 @@ function FormularioLogin() {
   )
 }
 
-export default FormularioLogin
+export default LoginForm

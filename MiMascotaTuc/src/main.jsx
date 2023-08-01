@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 import './index.css'
 import Layout from './components/Layout'
-import Inicio from './pages/Inicio'
+import Root from './pages/Root'
 import Login,{action as loginAction, loader as loginLoader} from './pages/Login'
-import NuevoUsuario,{action as NuevoUsuarioAction} from './pages/NuevoUsuario'
-import PerfilUsuario,{ action as NuevaMascotaAction} from './pages/PerfilUsuario'
+import NewUser,{action as NuevoUsuarioAction} from './pages/NewUser'
+import UserPage,{loader as loaderUser} from './pages/UserPage'
 import { ProtectedRoute } from './components/ProtectedRoute'
+import NewPet, { action as NuevaMascotaAction } from './pages/NewPet'
 
 const router=createBrowserRouter([
   {
@@ -17,12 +18,12 @@ const router=createBrowserRouter([
       { 
         index:true,
         path:'/',
-        element:<Inicio/>,
+        element:<Root/>,
         
       },
       {
         path:'/usuario/nuevo',
-        element:<NuevoUsuario/>,
+        element:<NewUser/>,
         action:NuevoUsuarioAction
       },
       {
@@ -35,8 +36,16 @@ const router=createBrowserRouter([
       },      
       {
         path:'/usuario/perfilDelUsuario/:perfilDelUsuarioId',
-        element:<ProtectedRoute><PerfilUsuario/></ProtectedRoute>,
+        element:<ProtectedRoute><UserPage/></ProtectedRoute>,
+        loader:loaderUser
+        
+      },
+      {
+        path:'/usuario/perfilDelUsuario/:perfilDelUsuarioId/nuevaMascota',
+        element:<ProtectedRoute><NewPet/></ProtectedRoute>,
         action:NuevaMascotaAction
+        
+        
       }
     ]
   }

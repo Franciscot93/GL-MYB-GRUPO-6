@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function OpcionesBienvenida() {
+function WelcomeOptions() {
   return (
     <>
       <div className="text-center  mt-10 flex flex-col md:place-content-center place-content-center md:content-center flex-wrap md:flex-wrap content-center justify-center md:justify-center box-content">
@@ -15,4 +15,4 @@ function OpcionesBienvenida() {
   );
 }
 
-export default OpcionesBienvenida;
+export default WelcomeOptions;

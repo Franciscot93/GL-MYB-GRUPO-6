@@ -1,5 +1,5 @@
 import { Form,useNavigate,useActionData,redirect } from "react-router-dom"
-import FormularioDeRegistro from "../components/FormularioDeRegistro"
+import RegisterForm from "../components/RegisterForm"
 import Error from "../components/Error";
 import { agregarUsuario } from "../data/usuarios";
 
@@ -21,10 +21,7 @@ export async function action({ request }) {
       
       console.log(repetirPassword)
 
-    if(!regexPassword.test(password)){
-      console.log(password)
-      console.log('no cumple')
-    }
+    
 
     if(password!==repetirPassword){
       errores.push("Las contraseñas no coinciden")
@@ -40,20 +37,20 @@ export async function action({ request }) {
       return errores;
     }
     
+    agregarUsuario(datosNuevoUsuario)
+   return redirect('/usuario/login')
     
-    return datosNuevoUsuario
   }
 
 
-function NuevoUsuario() {
+function NewUser() {
    const navigate= useNavigate()
    const errores=useActionData()
    const datosNuevoUsuario=useActionData()
    
 
-   const registrarUsuario=()=>
-   agregarUsuario(datosNuevoUsuario)
-   redirect('/usuario/login')
+  
+   
     return (
     <div>
         <h2 className="text-3xl text-center font-bold text-indigo-900 my-5">Formulario de registro</h2>
@@ -69,7 +66,7 @@ function NuevoUsuario() {
         
         {errores?.length ?
           errores.map((error, i) => <Error key={i}>{error}</Error>):null}
-        <FormularioDeRegistro/>
+        <RegisterForm/>
         <input
             type="submit"
             className="mt-5 w-3/5 shadow bg-sky-800 uppercase font-bold py-2 hover:bg-sky-700 duration-100 text-slate-50 rounded-md text-lg"
@@ -81,4 +78,4 @@ function NuevoUsuario() {
   )
 }
 
-export default NuevoUsuario
+export default NewUser

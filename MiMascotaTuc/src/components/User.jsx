@@ -1,6 +1,6 @@
 import { useLogin } from "../store/userZustand"
 
-function Usuario() {
+function User() {
    const{user}=useLogin()
   return (
     <div className="w-full">
@@ -18,4 +18,4 @@ function Usuario() {
   )
 }
 
-export default Usuario
+export default User
