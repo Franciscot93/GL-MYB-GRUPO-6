@@ -1,18 +1,18 @@
 
-function FormularioDeRegistro({usuario}) {
+function RegisterForm({usuario}) {
   return (
     <div className="container">
     <div className=" mb-4 mx-3">
                 <label
                     className="text-indigo-900 font-semibold text-xl"
-                    htmlFor="nombreUsuario"
+                    htmlFor="username"
                 >Nombre:</label>
                 <input 
-                    id="nombreUsuario"
+                    id="username"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Nombre del usuario"
-                    name="nombreUsuario"
+                    name="username"
                     defaultValue={usuario?.nombreUsuario}
                 />
             </div>
@@ -80,4 +80,4 @@ function FormularioDeRegistro({usuario}) {
   )
 }
 
-export default FormularioDeRegistro
+export default RegisterForm

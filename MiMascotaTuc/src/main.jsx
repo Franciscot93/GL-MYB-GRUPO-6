@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 import './index.css'
 import Layout from './components/Layout'
-import Inicio from './pages/Inicio'
-import Login,{action as LoguinUsuarioAction} from './pages/Login'
-import NuevoUsuario,{action, action as NuevoUsuarioAction} from './pages/NuevoUsuario'
+import Root from './pages/Root'
+import Login,{action as loginAction, loader as loginLoader} from './pages/Login'
+import NewUser,{action as NuevoUsuarioAction} from './pages/NewUser'
+import UserPage,{loader as loaderUser} from './pages/UserPage'
+import { ProtectedRoute } from './components/ProtectedRoute'
+import NewPet, { action as NuevaMascotaAction } from './pages/NewPet'
+import EditPet,{loader as editPetLoader,action as editPetAction} from './pages/EditPet'
 
 const router=createBrowserRouter([
   {
@@ -15,18 +19,43 @@ const router=createBrowserRouter([
       { 
         index:true,
         path:'/',
-        element:<Inicio/>
+        element:<Root/>,
+        
       },
       {
         path:'/usuario/nuevo',
-        element:<NuevoUsuario/>,
+        element:<NewUser/>,
         action:NuevoUsuarioAction
       },
       {
         path:'/usuario/login',
         element:<Login/>,
-        action:LoguinUsuarioAction
+        action:loginAction,
+        loader:loginLoader
+        
+        
+      },      
+      {
+        path:'/usuario/perfilDelUsuario/:perfilDelUsuarioId',
+        element:<ProtectedRoute><UserPage/></ProtectedRoute>,
+        loader:loaderUser
+        
+      },
+      {
+        path:'/usuario/perfilDelUsuario/:perfilDelUsuarioId/nuevaMascota',
+        element:<ProtectedRoute><NewPet/></ProtectedRoute>,
+        action:NuevaMascotaAction
+        
+        
+      },
+      {
+        path:'/usuario/perfilDelUsuario/:perfilDelUsuarioId/editarMascota/:editarMascotaId',
+        element:<ProtectedRoute><EditPet/></ProtectedRoute>,
+        loader:editPetLoader,
+        action:editPetAction
+
       }
+
     ]
   }
 ])
