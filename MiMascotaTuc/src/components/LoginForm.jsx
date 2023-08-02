@@ -1,7 +1,7 @@
 function LoginForm() {
   return (
     <div>
-        <h2 className="text-3xl font-bold text-indigo-900 my-3 text-center">Ingresa tus datos</h2>
+        <h2 className="text-4xl logoTitle text-indigo-900 my-3 text-center">Ingresa Tu DaTos</h2>
         <div className=" mb-4 mx-3">
                 <label
                     className="text-indigo-900 font-semibold text-xl"

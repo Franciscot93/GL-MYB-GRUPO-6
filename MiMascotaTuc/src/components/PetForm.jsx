@@ -1,14 +1,15 @@
+import { useLocation } from "react-router-dom";
 
 
-function PetForm() {
+function PetForm({mascotaParaEditar}) {
  
-
+ const location=useLocation()
   return (
     <div className="conteiner content-center w-full box-border h-screen ">
       
       
-        <h2 className="mb-2 text-3xl logoTitle text-center font-bold text-indigo-950 border-b-2 border-indigo-700 pb-3">
-          Nueva Mascota
+        <h2 className="mb-2 text-4xl logoTitle text-center  text-indigo-950 border-b-2 border-indigo-700 pb-3">
+         {location.pathname==='/usuario/perfilDelUsuario/:perfilDelUsuarioId/editarMascota/:editarMascotaId'? 'Edita Tu Mascota': 'Nueva Mascota'}
         </h2>
         
         
@@ -25,6 +26,7 @@ function PetForm() {
               className="mt-2 block w-full rounded-md p-3 bg-gray-50"
               placeholder="Nombre de la mascota"
               name="mascota"
+              value={mascotaParaEditar?.mascota}
             />
           </div>
 
@@ -41,6 +43,7 @@ function PetForm() {
               className="mt-2 block w-full rounded-md  p-3 bg-gray-50"
               placeholder="¿Que clase de mascota es?"
               name="tipo"
+              value={mascotaParaEditar?.tipo}
             />
           </div>
 
@@ -57,6 +60,7 @@ function PetForm() {
               className="mt-2 block w-full p-3 rounded-md bg-gray-50"
               placeholder="¿Cuantos años tiene?"
               name="edad"
+              value={mascotaParaEditar?.edad}
             />
           </div>
           <div className="mb-2 justify-center flex-col flex  place-items-center mx-3">
@@ -72,6 +76,7 @@ function PetForm() {
               className="mt-2 block w-full p-3 rounded-md bg-gray-50"
               placeholder="¿Cuantos años tiene?"
               name="peso"
+              value={mascotaParaEditar?.peso}
             />
           </div>
           <div className="mb-2 justify-center flex-col flex  place-items-center mx-3">

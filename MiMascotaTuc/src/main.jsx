@@ -9,6 +9,7 @@ import NewUser,{action as NuevoUsuarioAction} from './pages/NewUser'
 import UserPage,{loader as loaderUser} from './pages/UserPage'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import NewPet, { action as NuevaMascotaAction } from './pages/NewPet'
+import EditPet,{loader as editPetLoader,action as editPetAction} from './pages/EditPet'
 
 const router=createBrowserRouter([
   {
@@ -46,7 +47,15 @@ const router=createBrowserRouter([
         action:NuevaMascotaAction
         
         
+      },
+      {
+        path:'/usuario/perfilDelUsuario/:perfilDelUsuarioId/editarMascota/:editarMascotaId',
+        element:<ProtectedRoute><EditPet/></ProtectedRoute>,
+        loader:editPetLoader,
+        action:editPetAction
+
       }
+
     ]
   }
 ])

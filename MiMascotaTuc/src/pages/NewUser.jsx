@@ -65,7 +65,6 @@ function NewUser() {
    
     return (
     <div>
-        <h2 className="text-3xl text-center font-bold text-indigo-900 my-5">Formulario de registro</h2>
         <div className="flex mb-5 justify-end">
         <button
           onClick={() => navigate('/')}
@@ -74,6 +73,8 @@ function NewUser() {
           VOLVER
         </button>
         </div>
+        <h2 className="text-4xl text-center logoTitle text-indigo-900 my-5">Formulario de registro</h2>
+        
         <Form method="post">
         
         {errores?.length ?

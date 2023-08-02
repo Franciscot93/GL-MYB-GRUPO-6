@@ -89,8 +89,8 @@ function Login() {
         <LoginForm />
         <input
           type="submit"
-          className="mt-5 w-3/5 shadow bg-emerald-800 uppercase font-bold py-2 hover:bg-emerald-600 duration-100 text-slate-50 rounded-md text-lg"
-          value={"Ingresar"}
+          className="mt-5 w-3/5 shadow bg-emerald-800 logoTitle font-thin py-2 hover:bg-emerald-600 duration-100 text-slate-50 rounded-md text-2xl"
+          value={"InGresaR"}
         />
       </Form>
     </main>

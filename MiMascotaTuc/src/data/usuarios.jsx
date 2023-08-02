@@ -122,3 +122,28 @@ export async function agregarUsuario(datos){
         await respuesta.json()
       }catch{console.log(error)}}
     
+      export const editarMascotas = async(userData,idMascota) => {
+        
+        const mascotaEliminada=userData.mascotas.filter(mascota=> mascota.id!==idMascota)
+        const usuario={
+            id: userData.id,
+          username: userData.username,
+          telefono: userData.telefono,
+          email: userData.email,
+          password: userData.password,
+          Imagen: "",
+          mascotas: mascotaEliminada,
+        }
+
+        console.log(usuario)
+       try{const respuesta= await fetch(`${import.meta.env.VITE_API_URL}/${usuario.id}`, {
+          method: "PUT",
+          body: JSON.stringify(usuario),
+          headers: {
+            "Content-Type": "application/json",
+          }
+         
+        });
+        await respuesta.json()
+      }catch{console.log(error)}}
+    

@@ -1,6 +1,6 @@
 import { useLogin } from "../store/userZustand"
 import { eliminarMascotas } from "../data/usuarios"
-import { useNavigate} from "react-router-dom"
+import { redirect, useNavigate,Link} from "react-router-dom"
 function Pet({pet}) {
   const {user}=useLogin()
   const navigate=useNavigate()
@@ -9,7 +9,8 @@ function Pet({pet}) {
     const confirmar= confirm('Deseas eliminar esta Mascota?')
     if(confirmar){
       eliminarMascotas(user,pet.id)
-      
+      redirect (`/usuario/perfilDelUsuario/${user.id}`)
+      return null
     }
     
   }
@@ -36,9 +37,9 @@ function Pet({pet}) {
         
 
         <div className="flex flex-wrap content-center container place-items-center place-content-center sm:flex-col md:flex-col justify-between mt-10 ">
-          <button  className="transition-colors w-full shadow-md py-2 px-10 bg-indigo-600 hover:bg-indigo-700 font-bold text-white rounded-md m-1 text-center" type="button">
+          <Link to={`/usuario/perfilDelUsuario/${user.id}/editarMascota/${pet.id}`}><button  className="transition-colors w-full shadow-md py-2 px-10 bg-indigo-600 hover:bg-indigo-700 font-bold text-white rounded-md m-1 text-center" type="button">
             Editar Mascota
-          </button>
+          </button></Link>
           
           <button onClick={handleEliminar} className="transition-colors w-full shadow-md py-2 px-10 bg-red-600 hover:bg-red-700 font-bold text-white rounded-md m-1  text-center" type="button">
             Eliminar Mascota

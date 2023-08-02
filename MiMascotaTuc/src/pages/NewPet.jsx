@@ -9,17 +9,21 @@ import { generarId,guardarMascotas, obtenerDatosUsuario } from "../data/usuarios
 
 export async function action({request,params}){
     const formDatosMascota = await request.formData();
-    
-    const datosMascota = Object.fromEntries(formDatosMascota);
-    const errores=[];
     const usuario= await obtenerDatosUsuario(params.perfilDelUsuarioId)
     const nombreMascota=formDatosMascota.get('mascota')
-    const nameRegex = /^[A-Za-z]{4,35}$/
-    if(!nameRegex.test(nombreMascota)){
+    const pesoMascota=formDatosMascota.get('peso')
+    const datosMascota = Object.fromEntries(formDatosMascota);
+    console.log(datosMascota.value)
+    const errores=[];
+    const pesoRegex = /^\d+(\.\d{1,2})?$/
+    const nameRegex = /^[A-Za-z]{2,35}$/
+    if(!nameRegex.test(nombreMascota.trim())){
       errores.push('El campo nombre solo puede contener letras y tiene un minimo de 4 caracteres.')
     }
-   
     
+    if(!pesoRegex.test(pesoMascota.trim())){
+      errores.push('El campo nombre solo puede contener numeros y un punto(.).')
+    }
     
     if (Object.keys(errores).length) {
       return errores;
@@ -34,7 +38,7 @@ export async function action({request,params}){
 
 function NewPet() {
     
-    const datosMascota=useActionData()
+    const errores=useActionData()
     const navigate=useNavigate()
     const {logout,user}=useLogin()
     
@@ -44,13 +48,13 @@ function NewPet() {
     
   const handleNuevaMascota=()=>{
     
-    console.log(datosMascota)
+    console.log(errores)
   }
 
   
   
   return (
-    <div className="content-center place-content-center">
+    <main className="content-center place-content-center">
             
     <div className="flex mb-5 justify-between">
     <button
@@ -77,7 +81,7 @@ function NewPet() {
 
   
 </section>
-</div>
+</main>
   )
 }
 

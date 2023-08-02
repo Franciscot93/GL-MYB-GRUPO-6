@@ -8,7 +8,7 @@ import { useLoaderData } from 'react-router-dom'
 
 function Root() {
 
-  const usuarios=useLoaderData()
+  const usuario=useLoaderData()
   return (
     <>
     <WelcomeMessagge/>
