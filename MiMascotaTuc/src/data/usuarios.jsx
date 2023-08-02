@@ -68,6 +68,7 @@ export async function agregarUsuario(datos){
       Imagen: "",
       mascotas: [...userData.mascotas,agregarMascota],
     }
+
     console.log(usuario)
    try{const respuesta= await fetch(`${import.meta.env.VITE_API_URL}/${usuario.id}`, {
       method: "PUT",
@@ -81,17 +82,10 @@ export async function agregarUsuario(datos){
   }catch{console.log(error)}}
 
  
-  export const agregarMascota = (datosMascota) => {
-    
-    if(datosMascota){
-
-     const mascotaGuardada= datosMascota
-    }
-    
+  
     
     
 
-    return datosMascota}
 
     export const generarId = () => {
         const date = Date.now().toString(36);
@@ -99,3 +93,32 @@ export async function agregarUsuario(datos){
     
         return date + random;
       }
+
+
+
+   
+      export const eliminarMascotas = async(userData,idMascota) => {
+        
+        const mascotaEliminada=userData.mascotas.filter(mascota=> mascota.id!==idMascota)
+        const usuario={
+            id: userData.id,
+          username: userData.username,
+          telefono: userData.telefono,
+          email: userData.email,
+          password: userData.password,
+          Imagen: "",
+          mascotas: mascotaEliminada,
+        }
+
+        console.log(usuario)
+       try{const respuesta= await fetch(`${import.meta.env.VITE_API_URL}/${usuario.id}`, {
+          method: "PUT",
+          body: JSON.stringify(usuario),
+          headers: {
+            "Content-Type": "application/json",
+          }
+         
+        });
+        await respuesta.json()
+      }catch{console.log(error)}}
+    

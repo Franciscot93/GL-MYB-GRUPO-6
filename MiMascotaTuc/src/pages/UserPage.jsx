@@ -47,7 +47,7 @@ function UserPage() {
         <User />
         </aside>
         <aside className='md:w-3/5 mt-5 w-full text-center md:h-screen overflow-scroll'>
-          <h2 className='text-xl text-center text-slate-800 font-semibold'>Tus Mascotas </h2>
+          <h2 className='text-2xl text-center logoTitle text-slate-800  border-b-2 border-indigo-700 py-1 mx-3'>TuS MasCotaS </h2>
           {(userNow.mascotas).length>0 ? (<ul>{(userNow.mascotas).map(pet=>(<Pet key={pet.id} pet={pet}/>))}</ul>): <h3>NO HAY MASCOTAS</h3>}
         
         </aside>
@@ -56,7 +56,7 @@ function UserPage() {
     </section>
     <div className='shadow-md my-2 mx-3 py-5 box-border '>
 
-    <Link to={`/usuario/perfilDelUsuario/${user.id}/nuevaMascota`} className='uppercase py-4 px-2 w-full font-bold hover:bg-teal-500 hover:cursor-pointer bg-teal-600 text-slate-200 rounded-md'>Añadir Mascota</Link>
+    <Link to={`/usuario/perfilDelUsuario/${user.id}/nuevaMascota`} className='logoTitle py-4 px-2 w-full text-3xl hover:bg-teal-500 hover:cursor-pointer bg-teal-600 text-slate-200 rounded-md'>Agregar MaScOtA</Link>
 
     </div>
      

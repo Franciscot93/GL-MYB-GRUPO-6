@@ -4,10 +4,10 @@ function PetForm() {
  
 
   return (
-    <div className="conteiner content-center w-full h-screen ">
+    <div className="conteiner content-center w-full box-border h-screen ">
       
       
-        <h2 className="mb-2 text-3xl text-center font-bold text-indigo-950 border-b-2 border-indigo-700 pb-3">
+        <h2 className="mb-2 text-3xl logoTitle text-center font-bold text-indigo-950 border-b-2 border-indigo-700 pb-3">
           Nueva Mascota
         </h2>
         
@@ -22,7 +22,7 @@ function PetForm() {
             <input
               id="mascota"
               type="text"
-              className="mt-2 block w-3/6 rounded-md p-3 bg-gray-50"
+              className="mt-2 block w-full rounded-md p-3 bg-gray-50"
               placeholder="Nombre de la mascota"
               name="mascota"
             />
@@ -38,7 +38,7 @@ function PetForm() {
             <input
               id="tipo"
               type="text"
-              className="mt-2 block w-3/6 rounded-md  p-3 bg-gray-50"
+              className="mt-2 block w-full rounded-md  p-3 bg-gray-50"
               placeholder="¿Que clase de mascota es?"
               name="tipo"
             />
@@ -54,7 +54,7 @@ function PetForm() {
             <input
               id="edad"
               type="text"
-              className="mt-2 block w-3/6 p-3 rounded-md bg-gray-50"
+              className="mt-2 block w-full p-3 rounded-md bg-gray-50"
               placeholder="¿Cuantos años tiene?"
               name="edad"
             />
@@ -69,7 +69,7 @@ function PetForm() {
             <input
               id="peso"
               type="text"
-              className="mt-2 block w-3/6 p-3 rounded-md bg-gray-50"
+              className="mt-2 block w-full p-3 rounded-md bg-gray-50"
               placeholder="¿Cuantos años tiene?"
               name="peso"
             />
@@ -86,7 +86,7 @@ function PetForm() {
               type="file"
               accept="image/*, application/pdf"
               multiple
-              className="mt-2 block w-3/6 p-2 rounded-md bg-gray-50"
+              className="mt-2 block w-full p-2 rounded-md bg-gray-50"
               name="files"
             />
           </div>
@@ -102,7 +102,7 @@ function PetForm() {
               type="file"
               accept="image/*, application/pdf"
               multiple
-              className="mt-2 block w-3/6 p-2 rounded-md bg-gray-50"
+              className="mt-2 block w-full p-2 rounded-md bg-gray-50"
               name="pic"
             />
           </div>

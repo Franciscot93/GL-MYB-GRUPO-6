@@ -27,31 +27,22 @@
       "Imagen": "",
       "mascotas": [
         {
-          "mascota": "pepe ",
-          "tipo": "perro",
+          "mascota": "eugenio",
+          "tipo": "gato",
           "edad": "2",
-          "peso": "5",
+          "peso": "8",
           "files": "",
           "pic": "",
-          "id": "lksnu0gxil49gks7v4"
+          "id": "lksxhc9zybm3q2gxrie"
         },
         {
           "mascota": "jonas",
           "tipo": "gato",
           "edad": "2",
-          "peso": "5",
+          "peso": "4",
           "files": "",
           "pic": "",
-          "id": "lksoj4cm5fyg9emqu85"
-        },
-        {
-          "mascota": "eugenio",
-          "tipo": "perro",
-          "edad": "5",
-          "peso": "12",
-          "files": "",
-          "pic": "",
-          "id": "lkspr56rtz68hy9ict"
+          "id": "lksxkekfeti812k5ypq"
         }
       ]
     },

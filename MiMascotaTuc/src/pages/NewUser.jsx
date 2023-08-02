@@ -11,17 +11,29 @@ export async function action({ request }) {
     const regexEmail = new RegExp(
       "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
     );
-    
-    const regexPassword=new RegExp("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/")
+
+    const numberRegex = /^[0-9]{9,15}$/
+    const nameRegex = /^[A-Za-z]{4,35}$/
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[\W_]).{8,16}$/
+    const username=formDatos.get("username")
     const email = formDatos.get("email");
     const password=formDatos.get("password");
     const repetirPassword=formDatos.get("repetirPassword")
-  
+    const telefono = formDatos.get("telefono");
     const errores = [];
       
       console.log(repetirPassword)
 
-    
+    if(!numberRegex.test(telefono)){
+      errores.push('Error! Ingrese solo numeros (9 a 15 digitos)')
+    }
+    if(!nameRegex.test(username)){
+      errores.push('El campo nombre solo puede contener letras y tiene un minimo de 4 caracteres.')
+    }
+
+    if(!passwordRegex.test(password)){
+      errores.push('La contraseña debe tener al menos: 1 mayuscula, 1 minuscula, 1 caracter especial "#$.@", y debe tener de 8 a 16 caracteres')
+    }
 
     if(password!==repetirPassword){
       errores.push("Las contraseñas no coinciden")
