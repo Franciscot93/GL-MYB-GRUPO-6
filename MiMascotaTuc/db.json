@@ -25,35 +25,7 @@
       "email": "aurelio@aurelio.com",
       "password": "1234",
       "Imagen": "",
-      "mascotas": [
-        {
-          "mascota": "pepe ",
-          "tipo": "perro",
-          "edad": "3",
-          "peso": "5",
-          "files": "",
-          "pic": "",
-          "id": "lku4b89cd0pqfmwrj"
-        },
-        {
-          "mascota": "erustacio",
-          "tipo": "hamster",
-          "edad": "1",
-          "peso": "0.250",
-          "files": "",
-          "pic": "",
-          "id": "lku4mr9ute9nmcua41"
-        },
-        {
-          "mascota": "eugenio",
-          "tipo": "gato",
-          "edad": "2",
-          "peso": "5",
-          "files": "",
-          "pic": "",
-          "id": "lku4oc2dloln78kd85o"
-        }
-      ]
+      "mascotas": []
     },
     {
       "id": 5,
