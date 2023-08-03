@@ -4,7 +4,7 @@ function User() {
    const{user}=useLogin()
   return (
     <div className="w-full">
-            <h2 className="text-2xl text-center logoTitle text-slate-800">Contacto</h2>
+            <h2 className="text-3xl text-center logoTitle text-slate-800">Contacto</h2>
       <div className="mx-3 relative w-100 text-left  
          shadow-md mt-3 rounded-md  p-3
          ">img</div>

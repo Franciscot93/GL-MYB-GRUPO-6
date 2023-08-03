@@ -36,7 +36,7 @@ function UserPage() {
           <User />
         </aside>
         <aside className="md:w-3/5 mt-5 w-full text-center md:h-screen overflow-y-scroll overflow-x-hidden">
-          <h2 className="text-2xl text-center logoTitle text-slate-800  border-b-2 border-indigo-700 py-1 mx-3">
+          <h2 className="text-3xl text-center logoTitle text-slate-800  border-b-2 border-indigo-700 py-1 mx-3">
             TuS MasCotaS{" "}
           </h2>
           {userNow.mascotas.length > 0 ? (

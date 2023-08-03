@@ -74,7 +74,7 @@ function NewPet() {
 <section className='shadow-md place-content-center content-center place-items-center flex flex-wrap my-2 mx-3 py-5'>
   <Form method="POST" noValidate>
   <PetForm/>
-  <input onClick={handleNuevaMascota} type="submit" className=' py-4 px-2 w-full mt-5 logoTitle hover:bg-teal-500 hover:cursor-pointer bg-teal-600 text-slate-200 text-2xl rounded-md'value={'Añadir Mascota'}/>
+  <input onClick={handleNuevaMascota} type="submit" className=' py-4 px-2 w-full mt-5 logoTitle hover:bg-teal-500 hover:cursor-pointer bg-teal-600 text-slate-200 text-2xl rounded-md'value={'Agregar Mascota'}/>
   </Form>
 
 

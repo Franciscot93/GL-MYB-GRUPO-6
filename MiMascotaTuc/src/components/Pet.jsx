@@ -6,13 +6,10 @@ function Pet({pet}) {
   const navigate=useNavigate()
 
   const handleEliminar=()=>{
-    const confirmar= confirm('Deseas eliminar esta Mascota?')
-    if(confirmar){
-      eliminarMascotas(user,pet.id)
-      redirect (`/usuario/perfilDelUsuario/${user.id}`)
-      return null
-    }
     
+    eliminarMascotas(user,pet.id)
+      
+      return redirect (`/usuario/perfilDelUsuario/${user.id}`)
   }
 
   return (

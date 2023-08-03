@@ -1,8 +1,7 @@
 import {
   Form,
   useNavigate,
-  useActionData,
-  redirect,
+  useActionData, 
   useLoaderData,
 } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
@@ -12,7 +11,7 @@ import { useEffect} from "react";
 import { useLogin } from "../store/userZustand";
 
 export async function loader({ params }) {
-  const usuario = obtenerUsuarios();
+  const usuario = await obtenerUsuarios();
   return usuario;
 }
 
@@ -52,7 +51,7 @@ function Login() {
   
 
   const usuario = useActionData();
- 
+ console.log(usuario)
   useEffect(() => {
     if (usuario) {
       const user = datos.find(
