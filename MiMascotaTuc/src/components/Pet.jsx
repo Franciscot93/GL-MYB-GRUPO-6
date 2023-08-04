@@ -1,15 +1,17 @@
 import { useLogin } from "../store/userZustand"
 import { eliminarMascotas } from "../data/usuarios"
 import { redirect, useNavigate,Link} from "react-router-dom"
-function Pet({pet}) {
-  const {user}=useLogin()
-  const navigate=useNavigate()
 
+
+
+
+function Pet({pet}) {
+  console.log(pet)
+  const {user,setUser, eliminarMascota}=useLogin()
+  const navigate=useNavigate()
+  
   const handleEliminar=()=>{
-    
-    eliminarMascotas(user,pet.id)
-      
-      return redirect (`/usuario/perfilDelUsuario/${user.id}`)
+    eliminarMascotas(user,pet.id,setUser, eliminarMascota)
   }
 
   return (

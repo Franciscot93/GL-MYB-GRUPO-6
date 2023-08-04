@@ -44,7 +44,7 @@ export async function action({ request }) {
 }
 
 function Login() {
-  const { login, logout, setUser } = useLogin();
+  const { login, logout, setUser,guardarUsers } = useLogin();
   const navigate = useNavigate();
   const datos = useLoaderData();
   const erroresDeFormulario = useActionData();
@@ -54,6 +54,7 @@ function Login() {
  console.log(usuario)
   useEffect(() => {
     if (usuario) {
+      
       const user = datos.find(
         (user) =>
           user.email === usuario.email &&

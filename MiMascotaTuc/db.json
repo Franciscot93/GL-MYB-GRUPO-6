@@ -25,7 +25,17 @@
       "email": "aurelio@aurelio.com",
       "password": "1234",
       "Imagen": "",
-      "mascotas": []
+      "mascotas": [
+        {
+          "id": "lkwzkvs1lzj1jhajn2n",
+          "mascota": "pepe ",
+          "tipo": "gato",
+          "edad": "1",
+          "peso": "4",
+          "file": "",
+          "pic": ""
+        }
+      ]
     },
     {
       "id": 5,

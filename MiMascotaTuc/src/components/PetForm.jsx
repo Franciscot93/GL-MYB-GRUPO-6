@@ -1,8 +1,34 @@
-import { useLocation } from "react-router-dom";
+import { useLocation,Form, useParams,redirect, useNavigate} from "react-router-dom";
+import { useState } from "react";
+import { guardarMascotas } from "../data/usuarios";
 
 
-function PetForm({mascotaParaEditar}) {
- 
+function PetForm({mascotaParaEditar, handleGuardarMascota}) {
+  const navigate=useNavigate()
+  const{perfilDelUsuarioId}=useParams()
+  const [mascota, setMascota] = useState({
+    mascota: "",
+    tipo: "",
+    edad: "",
+    peso: "",
+    file:'',
+    pic:''
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setMascota({ ...mascota, [name]: value });
+   
+  };
+  const handleSubmit = (event) => {
+    console.log(mascota)
+    event.preventDefault();
+    handleGuardarMascota(mascota);
+
+    return navigate(`/usuario/perfilDelUsuario/${perfilDelUsuarioId}`)
+  };
+
+  
  const location=useLocation()
   return (
     <div className="conteiner content-center w-full box-border h-screen ">
@@ -12,7 +38,7 @@ function PetForm({mascotaParaEditar}) {
          {location.pathname==='/usuario/perfilDelUsuario/:perfilDelUsuarioId/editarMascota/:editarMascotaId'? 'Edita Tu Mascota': 'Nueva Mascota'}
         </h2>
         
-        
+        <Form method="POST" noValidate onSubmit={(e)=>handleSubmit(e)}>
           <div className=" mb-2 justify-center flex-col flex  place-items-center mx-3">
             <label
               className="text-indigo-950 text-left font-semibold text-xl"
@@ -21,12 +47,13 @@ function PetForm({mascotaParaEditar}) {
               Mascota:
             </label>
             <input
+              onChange={(e)=>handleChange(e)}
               id="mascota"
               type="text"
               className="mt-2 block w-full rounded-md p-3 bg-gray-50"
               placeholder="Nombre de la mascota"
               name="mascota"
-              value={mascotaParaEditar?.mascota}
+              defaultValue={mascotaParaEditar?.mascota}
             />
           </div>
 
@@ -38,12 +65,13 @@ function PetForm({mascotaParaEditar}) {
               Tipo:
             </label>
             <input
+              onChange={(e)=>handleChange(e)}
               id="tipo"
               type="text"
               className="mt-2 block w-full rounded-md  p-3 bg-gray-50"
               placeholder="¿Que clase de mascota es?"
               name="tipo"
-              value={mascotaParaEditar?.tipo}
+              defaultValue={mascotaParaEditar?.tipo}
             />
           </div>
 
@@ -55,12 +83,14 @@ function PetForm({mascotaParaEditar}) {
               Edad:
             </label>
             <input
+            
+              onChange={(e)=>handleChange(e)}
               id="edad"
               type="text"
               className="mt-2 block w-full p-3 rounded-md bg-gray-50"
               placeholder="¿Cuantos años tiene?"
               name="edad"
-              value={mascotaParaEditar?.edad}
+              defaultValue={mascotaParaEditar?.edad}
             />
           </div>
           <div className="mb-2 justify-center flex-col flex  place-items-center mx-3">
@@ -71,12 +101,13 @@ function PetForm({mascotaParaEditar}) {
               Peso(kg):
             </label>
             <input
+              onChange={(e)=>handleChange(e)}
               id="peso"
               type="text"
               className="mt-2 block w-full p-3 rounded-md bg-gray-50"
               placeholder="¿Cuantos años tiene?"
               name="peso"
-              value={mascotaParaEditar?.peso}
+              defaultValue={mascotaParaEditar?.peso}
             />
           </div>
           <div className="mb-2 justify-center flex-col flex  place-items-center mx-3">
@@ -87,6 +118,7 @@ function PetForm({mascotaParaEditar}) {
               Archivos:
             </label>
             <input
+              onChange={(e)=>handleChange(e)}
               id="files"
               type="file"
               accept="image/*, application/pdf"
@@ -103,6 +135,7 @@ function PetForm({mascotaParaEditar}) {
               Pic:
             </label>
             <input
+              onChange={(e)=>handleChange(e)}
               id="pic"
               type="file"
               accept="image/*, application/pdf"
@@ -111,7 +144,8 @@ function PetForm({mascotaParaEditar}) {
               name="pic"
             />
           </div>
-        
+          <input  type="submit" className=' py-4 px-2 w-full mt-5 logoTitle hover:bg-teal-500 hover:cursor-pointer bg-teal-600 text-slate-200 text-2xl rounded-md'value={'Agregar Mascota'}/>
+          </Form>
         </div>
 
        

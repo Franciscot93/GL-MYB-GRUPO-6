@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import User from "../components/User";
 import Pet from "../components/Pet";
 
@@ -7,14 +7,30 @@ import { useLogin } from "../store/userZustand";
 import { obtenerDatosUsuario } from "../data/usuarios";
 
 export async function loader({ params }) {
-  const userNow = await obtenerDatosUsuario(params.perfilDelUsuarioId);
-  return userNow;
+  
+  return null;
 }
 
 function UserPage() {
-  const userNow = useLoaderData();
+   
+  const { user, logout} = useLogin();
   
-  const { user, logout } = useLogin();
+  // Función para cargar los datos del usuario al montar o actualizar la página
+  const cargarDatosUsuario = async () => {
+    try {
+      const usuarioActualizado = await obtenerDatosUsuario(user.id);
+      setUser(usuarioActualizado); // Actualizar los datos del usuario en el estado global
+    } catch (error) {
+      console.log("Error al cargar los datos del usuario:", error);
+    }
+  };
+
+  // Cargar los datos del usuario al montar o actualizar la página
+  useEffect(() => {
+    cargarDatosUsuario();
+  }, []);
+
+  
 
   return (
     <main>
@@ -39,9 +55,9 @@ function UserPage() {
           <h2 className="text-3xl text-center logoTitle text-slate-800  border-b-2 border-indigo-700 py-1 mx-3">
             TuS MasCotaS{" "}
           </h2>
-          {userNow.mascotas.length > 0 ? (
+          {user?.mascotas.length > 0 ? (
             <ul>
-              {userNow.mascotas.map((pet) => (
+              {user?.mascotas.map((pet) => (
                 <Pet key={pet.id} pet={pet} />
               ))}
             </ul>
