@@ -112,7 +112,7 @@ function PetForm({mascotaParaEditar}) {
             />
           </div>
         
-        </div>
+    </div>
 
        
 
