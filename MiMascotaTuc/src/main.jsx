@@ -11,6 +11,7 @@ import { ProtectedRoute } from './components/ProtectedRoute'
 import NewPet, { action as NuevaMascotaAction } from './pages/NewPet'
 import EditPet,{loader as editPetLoader,action as editPetAction} from './pages/EditPet'
 
+// Crear enrutador con rutas y elementos correspondientes
 const router=createBrowserRouter([
   {
     path:'/',
@@ -54,12 +55,16 @@ const router=createBrowserRouter([
         loader:editPetLoader,
         action:editPetAction
 
+      },
+      {
+        path: '/Home',
+        element: <h1/>
       }
 
     ]
   }
 ])
-
+ // Renderizar la aplicacion en el elemento root del DOM
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router}/>

@@ -1,14 +1,22 @@
 import { useLogin } from "../store/userZustand"
 import { eliminarMascotas } from "../data/usuarios"
 import { redirect, useNavigate,Link} from "react-router-dom"
-function Pet({pet}) {
-  const {user}=useLogin()
-  const navigate=useNavigate()
 
+
+function Pet({pet}) {
+  // Obteniendo el usuario actual desde el estado global
+  const {user}=useLogin()
+  // Iniciar la funcion de navegacion
+  const navigate=useNavigate()
+  // Manejo de la eliminacion de una mascota
   const handleEliminar=()=>{
+    // Mostrar un cuadro de confirmacion antes de eliminar
     const confirmar= confirm('Deseas eliminar esta Mascota?')
     if(confirmar){
+      // Llamar a la funcion para eliminar mascotas
       eliminarMascotas(user,pet.id)
+
+      // Redirigir a la pagina de perfil del usuario despues de eliminar
       redirect (`/usuario/perfilDelUsuario/${user.id}`)
       return null
     }
@@ -16,31 +24,38 @@ function Pet({pet}) {
   }
 
   return (
+    // Seccion que muestra la informacion de la mascota
    <section className="w-full flex flex-wrap container place-content-center">
     <div className=" mx-2 my-5 px-5 py-5 w-full rounded-xl bg-transparent shadow-md">
+      {/* Nombre de la mascota */}
         <p className="font-bold mb-3 text-gray-700 uppercase">
           Nombre: {""}
           <span className="font-normal normal-case">{pet.mascota}</span>
         </p>
+        {/* Tipo de mascota */}
         <p className="font-bold mb-3 text-gray-700 uppercase">
           Tipo: {""}
           <span className="font-normal normal-case">{pet.tipo}</span>
-        </p>        
+        </p>  
+        {/* Edad de la mascota */}      
         <p className="font-bold mb-3 text-gray-700 uppercase">
           Edad: {""}
           <span className="font-normal normal-case">{pet.edad}</span>
         </p>
+        {/* Peso de la mascota */}
         <p className="font-bold mb-3 text-gray-700 uppercase">
           Peso: {""}
           <span className="font-normal normal-case">{pet.peso}</span>
         </p>
         
-
+        {/*Boton para editar y eliminar la mascota  */}
         <div className="flex flex-wrap content-center container place-items-center place-content-center sm:flex-col md:flex-col justify-between mt-10 ">
+          {/* Enlace para editar la mascota */}
           <Link to={`/usuario/perfilDelUsuario/${user.id}/editarMascota/${pet.id}`}><button  className="transition-colors w-full shadow-md py-2 px-10 bg-indigo-600 hover:bg-indigo-700 font-bold text-white rounded-md m-1 text-center" type="button">
             Editar Mascota
           </button></Link>
           
+          {/*Boton para eliminar la mascota */}
           <button onClick={handleEliminar} className="transition-colors w-full shadow-md py-2 px-10 bg-red-600 hover:bg-red-700 font-bold text-white rounded-md m-1  text-center" type="button">
             Eliminar Mascota
           </button>

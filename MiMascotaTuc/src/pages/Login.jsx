@@ -1,25 +1,23 @@
-import {
-  Form,
-  useNavigate,
-  useActionData,
-  redirect,
-  useLoaderData,
-} from "react-router-dom";
+import { Form, useNavigate, useActionData, redirect, useLoaderData } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
 import Error from "../components/Error";
 import { obtenerUsuarios } from "../data/usuarios";
 import { useEffect} from "react";
 import { useLogin } from "../store/userZustand";
 
+
+// Cargar los usuarios para el loader inicial
 export async function loader({ params }) {
   const usuario = obtenerUsuarios();
   return usuario;
 }
 
+  // Manejar la accion de iniciar sesion
 export async function action({ request }) {
   const formDatos = await request.formData();
   const datosUsuario = Object.fromEntries(formDatos) || null;
   
+  // Validar el formato del correo electronico
   const email = formDatos.get("email")
   const regexEmail = new RegExp(
     "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
@@ -36,43 +34,44 @@ export async function action({ request }) {
     return erroresDeFormulario;
   }
   
+  // Si hay datos de usuarios validos, retornarlos
   if (datosUsuario) {
     return datosUsuario
-
   }
 
   return null;
 }
 
 function Login() {
+  // Utilizar los hooks de useLogin y useNavigate
   const { login, logout, setUser } = useLogin();
   const navigate = useNavigate();
   const datos = useLoaderData();
   const erroresDeFormulario = useActionData();
-  
-
   const usuario = useActionData();
  
+  // Efecto secundario para manejar el inicio de sesion  
   useEffect(() => {
     if (usuario) {
+      // Buscar al usuario en la lista de usuarios usando los datos del formulario
       const user = datos.find(
         (user) =>
           user.email === usuario.email &&
           user.password === usuario.password
       );
       if (user) {
-        
+        // Si se encuentra un usuario valido, iniciar sesion y redirigir al perfil
         login();
         setUser(user);
         navigate(`/usuario/perfilDelUsuario/${user.id}`);
       }
-      
     }
   }, [datos]);
 
   return (
     <main>
       <div className="flex mb-5 justify-end">
+        {/* Boton para volver a la pagina anterior */}
         <button
           onClick={() => navigate("/")}
           className="bg-sky-900 px-3 font-bold uppercase py-1 rounded-md text-slate-50 hover:bg-indigo-600 duration-200"
@@ -81,10 +80,12 @@ function Login() {
         </button>
       </div>
 
+      {/* Mostrar errores de formulario si existen */}
       {erroresDeFormulario?.length
         ? erroresDeFormulario.map((error, i) => <Error key={i}>{error}</Error>)
         : null}
       
+      {/* Formulario de inicio de sesion */}
       <Form method="post">
         <LoginForm />
         <input

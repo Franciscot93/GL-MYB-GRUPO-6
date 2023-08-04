@@ -1,7 +1,9 @@
-
+//Formulario de registro
 function RegisterForm({usuario}) {
   return (
+    // Contenedor principal del formulario de registro
     <div className="container">
+        {/* Campo de entrada para el nombre del usuario */}
     <div className=" mb-4 mx-3">
                 <label
                     className="text-indigo-900 font-semibold text-xl"
@@ -16,6 +18,8 @@ function RegisterForm({usuario}) {
                     defaultValue={usuario?.nombreUsuario}
                 />
             </div>
+
+                {/* Campo de entrada para la contraseña */}
             <div className="mb-4 mx-3">
                 <label
                     className="text-indigo-900 font-semibold text-xl"
@@ -30,6 +34,8 @@ function RegisterForm({usuario}) {
                     defaultValue={usuario?.password}
                 />
             </div>
+
+                {/*Campo de entrada para repetir la contraseña  */}
             <div className="mb-4 mx-3">
                 <label
                     className="text-indigo-900 font-semibold text-xl"
@@ -45,6 +51,7 @@ function RegisterForm({usuario}) {
                 />
             </div>
 
+                {/*Campo de entrada para el correo electronico  */}
             <div className="mb-4 mx-3">
                 <label
                     className="text-indigo-900 font-semibold text-xl"
@@ -60,6 +67,7 @@ function RegisterForm({usuario}) {
                 />
             </div>
 
+                {/* Campo de entrada para el Telefono */}
             <div className="mb-4 mx-3">
                 <label
                     className="text-indigo-900 font-semibold text-xl"
