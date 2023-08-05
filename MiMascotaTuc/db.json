@@ -25,17 +25,7 @@
       "email": "aurelio@aurelio.com",
       "password": "1234",
       "Imagen": "",
-      "mascotas": [
-        {
-          "mascota": "PERRO",
-          "tipo": "CANICHE",
-          "edad": "4",
-          "peso": "11",
-          "files": "",
-          "pic": "",
-          "id": "lkvsyb6m8rtqz99w8et"
-        }
-      ]
+      "mascotas": []
     },
     {
       "id": 5,

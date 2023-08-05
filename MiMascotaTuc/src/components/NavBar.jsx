@@ -31,7 +31,7 @@ function NavBar() {
           <Link to={""} className="mr-5 text-white hover:text-[#83cdff]">Nosotros</Link>
         </div>
         <div className="justify-center flex m-auto flex-wrap items-center content-center">
-        <Link to={""} className="mr-5">
+        <Link to={"/usuario/login"} className="mr-5">
             <button value="MiCuenta" onClick={cambiarValor} className="inline-flex rounded items-center  bg-yellow-500 border-0 py-1 px-3 mt-4">
               {valueButton}
             </button>

@@ -2,7 +2,6 @@ import {
   Form,
   useNavigate,
   useActionData,
-  redirect,
   useLoaderData,
 } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
@@ -15,7 +14,6 @@ export async function loader({ params }) {
   const usuario = obtenerUsuarios();
   return usuario;
 }
-
 export async function action({ request }) {
   const formDatos = await request.formData();
   const datosUsuario = Object.fromEntries(formDatos) || null;
@@ -44,16 +42,41 @@ export async function action({ request }) {
   return null;
 }
 
+
+
 function Login() {
+  
   const { login, logout, setUser } = useLogin();
   const navigate = useNavigate();
   const datos = useLoaderData();
   const erroresDeFormulario = useActionData();
   
-
+  
   const usuario = useActionData();
- 
+  
   useEffect(() => {
+    if(localStorage.getItem('email')){
+      
+      const email = localStorage.getItem('email');
+      console.log(email)
+      if (email) {
+        const user = datos.find(
+          (user) =>
+            user.email ===  email
+        );
+        if (user) {
+          
+          login();
+          setUser(user);
+          console.log(user)
+          navigate(`/usuario/perfilDelUsuario/${user.id}`);
+           
+        }
+      }
+    }
+  }, [datos]);
+  useEffect(() => {
+   
     if (usuario) {
       const user = datos.find(
         (user) =>
@@ -64,12 +87,17 @@ function Login() {
         
         login();
         setUser(user);
+        console.log(user)
         navigate(`/usuario/perfilDelUsuario/${user.id}`);
+        window.localStorage.setItem(
+          'email',user.email
+        ) 
       }
-      
     }
   }, [datos]);
 
+  
+  
   return (
     <main>
       <div className="flex mb-5 justify-end">
@@ -95,6 +123,6 @@ function Login() {
       </Form>
     </main>
   );
+  
 }
-
 export default Login;

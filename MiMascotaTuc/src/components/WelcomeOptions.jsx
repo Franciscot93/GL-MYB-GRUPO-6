@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
-
+import { useEffect } from "react";
+import {  useNavigate} from "react-router-dom";
 function WelcomeOptions() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(localStorage.getItem('email')){
+    loginRedirect();}
+  },[])
+
+  const loginRedirect = () =>{
+   return  navigate("/usuario/login")
+  };
   return (
     <>
       <div className="text-center  mt-10 flex flex-col md:place-content-center place-content-center md:content-center flex-wrap md:flex-wrap content-center justify-center md:justify-center box-content">
