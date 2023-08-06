@@ -1,7 +1,10 @@
 import {
   Form,
   useNavigate,
-  useActionData,
+
+  useActionData, 
+
+
   useLoaderData,
 } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
@@ -11,7 +14,7 @@ import { useEffect} from "react";
 import { useLogin } from "../store/userZustand";
 
 export async function loader({ params }) {
-  const usuario = obtenerUsuarios();
+  const usuario = await obtenerUsuarios();
   return usuario;
 }
 export async function action({ request }) {
@@ -45,8 +48,11 @@ export async function action({ request }) {
 
 
 function Login() {
+
+  const { login, logout, setUser,guardarUsers } = useLogin();
+
   
-  const { login, logout, setUser } = useLogin();
+
   const navigate = useNavigate();
   const datos = useLoaderData();
   const erroresDeFormulario = useActionData();
@@ -78,6 +84,7 @@ function Login() {
   useEffect(() => {
    
     if (usuario) {
+      
       const user = datos.find(
         (user) =>
           user.email === usuario.email &&

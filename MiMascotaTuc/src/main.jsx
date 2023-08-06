@@ -11,12 +11,18 @@ import Login, {
 import NewUser, { action as NuevoUsuarioAction } from "./pages/NewUser";
 import UserPage, { loader as loaderUser } from "./pages/UserPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
-import NewPet, { action as NuevaMascotaAction } from "./pages/NewPet";
+
+import NewPet from "./pages/NewPet";
+
 import EditPet, {
   loader as editPetLoader,
   action as editPetAction,
 } from "./pages/EditPet";
+ 
+import DeletePet from "./pages/DeletePet";
+
 import Home from "./pages/Home";
+
 
 const router = createBrowserRouter([
   {
@@ -27,10 +33,6 @@ const router = createBrowserRouter([
         index: true,
         path: "/",
         element: <Root />,
-      },
-      {
-        path: "/inicio",
-        element: <Home />,
       },
       {
         path: "/usuario/nuevo",
@@ -58,8 +60,8 @@ const router = createBrowserRouter([
           <ProtectedRoute>
             <NewPet />
           </ProtectedRoute>
-        ),
-        action: NuevaMascotaAction,
+        )
+       
       },
       {
         path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/editarMascota/:editarMascotaId",
@@ -71,6 +73,16 @@ const router = createBrowserRouter([
         loader: editPetLoader,
         action: editPetAction,
       },
+      {
+        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/eliminarMascota/:eliminarMascotaId",
+        element: (<DeletePet />),
+      },{
+      
+
+        path: "/inicio",
+        element: <Home />,
+      },
+      
     ],
   },
 ]);
