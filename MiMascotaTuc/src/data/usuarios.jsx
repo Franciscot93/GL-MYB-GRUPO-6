@@ -1,5 +1,3 @@
-
-
 export async function obtenerUsuarios() {
   const respuesta = await fetch(import.meta.env.VITE_API_URL);
   const resultado = await respuesta.json();
@@ -47,6 +45,7 @@ export async function editarUsuario(id, datos) {
   }
 }
 
+
 export async function eliminarCliente(id) {
   try {
     const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
@@ -72,6 +71,7 @@ export const guardarMascotas = async (usuarioId, datosMascota,setUser) => {
     id: generarId(),
     ...datosMascota,
   };
+
 
   try {
     const usuarioResponse = await fetch(
@@ -141,6 +141,7 @@ export const eliminarMascotas = async (userData, idMascota,setUser, eliminarMasc
         headers: {
           "Content-Type": "application/json",
         },
+
       }
     );
 
