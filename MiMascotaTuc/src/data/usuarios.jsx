@@ -64,7 +64,7 @@ export const generarId = () => {
 
   return date + random;
 };
-
+//###########################################################################################################################
 //MASCOTAS
 
 export const guardarMascotas = async (usuarioId, datosMascota,setUser) => {
@@ -79,7 +79,7 @@ export const guardarMascotas = async (usuarioId, datosMascota,setUser) => {
     );
     const usuario = await usuarioResponse.json();
 
-    // Crear una copia superficial del objeto usuario sin los datos circulares
+    
     const usuarioSinReferenciasCirculares = {
       id: usuario.id,
       username: usuario.username,
@@ -155,35 +155,39 @@ export const eliminarMascotas = async (userData, idMascota,setUser, eliminarMasc
   }
 };
 
-// POR HACER
-export const editarMascotas = async (userData, idMascota) => {
-  const mascotaEliminada = userData.mascotas.filter(
-    (mascota) => mascota.id !== idMascota
+
+export const editarMascota = async (userId, mascotaId, mascotaActualizada, setUser) => {
+  const usuarioResponse = await fetch(`${import.meta.env.VITE_API_URL}/${userId}`);
+  const usuario = await usuarioResponse.json();
+
+  const mascotasActualizadas = usuario.mascotas.map((mascota) =>
+    mascota.id === mascotaId ? mascotaActualizada : mascota
   );
-  const usuario = {
-    id: userData.id,
-    username: userData.username,
-    telefono: userData.telefono,
-    email: userData.email,
-    password: userData.password,
-    Imagen: "",
-    mascotas: mascotaEliminada,
+
+  const usuarioActualizado = {
+    ...usuario,
+    mascotas: mascotasActualizadas,
   };
 
-  console.log(usuario);
   try {
     const respuesta = await fetch(
-      `${import.meta.env.VITE_API_URL}/${usuario.id}`,
+      `${import.meta.env.VITE_API_URL}/${userId}`,
       {
         method: "PUT",
-        body: JSON.stringify(usuario),
+        body: JSON.stringify(usuarioActualizado),
         headers: {
           "Content-Type": "application/json",
         },
       }
     );
-    await respuesta.json();
-  } catch {
-    console.log(error);
+
+    if (!respuesta.ok) {
+      console.log("Error al editar mascota:", respuesta.status);
+      return;
+    }
+
+    setUser(usuarioActualizado);
+  } catch (error) {
+    console.log("Error en la comunicación con el servidor:", error);
   }
 };

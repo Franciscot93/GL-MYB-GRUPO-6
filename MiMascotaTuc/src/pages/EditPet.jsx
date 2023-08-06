@@ -17,6 +17,8 @@ export async function loader({ params }) {
   return mascotaParaEditar;
 }
 export async function action() {
+
+  
   return null;
 }
 
@@ -42,15 +44,10 @@ function EditPet() {
       </div>
 
       <section className="shadow-md place-content-center content-center place-items-center flex flex-wrap my-2 mx-3 py-5">
-        <Form method="POST" noValidate>
+        
           <PetForm mascotaParaEditar={mascotaParaEditar} />
-          <input
-            type="submit"
-            className="uppercase  py-4 px-2 w-full mt-5 font-bold hover:bg-teal-500
-             hover:cursor-pointer bg-teal-600 text-slate-200 rounded-md"
-            value={"añadir mascota"}
-          />
-        </Form>
+          
+        
       </section>
     </main>
   );

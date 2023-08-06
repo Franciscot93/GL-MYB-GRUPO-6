@@ -1,24 +1,13 @@
-import { useNavigate,useActionData, Form, redirect } from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import PetForm from "../components/PetForm"
 import { useLogin } from "../store/userZustand"
-import { useState} from "react"
-import { generarId,guardarMascotas, obtenerDatosUsuario } from "../data/usuarios"
 
+import { guardarMascotas} from "../data/usuarios"
 
-
-
-export async function action({ request, params }) {
-  const formDatosMascota = await request.formData();  
-  const datosMascota = Object.fromEntries(formDatosMascota);
-  
-
- 
-return redirect(`/usuario/perfilDelUsuario/${params.perfilDelUsuarioId}`)
-}
 
 function NewPet() {
   const navigate = useNavigate();
-  const errores = useActionData();
+ 
   const { logout, user,setUser } = useLogin();
 
   const handleGuardarMascota = async (mascota) => {
@@ -46,6 +35,7 @@ function NewPet() {
   </div>
 
 <section className='shadow-md place-content-center content-center place-items-center flex flex-wrap my-2 mx-3 py-5'>
+
   
   <PetForm handleGuardarMascota={ handleGuardarMascota} />
   

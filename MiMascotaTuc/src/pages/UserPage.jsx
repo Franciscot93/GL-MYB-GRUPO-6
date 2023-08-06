@@ -13,7 +13,7 @@ export async function loader({ params }) {
 
 function UserPage() {
    
-  const { user, logout} = useLogin();
+  const { user, logout,setUser} = useLogin();
   
   // Función para cargar los datos del usuario al montar o actualizar la página
   const cargarDatosUsuario = async () => {
@@ -48,10 +48,10 @@ function UserPage() {
         </h3>
       </div>
       <section className="shadow-md flex flex-wrap my-2 mx-3  py-5">
-        <aside className="w-full md:w-2/5  mt-5 ">
+        <aside className="w-full md:w-2/5 lg:1/5 mt-5 ">
           <User />
         </aside>
-        <aside className="md:w-3/5 mt-5 w-full text-center md:h-screen overflow-y-scroll overflow-x-hidden">
+        <aside className="md:w-3/5 lg:4/5 mt-5 w-full text-center md:h-screen overflow-y-scroll overflow-x-hidden">
           <h2 className="text-3xl text-center logoTitle text-slate-800  border-b-2 border-indigo-700 py-1 mx-3">
             TuS MasCotaS{" "}
           </h2>

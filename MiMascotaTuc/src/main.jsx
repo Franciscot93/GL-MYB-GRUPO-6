@@ -11,7 +11,7 @@ import Login, {
 import NewUser, { action as NuevoUsuarioAction } from "./pages/NewUser";
 import UserPage, { loader as loaderUser } from "./pages/UserPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
-import NewPet, { action as NuevaMascotaAction } from "./pages/NewPet";
+import NewPet from "./pages/NewPet";
 import EditPet, {
   loader as editPetLoader,
   action as editPetAction,
@@ -54,8 +54,8 @@ const router = createBrowserRouter([
           <ProtectedRoute>
             <NewPet />
           </ProtectedRoute>
-        ),
-        action: NuevaMascotaAction,
+        )
+       
       },
       {
         path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/editarMascota/:editarMascotaId",

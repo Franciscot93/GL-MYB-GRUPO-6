@@ -27,13 +27,13 @@
       "Imagen": "",
       "mascotas": [
         {
-          "id": "lkwzkvs1lzj1jhajn2n",
-          "mascota": "pepe ",
-          "tipo": "gato",
-          "edad": "1",
-          "peso": "4",
+          "id": "lkyw5v9qlrj4u3jb6pb",
+          "mascota": "gaspar",
+          "tipo": "cocodrilo",
+          "edad": "12",
+          "peso": "55",
           "file": "",
-          "pic": ""
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691292963/miMascotaTuc/ikqgnnuygh7n8v4bytsj.png"
         }
       ]
     },
@@ -89,6 +89,14 @@
       "email": "miguel@juan.com",
       "telefono": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       "id": 10
+    },
+    {
+      "id": 11,
+      "username": "juancoder",
+      "telefono": "123123123",
+      "email": "juancoder@outlook.com",
+      "password": "1234eeeE.#",
+      "mascotas": []
     }
   ]
 }
