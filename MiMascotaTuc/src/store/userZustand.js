@@ -8,10 +8,28 @@ export const useLogin = create((set) => ({
   login: () => set({ isLogged: true }),
   // funciion para cerrar sesion y cambiar el estado 'isLogged' a 'false'
   logout: () => set({ isLogged: false }),
-  // Almacena los datos del usuario.
-  user:[],
 
-  // Funcion para actualzar los datos del usuario en el estado del store.
+  
+  user:{
+    id: '',
+    username: '',
+    telefono: '',
+    email: '',
+    password: '',
+    Imagen: '',
+    mascotas: [],
+  },
+
   setUser:(usuario)=>set({user:usuario}),
+
+  eliminarMascota: (mascotaId) =>
+    set((state) => ({
+      user: {
+        ...state.user,
+        mascotas: state.user.mascotas.filter((mascota) => mascota.id !== mascotaId),
+      },
+    }))
+  
+
   
 }))

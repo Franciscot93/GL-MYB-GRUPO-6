@@ -4,6 +4,7 @@ export default {
 './src/**/*.{js,jsx}'],
   theme: {
     extend: {
+
       colors: {
         'tacha': {
           '50': '#fbf9f1',
@@ -31,6 +32,7 @@ export default {
         '900': '#772c10',
         '950': '#441504',
     },
+
       }
     },
   },

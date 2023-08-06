@@ -5,8 +5,9 @@ import meta from "../img/meta.png"
 
 function Footer() {
   return (
+
     // Contenedor principal del pie de pagina
-    <div className="gap-1 justify-between relative items-center py-2 mt-10 bg-indigo-950 flex  ">
+      <div className="gap-1 justify-between relative items-center py-2 mt-10 bg-[#0e265d] flex  ">
         {/* Seccion del logotipo */}
         <section className="text-slate-100 flex-1  text-sm mx-3 rounded-md ">
           {/*Div de relleno */}
@@ -28,6 +29,7 @@ function Footer() {
           <img className="bg-[url('../img/meta.png')] w-24 h-24" src={meta} alt=""/>
           {/*Contenido de redes sociales */}
           </section>
+
     </div>
   )
 }

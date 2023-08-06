@@ -27,31 +27,13 @@
       "Imagen": "",
       "mascotas": [
         {
-          "mascota": "pepe ",
-          "tipo": "perro",
-          "edad": "3",
-          "peso": "5",
-          "files": "",
-          "pic": "",
-          "id": "lku4b89cd0pqfmwrj"
-        },
-        {
-          "mascota": "erustacio",
-          "tipo": "hamster",
-          "edad": "1",
-          "peso": "0.250",
-          "files": "",
-          "pic": "",
-          "id": "lku4mr9ute9nmcua41"
-        },
-        {
-          "mascota": "eugenio",
-          "tipo": "gato",
-          "edad": "2",
-          "peso": "5",
-          "files": "",
-          "pic": "",
-          "id": "lku4oc2dloln78kd85o"
+          "id": "lkyw5v9qlrj4u3jb6pb",
+          "mascota": "gaspar",
+          "tipo": "cocodrilo",
+          "edad": "12",
+          "peso": "55",
+          "file": "",
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691292963/miMascotaTuc/ikqgnnuygh7n8v4bytsj.png"
         }
       ]
     },
@@ -107,6 +89,14 @@
       "email": "miguel@juan.com",
       "telefono": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       "id": 10
+    },
+    {
+      "id": 11,
+      "username": "juancoder",
+      "telefono": "123123123",
+      "email": "juancoder@outlook.com",
+      "password": "1234eeeE.#",
+      "mascotas": []
     }
   ]
 }

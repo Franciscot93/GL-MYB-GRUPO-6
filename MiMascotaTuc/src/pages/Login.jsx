@@ -1,4 +1,14 @@
-import { Form, useNavigate, useActionData, redirect, useLoaderData } from "react-router-dom";
+
+import {
+  Form,
+  useNavigate,
+
+  useActionData, 
+
+
+  useLoaderData,
+} from "react-router-dom";
+
 import LoginForm from "../components/LoginForm";
 import Error from "../components/Error";
 import { obtenerUsuarios } from "../data/usuarios";
@@ -8,11 +18,13 @@ import { useLogin } from "../store/userZustand";
 
 // Cargar los usuarios para el loader inicial
 export async function loader({ params }) {
-  const usuario = obtenerUsuarios();
+  const usuario = await obtenerUsuarios();
   return usuario;
 }
 
+
   // Manejar la accion de iniciar sesion
+
 export async function action({ request }) {
   const formDatos = await request.formData();
   const datosUsuario = Object.fromEntries(formDatos) || null;
@@ -42,18 +54,55 @@ export async function action({ request }) {
   return null;
 }
 
+
+
 function Login() {
-  // Utilizar los hooks de useLogin y useNavigate
-  const { login, logout, setUser } = useLogin();
+
+ 
+  // Efecto secundario para manejar el inicio de sesion  
+
+
+  const { login, logout, setUser,guardarUsers } = useLogin();
+
+  
+
   const navigate = useNavigate();
   const datos = useLoaderData();
   const erroresDeFormulario = useActionData();
+  
+  
   const usuario = useActionData();
- 
-  // Efecto secundario para manejar el inicio de sesion  
+  
   useEffect(() => {
+    if(localStorage.getItem('email')){
+      
+      const email = localStorage.getItem('email');
+      console.log(email)
+      if (email) {
+        const user = datos.find(
+          (user) =>
+            user.email ===  email
+        );
+        if (user) {
+          
+          login();
+          setUser(user);
+          console.log(user)
+          navigate(`/usuario/perfilDelUsuario/${user.id}`);
+           
+        }
+      }
+    }
+  }, [datos]);
+
+  useEffect(() => {
+   
     if (usuario) {
+
       // Buscar al usuario en la lista de usuarios usando los datos del formulario
+
+      
+
       const user = datos.find(
         (user) =>
           user.email === usuario.email &&
@@ -63,11 +112,17 @@ function Login() {
         // Si se encuentra un usuario valido, iniciar sesion y redirigir al perfil
         login();
         setUser(user);
+        console.log(user)
         navigate(`/usuario/perfilDelUsuario/${user.id}`);
+        window.localStorage.setItem(
+          'email',user.email
+        ) 
       }
     }
   }, [datos]);
 
+  
+  
   return (
     <main>
       <div className="flex mb-5 justify-end">
@@ -90,12 +145,12 @@ function Login() {
         <LoginForm />
         <input
           type="submit"
-          className="mt-5 w-3/5 shadow bg-emerald-800 logoTitle font-thin py-2 hover:bg-emerald-600 duration-100 text-slate-50 rounded-md text-2xl"
+          className="mt-5 w-3/5 shadow bg-[#0841c5] logoTitle font-thin py-2 hover:bg-[#066aff] duration-100 text-slate-50 rounded-md text-2xl"
           value={"InGresaR"}
         />
       </Form>
     </main>
   );
+  
 }
-
 export default Login;

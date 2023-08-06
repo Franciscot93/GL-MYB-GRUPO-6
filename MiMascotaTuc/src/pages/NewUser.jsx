@@ -1,57 +1,66 @@
 import { Form,useNavigate,useActionData,redirect } from "react-router-dom"
 import RegisterForm from "../components/RegisterForm"
 import Error from "../components/Error";
-import { agregarUsuario } from "../data/usuarios";
+import { agregarUsuario,obtenerUsuarios } from "../data/usuarios";
 
 // Funcion de accion para manejar el registro de un nuevo usuario
 export async function action({ request }) {
     // Obtener datos del formularioutilizando FormDate
     const formDatos = await request.formData();
     const datosNuevoUsuario = Object.fromEntries(formDatos);
-    
-    // validacion 
-    // Expresiones regulares para validar campos
-    const regexEmail = new RegExp(
-      "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
-    ); /* Expresión regular para validar correo electrónico */;
+ 
 
-    const numberRegex = /^[0-9]{9,15}$/  /* Expresion regular para validar numero de telefono */
-    const nameRegex = /^[A-Za-z]{4,35}$/ /* expresion regular para validar nombre de usuario*/
-    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[\W_]).{8,16}$/ /* expresion regular para validar contraseña */
+    const username=formDatos.get("username")
 
-      /* Obtener valores de los campos del formulario */
-    const username=formDatos.get("username") 
     const email = formDatos.get("email");
     const password=formDatos.get("password");
     const repetirPassword=formDatos.get("repetirPassword")
     const telefono = formDatos.get("telefono");
 
-      /* Validaciones de campos y generacion de mensaje de error*/
-    const errores = [];
-      
-      console.log(repetirPassword)
+    const usuarios = await obtenerUsuarios();
+    const emailDuplicado = usuarios.some((usuario) => usuario.email === datosNuevoUsuario.email);
 
-    // Validar numero de telefono  
-    if(!numberRegex.test(telefono)){
+    const errores = [];
+    
+    // validacion
+    
+
+    const usernameRegex = /^[A-Za-z]{3,30}$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&.]{8,12}$/
+                          
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[0-9]{9,15}$/;
+
+    
+      
+    if (emailDuplicado) {
+      errores.push("El email ya está registrado. Por favor, ingrese otro email.");
+    }
+    if(!phoneRegex.test(telefono)){
       errores.push('Error! Ingrese solo numeros (9 a 15 digitos)')
     }
-    // Validar nombre de usuario
-    if(!nameRegex.test(username)){
+    if(!usernameRegex.test(username)){
+
       errores.push('El campo nombre solo puede contener letras y tiene un minimo de 4 caracteres.')
     }
     // Validar contraseña
     if(!passwordRegex.test(password)){
+      console.log(password)
       errores.push('La contraseña debe tener al menos: 1 mayuscula, 1 minuscula, 1 caracter especial "#$.@", y debe tener de 8 a 16 caracteres')
     }
     // Validar coincidencia de contraseñas
     if(password!==repetirPassword){
+      console.log(repetirPassword)
       errores.push("Las contraseñas no coinciden")
     }
-    // Validar formato de correo electronico
-    if(!regexEmail.test(email)){
-      errores.push('El Email no es valido')
+  
+  
+    if (!emailRegex.test(email)) {
+      errores.push("El email no es válido");
     }
-    // Validar que no haya campos vacios
+  
+       // Validar que no haya campos vacios
+
     if (Object.values(datosNuevoUsuario).includes("")) {
       errores.push("Todos los campos son obligatorios");
     }
@@ -62,7 +71,7 @@ export async function action({ request }) {
     
     // Agregar el nuevo usuario a la base de datos y redirigir a la pagina de inicio de sesion
     agregarUsuario(datosNuevoUsuario)
-   return redirect('/usuario/login')
+    return redirect('/usuario/login')
     
   }
 
@@ -91,19 +100,19 @@ function NewUser() {
         </div>
 
         {/* Encabezado del formulario*/}
-        <h2 className="text-4xl text-center logoTitle text-indigo-900 my-5">Formulario de registro</h2>
-        
+        <h2 className="text-4xl text-center logoTitle text-[#066aff] my-5">Formulario de registro</h2>
+         
         {/* Formulario de registro */}
-        <Form method="post">
+        <Form noValidate method="post">
+
         
         {/* Mostrar errores si existen */}
         {errores?.length ?
           errores.map((error, i) => <Error key={i}>{error}</Error>):null}
-        
-        {/* Componente RegisterForm para mostrar campos de registro */}
-        <RegisterForm/>
 
-        {/* Boton de envio del formulario */}
+          {/* Componente RegisterForm para mostrar campos de registro */}
+        <RegisterForm  />
+
         <input
             type="submit"
             className="mt-5 w-3/5 shadow bg-sky-800 uppercase font-bold py-2 hover:bg-sky-700 duration-100 text-slate-50 rounded-md text-lg"
