@@ -89,7 +89,7 @@ function NewUser() {
           VOLVER
         </button>
         </div>
-        <h2 className="text-4xl text-center logoTitle text-indigo-900 my-5">Formulario de registro</h2>
+        <h2 className="text-4xl text-center logoTitle text-[#066aff] my-5">Formulario de registro</h2>
         
         <Form noValidate method="post">
         

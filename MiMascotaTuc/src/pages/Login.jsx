@@ -1,7 +1,10 @@
 import {
   Form,
   useNavigate,
+
   useActionData, 
+
+
   useLoaderData,
 } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
@@ -14,7 +17,6 @@ export async function loader({ params }) {
   const usuario = await obtenerUsuarios();
   return usuario;
 }
-
 export async function action({ request }) {
   const formDatos = await request.formData();
   const datosUsuario = Object.fromEntries(formDatos) || null;
@@ -43,16 +45,44 @@ export async function action({ request }) {
   return null;
 }
 
+
+
 function Login() {
+
   const { login, logout, setUser,guardarUsers } = useLogin();
+
+  
+
   const navigate = useNavigate();
   const datos = useLoaderData();
   const erroresDeFormulario = useActionData();
   
-
+  
   const usuario = useActionData();
- 
+  
   useEffect(() => {
+    if(localStorage.getItem('email')){
+      
+      const email = localStorage.getItem('email');
+      console.log(email)
+      if (email) {
+        const user = datos.find(
+          (user) =>
+            user.email ===  email
+        );
+        if (user) {
+          
+          login();
+          setUser(user);
+          console.log(user)
+          navigate(`/usuario/perfilDelUsuario/${user.id}`);
+           
+        }
+      }
+    }
+  }, [datos]);
+  useEffect(() => {
+   
     if (usuario) {
       
       const user = datos.find(
@@ -64,12 +94,17 @@ function Login() {
         
         login();
         setUser(user);
+        console.log(user)
         navigate(`/usuario/perfilDelUsuario/${user.id}`);
+        window.localStorage.setItem(
+          'email',user.email
+        ) 
       }
-      
     }
   }, [datos]);
 
+  
+  
   return (
     <main>
       <div className="flex mb-5 justify-end">
@@ -89,12 +124,12 @@ function Login() {
         <LoginForm />
         <input
           type="submit"
-          className="mt-5 w-3/5 shadow bg-emerald-800 logoTitle font-thin py-2 hover:bg-emerald-600 duration-100 text-slate-50 rounded-md text-2xl"
+          className="mt-5 w-3/5 shadow bg-[#0841c5] logoTitle font-thin py-2 hover:bg-[#066aff] duration-100 text-slate-50 rounded-md text-2xl"
           value={"InGresaR"}
         />
       </Form>
     </main>
   );
+  
 }
-
 export default Login;

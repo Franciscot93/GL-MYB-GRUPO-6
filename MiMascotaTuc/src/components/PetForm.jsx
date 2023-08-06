@@ -47,6 +47,7 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
      const response=  await Axios.post(
       "https://api.cloudinary.com/v1_1/dqr2aiayz/image/upload",formDataFiles
       
+
       )
      return response.data.url
          
@@ -58,15 +59,6 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
 
     return null;
   };
-
-  
-
-   
-  
-    
-     
-  
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();

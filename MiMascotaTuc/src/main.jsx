@@ -11,12 +11,18 @@ import Login, {
 import NewUser, { action as NuevoUsuarioAction } from "./pages/NewUser";
 import UserPage, { loader as loaderUser } from "./pages/UserPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+
 import NewPet from "./pages/NewPet";
+
 import EditPet, {
   loader as editPetLoader,
   action as editPetAction,
 } from "./pages/EditPet";
+ 
 import DeletePet from "./pages/DeletePet";
+
+import Home from "./pages/Home";
+
 
 const router = createBrowserRouter([
   {
@@ -70,12 +76,13 @@ const router = createBrowserRouter([
       {
         path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/eliminarMascota/:eliminarMascotaId",
         element: (<DeletePet />),
-      },
-      {
-        path:"////",
-        
+      },{
+      
 
-      }
+        path: "/inicio",
+        element: <Home />,
+      },
+      
     ],
   },
 ]);
