@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 
+
 export const useLogin = create((set) => ({
   isLogged: false,
   login: () => set({ isLogged: true }),
@@ -15,6 +16,9 @@ export const useLogin = create((set) => ({
     mascotas: [],
   },
   setUser:(usuario)=>set({user:usuario}),
+
+  pet:{},
+  setPet:(mascotaId,user)=>((user.mascotas).find(mascota=>mascota.id===mascotaId)),
 
   eliminarMascota: (mascotaId) =>
     set((state) => ({
