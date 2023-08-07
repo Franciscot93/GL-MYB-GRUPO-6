@@ -2,11 +2,18 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useLogin } from '../store/userZustand'
 
+import { Image } from 'cloudinary-react'
+
+
 export default function PetDetail() {
   const navigate=useNavigate()
-  const params=useParams()
-  const{user,logout}=useLogin()
-  console.log( params)
+  const {DetailPetId}=useParams()
+  const{user,logout,pet,setPet}=useLogin()
+  
+  
+  setPet(DetailPetId,user)
+  console.log(pet, user)
+
   return (
 
     <>
@@ -21,7 +28,9 @@ export default function PetDetail() {
     <div className='w-full h-screen flex flex-row flex-wrap'>
       
 
-        <div className='bg-slate-900 hover:bg-red-700 transition-colors duration-500 rounded-lg bg-opacity-70 h-2/4 w-2/4'><iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d270855.5378832847!2d-65.38893438069496!3d-26.878962790335002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sveterinarias%20tucuman!5e0!3m2!1ses-419!2sar!4v1691035540871!5m2!1ses-419!2sar"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        <div className='bg-slate-900 hover:bg-red-700 transition-colors duration-500 rounded-lg bg-opacity-70  w-2/4'><div className="relative overflow-hidden flex bg-cover aspect-square justify-center content-center place-content-center place-items-center align-middle text-cent bg-no-repeat">
+    <Image  cloudName='dqr2aiayz' publicId={pet.pic} />
+    </div></div>
         <div className='bg-indigo-600 rounded-lg w-2/4'><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore libero consequuntur a quis magni quibusdam alias, vel similique consectetur, sunt deleniti ratione corrupti quaerat eum facilis porro accusantium obcaecati minus!</p></div>
     </div>
 

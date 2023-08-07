@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 
-// Crea un store de Zustand para administrar el estado relacionado con el inicio de sesion de usuarios.
+
+
 export const useLogin = create((set) => ({
   // Estado inicial del store.
   isLogged: false,
@@ -21,6 +22,9 @@ export const useLogin = create((set) => ({
   },
 
   setUser:(usuario)=>set({user:usuario}),
+
+  pet:{},
+  setPet:(mascotaId,user)=>((user.mascotas).find(mascota=>mascota.id===mascotaId)),
 
   eliminarMascota: (mascotaId) =>
     set((state) => ({

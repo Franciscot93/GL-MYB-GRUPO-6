@@ -1,18 +1,18 @@
-import { useLogin } from "../store/userZustand"
-import { eliminarMascotas } from "../data/usuarios"
-import { redirect, useNavigate,Link} from "react-router-dom"
-import {Image} from 'cloudinary-react'
- 
-function Pet({pet}) {
-  console.log(pet)
+import { useLogin } from "../store/userZustand";
+import { eliminarMascotas } from "../data/usuarios";
+import { redirect, useNavigate, Link } from "react-router-dom";
+import { Image } from "cloudinary-react";
+
+function Pet({ pet }) {
+  console.log(pet);
   // Obteniendo el usuario actual desde el estado global
-  const {user,setUser, eliminarMascota}=useLogin()
+  const { user, setUser, eliminarMascota } = useLogin();
   // Iniciar la funcion de navegacion
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   // Manejo de la eliminacion de una mascota
-  const handleEliminar=()=>{
-    eliminarMascotas(user,pet.id,setUser, eliminarMascota)
-  }
+  const handleEliminar = () => {
+    eliminarMascotas(user, pet.id, setUser, eliminarMascota);
+  };
 
   return (
     
@@ -40,7 +40,6 @@ function Pet({pet}) {
           <span className=" text-lg">{pet.peso}</span>
         </p>
     </div>
-
     <div className="content-center flex sm:w-1/5 place-items-center justify-center place-content-center">
       <p className="font-semibold mb-1  text-gray-700 uppercase">
           Docs: {""}
@@ -50,8 +49,6 @@ function Pet({pet}) {
     </div>
       
     </div>
-
-{/*Boton para editar y eliminar la mascota  */}
     <div className="flex flex-wrap content-center container place-items-center place-content-center  md:justify-between mt-4 mb-1 box-border ">
           <Link to={`/usuario/perfilDelUsuario/${user.id}/editarMascota/${pet.id}`} className="flex  flex-wrap transition-colors logoTitle m-auto text-2xl text-center text-indigo-600 hover:text-indigo-700">Editar</Link>
           <Link onClick={handleEliminar} className="flex transition-colors flex-wrap m-auto logoTitle   text-red-600 hover:text-red-700 text-2xl text-center">Eliminar
@@ -62,4 +59,4 @@ function Pet({pet}) {
   )
 }
 
-export default Pet
+export default Pet;
