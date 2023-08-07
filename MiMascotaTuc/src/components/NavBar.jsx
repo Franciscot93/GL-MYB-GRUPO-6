@@ -39,7 +39,7 @@ function NavBar() {
           {/* Enlace al perfil del usuario */}
           <Link to={""} className="mr-5 text-white hover:text-[#83cdff]">Perfil</Link>
           {/*Enlace a la pagina de Mascotas */}
-          Link to={""} className="mr-5 text-white hover:text-[#83cdff]">Mascotas</Link>
+          <Link to={""} className="mr-5 text-white hover:text-[#83cdff]">Mascotas</Link>
           {/*Enlace a la pagina de Mascotas */}
           <Link to={""} className="mr-5 text-white hover:text-[#83cdff]">Nosotros</Link>
 
