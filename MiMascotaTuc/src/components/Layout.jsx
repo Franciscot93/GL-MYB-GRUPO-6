@@ -5,6 +5,7 @@ import imgHamster from "../img/hamster_gif.gif";
 import imgDog from "../img/max_gif.gif";
 
 
+
 function Layout() {
   const location = useLocation();
   return (
