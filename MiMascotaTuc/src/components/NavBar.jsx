@@ -1,10 +1,11 @@
 import logo from "../img/Logo2.png";
 
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {useState} from "react";
+import { useLogin } from "../store/userZustand";
 
 function NavBar() {
-
+  const{isLogged,user}=useLogin()
   const [valueButton,setValueButton] = useState('Iniciar Sesion')
   const cambiarValor=()=>{
     if(valueButton=="Iniciar Sesion "){
@@ -35,16 +36,16 @@ function NavBar() {
         <div className=" flex flex-wrap  m-auto items-center text-base justify-center">
 
          {/* Enlace a la pagina de Inicio */}
-          <Link to={"/Home"} className="mr-5 decoration-slate-200 text-white hover:text-[#83cdff]">Home</Link>
+          <NavLink to={"/Home"} className={({ isActive}) => isActive ? "border-solid border-2 rounded-md p-1 border-[#83cdff] mr-5 text-white hover:text-[#83cdff]" :  "mr-5 text-white hover:text-[#83cdff]"}>Home</NavLink>
           {/* Enlace al perfil del usuario */}
-          <Link to={""} className="mr-5 text-white hover:text-[#83cdff]">Perfil</Link>
+          <NavLink to={isLogged?`/usuario/perfilDelUsuario/${user.id}`:'/usuario/login'} className={({ isActive}) => isActive ? "border-solid border-2 rounded-md p-1 border-[#83cdff] mr-5 text-white hover:text-[#83cdff]" :  "mr-5 text-white hover:text-[#83cdff]"}>Perfil</NavLink>
           {/*Enlace a la pagina de Mascotas */}
-          Link to={""} className="mr-5 text-white hover:text-[#83cdff]">Mascotas</Link>
+          <NavLink to={""} className={({ isActive}) => isActive ? "border-solid border-2 rounded-md p-1 border-[#83cdff] mr-5 text-white hover:text-[#83cdff]" :  "mr-5 text-white hover:text-[#83cdff]"}>Mascotas</NavLink>
           {/*Enlace a la pagina de Mascotas */}
-          <Link to={""} className="mr-5 text-white hover:text-[#83cdff]">Nosotros</Link>
+          <NavLink to={""} className={({ isActive}) => isActive ? "border-solid border-2 rounded-md p-1 border-[#83cdff] mr-5 text-white hover:text-[#83cdff]" :  "mr-5 text-white hover:text-[#83cdff]"}>Nosotros</NavLink>
 
         </div>
-
+       
         {/*Boton de inicio de seccion y registro */}
         <div className="justify-center flex m-auto flex-wrap items-center content-center">
 
