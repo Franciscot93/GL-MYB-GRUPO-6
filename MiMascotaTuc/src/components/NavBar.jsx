@@ -38,7 +38,8 @@ function NavBar() {
          {/* Enlace a la pagina de Inicio */}
           <NavLink to={"/Home"} className={({ isActive}) => isActive ? "border-solid border-2 rounded-md p-1 border-[#83cdff] mr-5 text-white hover:text-[#83cdff]" :  "mr-5 text-white hover:text-[#83cdff]"}>Home</NavLink>
           {/* Enlace al perfil del usuario */}
-          <NavLink to={isLogged?`/usuario/perfilDelUsuario/${user.id}`:'/usuario/login'} className={({ isActive}) => isActive ? "border-solid border-2 rounded-md p-1 border-[#83cdff] mr-5 text-white hover:text-[#83cdff]" :  "mr-5 text-white hover:text-[#83cdff]"}>Perfil</NavLink>
+          <NavLink to={isLogged ? `/usuario/perfilDelUsuario/${user.id}` : '/usuario/login'} className={({ isActive }) => isActive ? "border-solid border-2 rounded-md p-1 border-[#83cdff] mr-5 text-white hover:text-[#83cdff]" : "mr-5 text-white hover:text-[#83cdff]"}>Perfil</NavLink>
+
           {/*Enlace a la pagina de Mascotas */}
           <NavLink to={""} className={({ isActive}) => isActive ? "border-solid border-2 rounded-md p-1 border-[#83cdff] mr-5 text-white hover:text-[#83cdff]" :  "mr-5 text-white hover:text-[#83cdff]"}>Mascotas</NavLink>
           {/*Enlace a la pagina de Mascotas */}
