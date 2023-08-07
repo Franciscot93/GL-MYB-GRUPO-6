@@ -9,7 +9,7 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
   const [selectedPic, setSelectedPic] = useState();
   const navigate = useNavigate();
   const { perfilDelUsuarioId, editarMascotaId } = useParams();
-  const[picUrl,setPicUrl]=useState('')
+  const[files,setFiles]=useState({array:{}}|['No hay archivos'])
   const [mascota, setMascota] = useState({
     mascota: "",
     tipo: "",
@@ -17,9 +17,9 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
     peso: "",
     file: "",
     pic: '',
+    patologias:''
   });
 
-  
   
   // Estado para almacenar el ID de la mascota que se está editando
   const [mascotaIdEditando, setMascotaIdEditando] = useState(null);
@@ -36,6 +36,39 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
 
     setMascota({ ...mascota, [name]: value });
   };
+
+  const onChangeFile=async(files)=>{
+    const urls = [];
+    console.log(files, typeof(files))
+    if (files) {
+     
+      const filesArray=[...files]
+
+       filesArray.forEach(async (pdffile) => {
+      const formDataFiles = new FormData();
+      formDataFiles.append("file", pdffile);
+      formDataFiles.append("upload_preset", "pdfs_MiMascotaTuc");
+  
+      try {
+        const response = await Axios.post(
+          "https://api.cloudinary.com/v1_1/dqr2aiayz/image/upload",
+          formDataFiles
+        );
+        console.log(response.data.secure_url)
+        urls.push(response.data.secure_url);
+      } catch (error) {
+        console.error("Error al subir un archivo PDF a Cloudinary:", error);
+      }
+    });
+  
+    return urls;
+    
+
+
+    
+  }}
+<div className="text-xl"></div>
+
   //funcion de carga de Pic
 
   const onChangePic = async () => {
@@ -66,10 +99,15 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
     
 
     if (mascotaParaEditar) {
+      const pdfUrls = await onChangeFile(files);
+
+      if (pdfUrls) {
+      mascota.file=pdfUrls}
+
       const url =  await onChangePic()
       if(url){
         console.log(url)
-       mascota.pic=url}
+        mascota.pic=url}
       await editarMascota(
         perfilDelUsuarioId,
         mascotaIdEditando,
@@ -78,6 +116,14 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
       );
       return navigate(`/usuario/perfilDelUsuario/${perfilDelUsuarioId}`);
     } else {
+      
+    const pdfUrls = await onChangeFile(files);
+
+    if (pdfUrls) {
+    mascota.file=pdfUrls}
+
+
+
       const url =  await onChangePic()
 
       if(url){
@@ -173,18 +219,18 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
         <div className="mb-2 justify-center flex-col flex  place-items-center mx-3">
           <label
             className="text-indigo-950 font-semibold text-xl"
-            htmlFor="files"
+            htmlFor="file"
           >
-            Archivos:
+            Docs:
           </label>
           <input
-            onChange={(e) => handleChange(e)}
-            id="files"
+            onInput={(e) => setFiles(e.target.files)}
+            id="file"
             type="file"
             accept="image/*, application/pdf"
             multiple
             className="mt-2 block w-full p-2 rounded-md bg-gray-50"
-            name="files"
+            name="file"
           />
         </div>
         <div className="mb-2 justify-center flex-col flex  place-items-center mx-3">
@@ -203,9 +249,11 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
             className="mt-2 block w-full p-2 rounded-md bg-gray-50"
             name="pic"
           />
+          </div>
 
-      { selectedPic ? <img alt="Preview" height="60" src={URL.createObjectURL(selectedPic)} /> : null }
-        </div>
+      { selectedPic ? <img className="aspect-square w-32" alt="Preview" height="60" src={URL.createObjectURL(selectedPic)} /> : null }
+         
+        
         <div className="mb-2 justify-center flex-col place-items-center mx-3">
           <input
             type="submit"
@@ -224,3 +272,42 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
 }
 
 export default PetForm;
+
+
+/*
+  const enfermedades=['Artritis',
+    'Sarna',
+   'Hipotiroidismo',
+    'Insuficiencia renal',
+    'Enfermedad del hígado',
+    'Enfermedad cardíaca',
+    'Cáncer',
+    'Asma',
+    'Infecciones del oído',
+    'Anemia']
+  
+
+
+
+ <div className="mb-2 justify-center flex-col flex text-left  place-items-center mx-3">
+          {enfermedades.length > 0 ? (
+            <ul className="flex-row flex">
+              {enfermedades.map((enfermedad,index) => (
+                <li className="text-xl flex text-slate-800" key={index}>
+                <label
+              className="text-indigo-950 font-semibold text-xl"
+              htmlFor={enfermedad}
+              />{enfermedad}
+                <input 
+                type="checkbox"
+                name={enfermedad}
+                
+              /></li>
+              ))}
+            </ul>
+          ) : (
+            <h3 className="text-3xl text-slate-800 logoTitle">NO HAY MASCOTAS</h3>
+          )}
+          </div>
+
+*/

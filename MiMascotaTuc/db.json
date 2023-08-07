@@ -27,13 +27,13 @@
       "Imagen": "",
       "mascotas": [
         {
-          "id": "lkyw5v9qlrj4u3jb6pb",
-          "mascota": "gaspar",
-          "tipo": "cocodrilo",
-          "edad": "12",
-          "peso": "55",
+          "id": "ll039n188zfsgzjc6oc",
+          "mascota": "pepe ",
+          "tipo": "hamster",
+          "edad": "",
+          "peso": "",
           "file": "",
-          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691292963/miMascotaTuc/ikqgnnuygh7n8v4bytsj.png"
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691365361/miMascotaTuc/ecxt3up3sedmnti858ki.gif"
         }
       ]
     },

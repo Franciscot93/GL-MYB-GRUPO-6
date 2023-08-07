@@ -191,3 +191,7 @@ export const editarMascota = async (userId, mascotaId, mascotaActualizada, setUs
     console.log("Error en la comunicación con el servidor:", error);
   }
 };
+
+
+
+
