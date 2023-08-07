@@ -207,7 +207,7 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
             id="peso"
             type="text"
             className="mt-2 block w-full p-3 rounded-md bg-gray-50"
-            placeholder="¿Cuantos años tiene?"
+            placeholder="¿Cuanto amor posee?"
             name="peso"
             defaultValue={mascotaParaEditar?.peso}
           />

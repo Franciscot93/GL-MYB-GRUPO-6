@@ -14,11 +14,10 @@ function Footer() {
           {/*Logo del pie de pagina */}
           <img  src={logo} alt="" />
           </section>
-
         {/*Seccion de texto */}
         <section className="text-slate-100 w-1/3 flex-1 flex-wrap m-auto content-center place-content-center place-items-center  justify-center text-center text-sm mx-3 rounded-md">
           {/*Contenido de texto*/}
-          © 2023 MascotasApp. Todos los derechos reservados.
+          © 2023 MiMascotaTuc. Todos los derechos no reservados.
 </section>
         {/* Seccion de redes sociales con logos*/}
         <section className="   text-slate-100 w-1/3 flex flex-row m-auto flex-wrap gap-3 flex-1 text-sm mx-3 justify-end text-center rounded-md ">
