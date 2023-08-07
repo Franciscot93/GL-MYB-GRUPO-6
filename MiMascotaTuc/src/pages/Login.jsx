@@ -64,7 +64,6 @@ function Login() {
     if(localStorage.getItem('email')){
       
       const email = localStorage.getItem('email');
-      console.log(email)
       if (email) {
         const user = datos.find(
           (user) =>
@@ -74,7 +73,6 @@ function Login() {
           
           login();
           setUser(user);
-          console.log(user)
           navigate(`/usuario/perfilDelUsuario/${user.id}`);
            
         }
@@ -94,7 +92,6 @@ function Login() {
         
         login();
         setUser(user);
-        console.log(user)
         navigate(`/usuario/perfilDelUsuario/${user.id}`);
         window.localStorage.setItem(
           'email',user.email

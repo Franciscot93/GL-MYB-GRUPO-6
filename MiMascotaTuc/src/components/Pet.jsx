@@ -9,7 +9,6 @@ import {Image} from 'cloudinary-react'
 
 
 function Pet({pet}) {
-  console.log(pet)
   const {user,setUser, eliminarMascota}=useLogin()
   const navigate=useNavigate()
   
