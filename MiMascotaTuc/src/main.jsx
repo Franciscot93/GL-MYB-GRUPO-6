@@ -11,7 +11,6 @@ import Login, {
 import NewUser, { action as NuevoUsuarioAction } from "./pages/NewUser";
 import UserPage, { loader as loaderUser } from "./pages/UserPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
-
 import NewPet from "./pages/NewPet";
 
 import EditPet, {
@@ -23,8 +22,9 @@ import PetDetail from "./pages/PetDetail";
 
 import Home from "./pages/Home";
 
-
+// Crear enrutador con rutas y elementos correspondientes
 const router = createBrowserRouter([
+
   {
     path: "/",
     element: <Layout />,
@@ -88,6 +88,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>

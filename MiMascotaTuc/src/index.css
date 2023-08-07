@@ -1,12 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/*se realizo la correcta instalacion de tailwin */
 @font-face {
-    font-family: "LifeOfPets";
-    src: url("../fonts/LifeOfPets.ttf");
-  }
-
-.logoTitle{
-    font-family: "LifeOfPets";
+  font-family: "LifeOfPets";
+  src: url("../fonts/LifeOfPets.ttf");
 }
-
+/* Fuente para la letra*/
+.logoTitle {
+  font-family: "LifeOfPets";
+}
+/*Fuente para el titulo del logo*/
