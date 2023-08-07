@@ -20,7 +20,6 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
     patologias:''
   });
 
-  
   // Estado para almacenar el ID de la mascota que se está editando
   const [mascotaIdEditando, setMascotaIdEditando] = useState(null);
   
@@ -137,6 +136,7 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
 
   const location = useLocation();
   return (
+    // Contenedor principal del formulario
     <div className=" content-center w-full box-border ">
       <h2 className="mb-2 text-4xl logoTitle text-center  text-indigo-950 border-b-2 border-indigo-700 pb-3">
         {location.pathname ===
@@ -144,8 +144,9 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
           ? "Edita Tu Mascota"
           : "Nueva Mascota"}
       </h2>
-
+      {/* Campos de entrada para los detalles de la mascota */}
       <Form method="POST" noValidate onSubmit={(e) => handleSubmit(e)}>
+      
         <div className=" mb-2 justify-center flex-col flex  place-items-center mx-3">
           <label
             className="text-indigo-950 text-left font-semibold text-xl"
@@ -163,7 +164,7 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
             defaultValue={mascotaParaEditar?.mascota}
           />
         </div>
-
+          {/*... Campo de entrada adicional para tipo */}
         <div className="mb-2 justify-center flex-col flex  place-items-center mx-3">
           <label
             className="text-indigo-950 font-semibold text-xl"
@@ -181,7 +182,7 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
             defaultValue={mascotaParaEditar?.tipo}
           />
         </div>
-
+        {/*... Campo de entrada adicional para edad */}
         <div className="mb-2 justify-center flex-col flex  place-items-center mx-3">
           <label
             className="text-indigo-950 font-semibold text-xl"
@@ -199,6 +200,8 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
             defaultValue={mascotaParaEditar?.edad}
           />
         </div>
+        
+        {/*... Campo de entrada adicional para peso */}
         <div className="mb-2 justify-center flex-col flex  place-items-center mx-3">
           <label
             className="text-indigo-950 font-semibold text-xl"
@@ -216,6 +219,7 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
             defaultValue={mascotaParaEditar?.peso}
           />
         </div>
+        {/*... Campo de entrada adicional para documentos */}
         <div className="mb-2 justify-center flex-col flex  place-items-center mx-3">
           <label
             className="text-indigo-950 font-semibold text-xl"
@@ -233,11 +237,13 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
             name="file"
           />
         </div>
+        {/*... Campo de entrada adicional para pic de la mascota */}
         <div className="mb-2 justify-center flex-col flex  place-items-center mx-3">
           <label
             className="text-indigo-950 font-semibold text-xl"
             htmlFor="pic"
           >
+          
             Pic:
           </label>
           <input
@@ -249,11 +255,14 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
             className="mt-2 block w-full p-2 rounded-md bg-gray-50"
             name="pic"
           />
-          </div>
 
+          </div>
+        {/*... previsualizacion de la imagen de mascota */}
       { selectedPic ? <img className="aspect-square w-32" alt="Preview" height="60" src={URL.createObjectURL(selectedPic)} /> : null }
          
         
+
+        {/*... boton envio de form */}
         <div className="mb-2 justify-center flex-col place-items-center mx-3">
           <input
             type="submit"

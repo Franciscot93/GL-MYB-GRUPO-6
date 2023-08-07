@@ -15,6 +15,7 @@ export async function loader({ params }) {
   );
 
   return mascotaParaEditar;
+
 }
 export async function action() {
 
@@ -23,6 +24,7 @@ export async function action() {
 }
 
 function EditPet() {
+
   const location = useLocation();
   const mascotaParaEditar = useLoaderData();
   const navigate = useNavigate();
@@ -50,6 +52,7 @@ function EditPet() {
         
       </section>
     </main>
+
   );
 }
 
