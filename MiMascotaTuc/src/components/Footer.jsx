@@ -23,9 +23,11 @@ function Footer() {
         {/* Seccion de redes sociales con logos*/}
         <section className="   text-slate-100 w-1/3 flex flex-row m-auto flex-wrap gap-3 flex-1 text-sm mx-3 justify-end text-center rounded-md ">
           {/*Seccion de redes Sociales*/}
-          <img className="bg-[url('../img/twitter.png')] " src={twitter} alt=""/>
-          <img className="bg-[url('../img/facebook.png')] " src={facebook} alt=""/>
-          <img className="bg-[url('../img/meta.png')] " src={meta} alt=""/>
+
+          <img className="bg-[url('../img/twitter.png')] w-5 h-5" src={twitter} alt=""/>
+          <img className="bg-[url('../img/facebook.png')] w-5 h-5" src={facebook} alt=""/>
+          <img className="bg-[url('../img/meta.png')] w-5 h-5" src={meta} alt=""/>
+
           {/*Contenido de redes sociales */}
           </section>
 
