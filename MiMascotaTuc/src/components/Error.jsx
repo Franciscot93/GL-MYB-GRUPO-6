@@ -5,7 +5,7 @@ function Error({children}) {
         {children} {/* Renderiza el contenido de error proporcionado como hijos */}
       </div>
 
-    )
+     )
   }
   
   export default Error
