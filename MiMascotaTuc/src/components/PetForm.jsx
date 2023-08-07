@@ -9,7 +9,7 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
   const [selectedPic, setSelectedPic] = useState();
   const navigate = useNavigate();
   const { perfilDelUsuarioId, editarMascotaId } = useParams();
-  const[files,setFiles]=useState({array:{}}|['No hay archivos'])
+  const[files, setFiles] = useState({array:{}}|['No hay archivos'])
   const [mascota, setMascota] = useState({
     mascota: "",
     tipo: "",
@@ -62,9 +62,6 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
   
     return urls;
     
-
-
-    
   }}
 <div className="text-xl"></div>
 
@@ -95,8 +92,6 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    
-
     if (mascotaParaEditar) {
       const pdfUrls = await onChangeFile(files);
 
@@ -120,8 +115,6 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
 
     if (pdfUrls) {
     mascota.file=pdfUrls}
-
-
 
       const url =  await onChangePic()
 
@@ -320,3 +313,4 @@ export default PetForm;
           </div>
 
 */
+
