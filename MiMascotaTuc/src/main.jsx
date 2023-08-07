@@ -18,7 +18,7 @@ import EditPet, {
   action as editPetAction,
 } from "./pages/EditPet";
  
-import DeletePet from "./pages/DeletePet";
+import PetDetail from "./pages/PetDetail";
 
 import Home from "./pages/Home";
 
@@ -74,8 +74,8 @@ const router = createBrowserRouter([
         action: editPetAction,
       },
       {
-        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/eliminarMascota/:eliminarMascotaId",
-        element: (<DeletePet />),
+        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/DetailPet/:DetailPetId",
+        element: (<PetDetail />),
       },{
       
 
