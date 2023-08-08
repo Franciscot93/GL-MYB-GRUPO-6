@@ -45,6 +45,29 @@ export async function editarUsuario(id, datos) {
   }
 }
 
+export async function editarUsuarioImagen(id, datos,setUser) {
+  const usuarioResponse = await fetch(`${import.meta.env.VITE_API_URL}/${id}`);
+  const usuario = await usuarioResponse.json();
+
+  const nuevoUsuario={...usuario}
+  nuevoUsuario.Imagen=datos
+
+  try {
+    const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(nuevoUsuario),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    await respuesta.json();
+    setUser(nuevoUsuario)
+  } catch {
+    console.log(error);
+  }
+}
+
+
 
 export async function eliminarCliente(id) {
   try {

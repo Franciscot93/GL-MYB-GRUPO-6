@@ -46,7 +46,7 @@ function UserPage() {
           onClick={()=>navigate(-1)}
           className="bg-sky-900 px-3 font-bold uppercase py-1 rounded-md text-slate-50 hover:bg-indigo-600 duration-200"
         >
-          Cerrar sesion
+          Volver
         </button>
       </div>
 

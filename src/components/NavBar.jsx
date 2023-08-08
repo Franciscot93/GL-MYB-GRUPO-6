@@ -47,7 +47,7 @@ function NavBar() {
         </div>
         <div onClick={()=>handleNav()} className="sm:hidden m-auto ">
           
-      <button isActive={navMobile} className={`relative ${navMobile? 'group':'group-only:'}`}>
+      <button className={`relative ${navMobile? 'group':'group-only:'}`}>
         <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
           <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
             <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10"></div>
@@ -100,6 +100,17 @@ function NavBar() {
           </NavLink>
         </li>
         <li className="ml-2 mb-2">
+        {!isLogged&&
+          <NavLink
+            to={"/usuario/nuevo"}
+            className={ "mr-5 text-white hover:text-[#83cdff]"
+            }
+          >
+            Registrarse
+            
+          </NavLink>}
+        </li>
+        <li className="ml-2 mb-2">
         {isLogged && (
             <NavLink
               to={`/usuario/perfilDelUsuario/${user.id}`}
@@ -138,10 +149,7 @@ function NavBar() {
           {/* Enlace a la pagina de Inicio */}
           <NavLink
             to={isLogged ? `/usuario/perfilDelUsuario/${user.id}/Home` : "/"}
-            className={({ isActive }) =>
-              isActive
-                ? "border-solid border-2 rounded-md p-1 border-[#83cdff] mr-5 text-white hover:text-[#83cdff]"
-                : "mr-5 text-white hover:text-[#83cdff]"
+            className={"mr-5 text-white hover:text-[#83cdff]"
             }
           >
             Home
@@ -150,41 +158,43 @@ function NavBar() {
           {isLogged && (
             <NavLink
               to={`/usuario/perfilDelUsuario/${user.id}`}
-              className={({ isActive }) =>
-                isActive
-                  ? "border-solid border-2 rounded-md p-1 border-[#83cdff] mr-5 text-white hover:text-[#83cdff]"
-                  : "mr-5 text-white hover:text-[#83cdff]"
+              className={ "mr-5 text-white hover:text-[#83cdff]"
               }
             >
               Perfil
             </NavLink>
           )}
           {/*Enlace a la pagina de Mascotas */}
+          {isLogged &&
           <NavLink
             to={
               isLogged
                 ? `/usuario/perfilDelUsuario/${user.id}/DetailPet/`
                 : null
             }
-            className={({ isActive }) =>
-              isActive
-                ? "border-solid border-2 rounded-md p-1 border-[#83cdff] mr-5 text-white hover:text-[#83cdff]"
-                : "mr-5 text-white hover:text-[#83cdff]"
+            className={ "mr-5 text-white hover:text-[#83cdff]"
             }
           >
             Mascotas
-          </NavLink>
+          </NavLink>}
+          {!isLogged&&
+          <NavLink
+            to={"/usuario/nuevo"}
+            className={ "mr-5 text-white hover:text-[#83cdff]"
+            }
+          >
+            Registrarse
+            
+          </NavLink>}
           {/*Enlace a la pagina de Mascotas */}
           <NavLink
             to={"/about"}
-            className={({ isActive }) =>
-              isActive
-                ? "border-solid border-2 rounded-md p-1 border-[#83cdff] mr-5 text-white hover:text-[#83cdff]"
-                : "mr-5 text-white hover:text-[#83cdff]"
+            className={ "mr-5 text-white hover:text-[#83cdff]"
             }
           >
             Nosotros
           </NavLink>
+         
         </div>
         {/*Boton de inicio de seccion y registro */}
         <div className="sm:flex w-full hidden  place-content-center md:flex-col :m-auto flex-1  md:w-1/3 flex-wrap items-center content-center">

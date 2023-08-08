@@ -17,11 +17,11 @@ function Pet({ pet }) {
   return (
     
     <div
-    className="block  lg:max-w-[18rem] lg:max-h-[18rem] mt-3 rounded-lg bg-transparent shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] box-content">
-    <div className="relative overflow-hidden flex bg-cover aspect-square justify-center content-center place-content-center place-items-center align-middle text-cent bg-no-repeat">
-    <Image  cloudName='dqr2aiayz' publicId={pet.pic}/>
+    className="md:flex  lg:max-w-full lg:max-h-[18rem] mt-3 rounded-lg bg-transparent shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mx-1 box-content">
+    <div className="relative flex w-full md:w-1/3  overflow-hidden md:flex  aspect-square justify-center content-center place-content-center place-items-center align-middle text-cent bg-no-repeat">
+    <Image  cloudName='dqr2aiayz' className="md:min-w-full" publicId={pet.pic}/>
     </div>
-    <div className=" text-left ml-1 flex shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-md flex-row flex-wrap">
+    <div className=" text-left w-full md:w-2/3 ml-1 flex shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-md flex-row flex-wrap">
       <div className="flex-1  box-border w-4/5">
     <p className="font-semibold  mb-1 hover:scale-105 text-gray-700 uppercase">
       Nombre: {""}
