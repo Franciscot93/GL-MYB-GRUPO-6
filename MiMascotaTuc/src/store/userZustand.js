@@ -27,7 +27,8 @@ export const useLogin = create((set) => ({
   setUser:(usuario)=>set({user:usuario}),
 
 
-  
+  pet:{},
+  setPet:(mascota)=>set({pet:mascota}),
 
   eliminarMascota: (mascotaId) =>
     set((state) => ({

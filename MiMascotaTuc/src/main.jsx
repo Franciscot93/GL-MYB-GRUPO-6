@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       {
         index: true,
         path: "/",
-        element: <Root />,
+        element: <Home />,
       },
       {
         path: "/usuario/nuevo",
@@ -74,14 +74,16 @@ const router = createBrowserRouter([
         action: editPetAction,
       },
       {
-        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/DetailPet/:DetailPetId",
-        element: (<PetDetail />),
+        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/DetailPet",
+
+        element: <ProtectedRoute><PetDetail /></ProtectedRoute>,
       },{
       
 
-        path: "/Home",
-        element: <Home />,
+        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/Home",
+        element: <ProtectedRoute><Home /></ProtectedRoute>,
       },
+     
       
     ],
   },
