@@ -24,7 +24,7 @@
       "telefono": "0303456",
       "email": "aurelio@aurelio.com",
       "password": "1234",
-      "Imagen": "",
+      "Imagen": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691511387/miMascotaTuc/hmzlzgu9zmjk1z6ghn0o.gif",
       "mascotas": [
         {
           "id": "ll1m5aa0tl3dv2ppogo",
@@ -34,6 +34,26 @@
           "peso": "123",
           "file": "",
           "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691457535/miMascotaTuc/i6ear1d6cgjwok9eyhry.gif",
+          "patologias": ""
+        },
+        {
+          "id": "ll2e89hxyodulbxpyt",
+          "mascota": "eugenio",
+          "tipo": "hamster",
+          "edad": "5",
+          "peso": "8",
+          "file": "",
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691504707/miMascotaTuc/y53o2v27p8nhlm1y7d2g.gif",
+          "patologias": ""
+        },
+        {
+          "id": "ll2ef9qrsg6s4u26wz",
+          "mascota": "gaspar",
+          "tipo": "gato",
+          "edad": "5",
+          "peso": "8",
+          "file": "",
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691505034/miMascotaTuc/m0zmyvgcxdzdtvyjsnpe.gif",
           "patologias": ""
         }
       ]

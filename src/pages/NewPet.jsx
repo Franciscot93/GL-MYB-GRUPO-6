@@ -27,13 +27,7 @@ function NewPet() {
       Volver
     </button>
     
-      {/* Boton para cerrar sesion */}
-    <button
-      onClick={() => logout()}
-      className="bg-red-700 px-3 font-bold uppercase py-1 rounded-md text-slate-50 hover:bg-red-500 duration-200"
-    >
-      Cerrar sesion
-    </button>
+   
   </div>
 
     {/* Seccion de formulario para agregar nueva mascota */}
