@@ -3,7 +3,6 @@
 <!--Nuestro README -->
 # Mi Mascota TuC App
 
-<<<<<<< HEAD
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
@@ -12,8 +11,6 @@
 <!--Nuestro README -->
 # Mi Mascota TuC App
 
-=======
->>>>>>> f3fc90e (Agruegue un README detallado de como se deberia de utilizar la aplicacion y descargar, preguntas frecuentes y secciones de agradecimiento. nuestras redes sociales y link de GitHub + Linkeding)
 Bienvenido a Mi Mascota TuC App, una aplicación para registrar y hacer un seguimiento de las mascotas de tu familia. A través de esta aplicación, podrás administrar la información de tus mascotas y mantener un historial clínico actualizado para su salud y bienestar.
 
 ## Características
@@ -45,11 +42,7 @@ luego en terminal despues de
 
 y accedemos al siguiente link... [http://localhost:5173/] <!-- http://localhost:5173/ -->
 
-<<<<<<< HEAD
 [TECNOLOGIAS-UTILIZADAS]
-=======
-[TECNOLOGIAS UTILIZADAS]
->>>>>>> f3fc90e (Agruegue un README detallado de como se deberia de utilizar la aplicacion y descargar, preguntas frecuentes y secciones de agradecimiento. nuestras redes sociales y link de GitHub + Linkeding)
 
 -React: Biblioteca de JavaScript para construir interfaces de usuario.
 -React Router: Para manejar la navegacion entre difeerentes paginas
