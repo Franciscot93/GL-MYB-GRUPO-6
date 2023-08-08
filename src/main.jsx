@@ -80,7 +80,7 @@ const router = createBrowserRouter([
       },{
       
 
-        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/Home",
+        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/home",
         element: <ProtectedRoute><Home /></ProtectedRoute>,
       },
      
