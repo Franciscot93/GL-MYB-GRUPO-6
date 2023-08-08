@@ -21,6 +21,7 @@ import EditPet, {
 import PetDetail from "./pages/PetDetail";
 
 import Home from "./pages/Home";
+import About from "./pages/About";
 
 // Crear enrutador con rutas y elementos correspondientes
 const router = createBrowserRouter([
@@ -79,9 +80,13 @@ const router = createBrowserRouter([
       },{
       
 
-        path: "/Home",
+        path: "/home",
         element: <Home />,
       },
+      {
+        path:"/about",
+        element:<About/>
+      }
       
     ],
   },
