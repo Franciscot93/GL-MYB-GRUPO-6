@@ -5,7 +5,7 @@ import User from "../components/User";
 import Pet from "../components/Pet";
 
 
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useLogin } from "../store/userZustand";
 import { obtenerDatosUsuario } from "../data/usuarios";
 
@@ -15,7 +15,7 @@ export async function loader({ params }) {
 }
 
 function UserPage() {
-
+  const navigate=useNavigate()
    // Obtener informacion del usuario y funcion de cierre de sesion desde el estado global
   const { user, logout,setUser} = useLogin();
 
@@ -43,7 +43,7 @@ function UserPage() {
       <div className="flex mb-5 justify-end">
 
         <button
-          onClick={() => logout()}
+          onClick={()=>navigate(-1)}
           className="bg-sky-900 px-3 font-bold uppercase py-1 rounded-md text-slate-50 hover:bg-indigo-600 duration-200"
         >
           Cerrar sesion

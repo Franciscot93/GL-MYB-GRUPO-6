@@ -27,13 +27,13 @@
       "Imagen": "",
       "mascotas": [
         {
-          "id": "ll1bytexe12x13zuirw",
-          "mascota": "eugenio",
-          "tipo": "hamster",
-          "edad": "3",
-          "peso": "",
+          "id": "ll1m5aa0tl3dv2ppogo",
+          "mascota": "jonas",
+          "tipo": "perro",
+          "edad": "29",
+          "peso": "123",
           "file": "",
-          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691440440/miMascotaTuc/xqtjsepawiomgjdkcvzd.png",
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691457535/miMascotaTuc/i6ear1d6cgjwok9eyhry.gif",
           "patologias": ""
         }
       ]
