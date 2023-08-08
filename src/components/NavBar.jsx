@@ -23,7 +23,7 @@ function NavBar() {
           </a>
         </div>
         {/* Enlace de navegacion*/}
-        <div className="w-full md:w-1/3 flex-1 flex m-auto items-center text-base justify-center">
+        <div className="w-full hidden md:w-1/3 flex-1 sm:flex m-auto items-center text-base justify-center">
           {/* Enlace a la pagina de Inicio */}
           <NavLink
             to={isLogged ? `/usuario/perfilDelUsuario/${user.id}/Home` : "/"}
