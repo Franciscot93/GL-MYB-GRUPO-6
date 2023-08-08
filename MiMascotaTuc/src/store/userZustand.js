@@ -8,7 +8,10 @@ export const useLogin = create((set) => ({
   // Funcion para realizar el inicio de sesion y cambiar el estado "isLogged" a 'true'.
   login: () => set({ isLogged: true }),
   // funciion para cerrar sesion y cambiar el estado 'isLogged' a 'false'
-  logout: () => set({ isLogged: false }),
+  logout: () => (function cerrarSesion(){
+    localStorage.removeItem("email")
+    set({ isLogged: false })
+  }),
 
   
   user:{
@@ -23,8 +26,9 @@ export const useLogin = create((set) => ({
 
   setUser:(usuario)=>set({user:usuario}),
 
+
   pet:{},
-  setPet:(mascotaId,user)=>((user.mascotas).find(mascota=>mascota.id===mascotaId)),
+  setPet:(mascota)=>set({pet:mascota}),
 
   eliminarMascota: (mascotaId) =>
     set((state) => ({

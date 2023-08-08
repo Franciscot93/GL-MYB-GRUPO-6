@@ -27,13 +27,14 @@
       "Imagen": "",
       "mascotas": [
         {
-          "id": "ll039n188zfsgzjc6oc",
-          "mascota": "pepe ",
+          "id": "ll1bytexe12x13zuirw",
+          "mascota": "eugenio",
           "tipo": "hamster",
-          "edad": "",
+          "edad": "3",
           "peso": "",
           "file": "",
-          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691365361/miMascotaTuc/ecxt3up3sedmnti858ki.gif"
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691440440/miMascotaTuc/xqtjsepawiomgjdkcvzd.png",
+          "patologias": ""
         }
       ]
     },
@@ -49,7 +50,7 @@
     {
       "id": 6,
       "username": "francisco",
-      "email": "asdasd@gas.com",
+      "email": "miguel@juan.com",
       "telefono": "123441255",
       "password": "1234",
       "Imagen": "",

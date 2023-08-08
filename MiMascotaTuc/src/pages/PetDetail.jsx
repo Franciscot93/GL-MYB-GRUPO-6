@@ -8,11 +8,11 @@ import { Image } from 'cloudinary-react'
 export default function PetDetail() {
   const navigate=useNavigate()
   const {DetailPetId}=useParams()
-  const{user,logout,pet,setPet}=useLogin()
+  const{user,logout,pet}=useLogin()
   
   
-  setPet(DetailPetId,user)
-  console.log(pet, user)
+  
+  console.log(pet)
 
   return (
 
@@ -29,7 +29,7 @@ export default function PetDetail() {
       
 
         <div className='bg-slate-900 hover:bg-red-700 transition-colors duration-500 rounded-lg bg-opacity-70  w-2/4'><div className="relative overflow-hidden flex bg-cover aspect-square justify-center content-center place-content-center place-items-center align-middle text-cent bg-no-repeat">
-    <Image  cloudName='dqr2aiayz' publicId={pet.pic} />
+    <Image  cloudName='dqr2aiayz'/>
     </div></div>
         <div className='bg-indigo-600 rounded-lg w-2/4'><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore libero consequuntur a quis magni quibusdam alias, vel similique consectetur, sunt deleniti ratione corrupti quaerat eum facilis porro accusantium obcaecati minus!</p></div>
     </div>

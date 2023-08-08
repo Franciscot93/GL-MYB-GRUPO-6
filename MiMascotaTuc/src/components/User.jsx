@@ -8,7 +8,7 @@ function User() {
     <div className="w-full">
 
         {/* Titulo de la seccion de contacto */}
-            <h2 className="text-2xl text-center logoTitle text-[#066aff]">Contacto</h2>
+            <h2 className="text-4xl text-center logoTitle text-[#066aff]">Contacto</h2>
       {/*Seccuib del nombre del usuario */}
       <div className="mx-3 relative w-100 text-left  text-[#066aff]
          shadow-md mt-3 rounded-md  p-3 ">img</div>
