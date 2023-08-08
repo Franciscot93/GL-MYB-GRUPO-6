@@ -12,11 +12,22 @@
     {
       "id": 3,
       "username": "Josue",
-      "email": "josue@juan.com",
       "telefono": "31983913",
+      "email": "josue@juan.com",
       "password": "1234",
       "Imagen": "",
-      "mascotas": []
+      "mascotas": [
+        {
+          "id": "ll2pnvdp99okwsx549o",
+          "mascota": "Apolo",
+          "tipo": "Perro",
+          "edad": "3",
+          "peso": "12",
+          "file": "",
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691523941/miMascotaTuc/a6hqtaggsgoqughnxqjl.avif",
+          "patologias": ""
+        }
+      ]
     },
     {
       "id": 4,
