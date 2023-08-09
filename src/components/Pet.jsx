@@ -1,10 +1,10 @@
 import { useLogin } from "../store/userZustand";
 import { eliminarMascotas } from "../data/usuarios";
-import { redirect, useNavigate, Link } from "react-router-dom";
+import { redirect, useNavigate, Link, useLocation } from "react-router-dom";
 import { Image } from "cloudinary-react";
 
 function Pet({ pet }) {
-  console.log(pet);
+  
   // Obteniendo el usuario actual desde el estado global
   const { user, setUser, eliminarMascota,setPet } = useLogin();
   // Iniciar la funcion de navegacion
@@ -13,7 +13,7 @@ function Pet({ pet }) {
   const handleEliminar = () => {
     eliminarMascotas(user, pet.id, setUser, eliminarMascota);
   };
-
+ const locacion= useLocation()
   return (
     
     <div
@@ -22,7 +22,7 @@ function Pet({ pet }) {
     <Image  cloudName='dqr2aiayz' className="md:min-w-full" publicId={pet.pic}/>
     </div>
     <div className=" text-left w-full md:w-2/3 ml-1 flex shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-md flex-row flex-wrap">
-      <div className="flex-1  box-border w-4/5">
+      <div className="flex-1 ml-2 box-border w-4/5">
     <p className="font-semibold  mb-1 hover:scale-105 text-gray-700 uppercase">
       Nombre: {""}
           <span className="logoTitle tracking-wider font-thin text-2xl">{pet.mascota}</span>
@@ -40,10 +40,11 @@ function Pet({ pet }) {
           <span className=" text-lg">{pet.peso}</span>
         </p>
     </div>
+    
     <div className="content-center flex sm:w-1/5 place-items-center justify-center place-content-center">
       <p className="font-semibold mb-1  text-gray-700 uppercase">
           Docs: {""}
-          <span className=" text-3xl hover:scale-105 "><Link to={`/usuario/perfilDelUsuario/${user.id}/DetailPet/${pet.id}`} className=" text-3xl hover:scale-105 ">📁
+          <span className=" text-3xl hover:scale-105 "><Link onClick={()=>setPet(pet)} to={`/usuario/perfilDelUsuario/${user.id}/detailPet/${pet.id}`} className=" text-3xl hover:scale-105 ">📁
           </Link></span>
         </p>
     </div>

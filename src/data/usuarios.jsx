@@ -86,6 +86,17 @@ export const generarId = () => {
 
   return date + random;
 };
+
+
+export const generarFecha=()=>{
+ 
+  let tiempoActual=new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
+ 
+ 
+
+
+  return `${tiempoActual}`
+}
 //###########################################################################################################################
 //MASCOTAS
 

@@ -74,7 +74,7 @@ const router = createBrowserRouter([
         action: editPetAction,
       },
       {
-        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/DetailPet",
+        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/detailPet/:detailPet",
 
         element: <ProtectedRoute><PetDetail /></ProtectedRoute>,
       },{

@@ -121,16 +121,7 @@ function NavBar() {
           )}
         </li>
         <li className="ml-2 mb-2">
-        <NavLink
-            to={
-              isLogged
-                ? `/usuario/perfilDelUsuario/${user.id}/DetailPet/`
-                : null
-            }
-            className={"mr-5 text-white hover:text-[#83cdff]"}
-          >
-            Mascotas
-          </NavLink>
+        
         </li>
         <li className="ml-2 mb-2">
         <NavLink
@@ -165,18 +156,7 @@ function NavBar() {
             </NavLink>
           )}
           {/*Enlace a la pagina de Mascotas */}
-          {isLogged &&
-          <NavLink
-            to={
-              isLogged
-                ? `/usuario/perfilDelUsuario/${user.id}/DetailPet/`
-                : null
-            }
-            className={ "mr-5 text-white hover:text-[#83cdff]"
-            }
-          >
-            Mascotas
-          </NavLink>}
+          
           {!isLogged&&
           <NavLink
             to={"/usuario/nuevo"}
