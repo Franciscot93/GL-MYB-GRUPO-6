@@ -5,6 +5,7 @@ import { useLogin } from "../store/userZustand";
 import Axios from "axios";
 
 
+
 function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
   const { setUser } = useLogin();
   const [selectedPic, setSelectedPic] = useState();
@@ -18,7 +19,6 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
     peso: "",
     file: {array:{}},
     pic: '',
-    
   });
 
   // Estado para almacenar el ID de la mascota que se está editando
@@ -39,10 +39,10 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
 
   const onChangeFile=async(files)=>{
     const urls = [];
-   
     if (files) {
      
       const filesArray=[...files]
+
 
        const uploadFiles=filesArray.map(async (pdffile) => {
       const formDataFiles = new FormData();
@@ -61,14 +61,10 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
         console.error("Error al subir un archivo PDF a Cloudinary:", error);
       }
     });
-    
-   
     await Promise.all(uploadFiles);
-    
   }
   return urls;
 }
-
 
   //funcion de carga de Pic
 
@@ -80,8 +76,6 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
       try {
      const response=  await Axios.post(
       "https://api.cloudinary.com/v1_1/dqr2aiayz/image/upload?f_auto=webp",formDataFiles
-      
-
       )
      return response.data.url
          
@@ -110,6 +104,7 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
         }
       }
       
+
       const url =  await onChangePic()
       if(url){
         console.log(url)
@@ -123,7 +118,6 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
       return navigate(`/usuario/perfilDelUsuario/${perfilDelUsuarioId}`);
     } else {
       
-     
 
       const pdfUrls= await onChangeFile(files)
       
@@ -132,7 +126,6 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
       
         mascota.file=pdfUrls
       }
-
 
       const url =  await onChangePic()
 
@@ -225,7 +218,7 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
             id="peso"
             type="text"
             className="mt-2 block w-full p-3 rounded-md bg-gray-50"
-            placeholder="¿Cuantos años tiene?"
+            placeholder="¿Cuanto amor posee?"
             name="peso"
             defaultValue={mascotaParaEditar?.peso}
           />
@@ -292,5 +285,3 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
 }
 
 export default PetForm;
-
-

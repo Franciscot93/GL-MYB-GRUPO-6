@@ -1,7 +1,7 @@
 import logo from "../img/LogoFooter.png"
-import twitter from "../img/twitter.png"
-import facebook from "../img/facebook.png"
-import meta from "../img/meta.png"
+import twitter from "../img/tw.png"
+import facebook from "../img/fb.png"
+import instagram from "../img/ig.png"
 
 function Footer() {
   return (
@@ -18,15 +18,15 @@ function Footer() {
         {/*Seccion de texto */}
         <section className="text-slate-100 w-1/3 flex-1 flex-wrap m-auto content-center place-content-center place-items-center  justify-center text-center text-sm mx-3 rounded-md">
           {/*Contenido de texto*/}
-          © 2023 MascotasApp. Todos los derechos reservados.
+          © 2023 MiMascotaTuc. Todos los derechos no reservados.
 </section>
         {/* Seccion de redes sociales con logos*/}
         <section className="   text-slate-100 w-1/3 flex flex-row m-auto flex-wrap gap-3 flex-1 text-sm mx-3 justify-end text-center rounded-md ">
           {/*Seccion de redes Sociales*/}
 
-          <img className="bg-[url('../img/twitter.png')] w-5 h-5" src={twitter} alt=""/>
-          <img className="bg-[url('../img/facebook.png')] w-5 h-5" src={facebook} alt=""/>
-          <img className="bg-[url('../img/meta.png')] w-5 h-5" src={meta} alt=""/>
+          <img className="bg-[url('../img/tw.png')] w-8 h-8" src={twitter} alt=""/>
+          <img className="bg-[url('../img/fb.png')] w-8 h-8" src={facebook} alt=""/>
+          <img className="bg-[url('../img/ig.png')] w-8 h-8" src={instagram} alt=""/>
 
           {/*Contenido de redes sociales */}
           </section>

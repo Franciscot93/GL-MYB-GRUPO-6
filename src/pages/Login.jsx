@@ -2,33 +2,27 @@
 import {
   Form,
   useNavigate,
-
   useActionData, 
-
-
   useLoaderData,
 } from "react-router-dom";
-
 import LoginForm from "../components/LoginForm";
 import Error from "../components/Error";
 import { obtenerUsuarios } from "../data/usuarios";
 import { useEffect} from "react";
 import { useLogin } from "../store/userZustand";
 
-
 // Cargar los usuarios para el loader inicial
 export async function loader({ params }) {
   const usuario = await obtenerUsuarios();
   return usuario;
 }
-
-
   // Manejar la accion de iniciar sesion
 
 export async function action({ request }) {
   const formDatos = await request.formData();
   const datosUsuario = Object.fromEntries(formDatos) || null;
   
+
   // Validar el formato del correo electronico
   const email = formDatos.get("email")
   const regexEmail = new RegExp(
@@ -38,19 +32,17 @@ export async function action({ request }) {
   if(!regexEmail.test(email)){
     erroresDeFormulario.push('El Email no es valido')
   }
-
   if (Object.values(datosUsuario).includes("")) {
     erroresDeFormulario.push("Todos los campos son obligatorios");
   }
   if (Object.keys(erroresDeFormulario).length) {
     return erroresDeFormulario;
   }
-  
+
   // Si hay datos de usuarios validos, retornarlos
   if (datosUsuario) {
     return datosUsuario
   }
-
   return null;
 }
 
@@ -77,7 +69,6 @@ function Login() {
 
   useEffect(() => {
     if(localStorage.getItem('email')){
-      
       const email = localStorage.getItem('email');
       console.log(email)
       if (email) {
@@ -85,13 +76,13 @@ function Login() {
           (user) =>
             user.email ===  email
         );
+
         if (user) {
-          
-          login();
+         login();
           setUser(user);
           console.log(user)
           navigate(`/usuario/perfilDelUsuario/${user.id}`);
-           
+ 
         }
       }
     }
@@ -102,8 +93,6 @@ function Login() {
     if (usuario) {
 
       // Buscar al usuario en la lista de usuarios usando los datos del formulario
-
-      
 
       const user = datos.find(
         (user) =>
@@ -121,10 +110,9 @@ function Login() {
         ) 
       }
     }
+
   }, [datos]);
 
-  
-  
   return (
     <main>
       <div className="flex mb-5 justify-end">
@@ -136,12 +124,11 @@ function Login() {
           VOLVER
         </button>
       </div>
-
       {/* Mostrar errores de formulario si existen */}
       {erroresDeFormulario?.length
         ? erroresDeFormulario.map((error, i) => <Error key={i}>{error}</Error>)
         : null}
-      
+
       {/* Formulario de inicio de sesion */}
       <Form method="post">
         <LoginForm />
