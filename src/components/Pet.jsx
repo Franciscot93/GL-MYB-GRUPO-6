@@ -40,8 +40,7 @@ function Pet({ pet }) {
           <span className=" text-lg">{pet.peso}</span>
         </p>
     </div>
-    
-    <div className="content-center flex sm:w-1/5 place-items-center justify-center place-content-center">
+      <div className="content-center flex sm:w-1/5 place-items-center justify-center place-content-center">
       <p className="font-semibold mb-1  text-gray-700 uppercase">
           Docs: {""}
           <span className=" text-3xl hover:scale-105 "><Link onClick={()=>setPet(pet)} to={`/usuario/perfilDelUsuario/${user.id}/detailPet/${pet.id}`} className=" text-3xl hover:scale-105 ">📁
@@ -55,10 +54,11 @@ function Pet({ pet }) {
         </div>
       
     </div>
-    
+  
   </div>
  
   )
 }
 
 export default Pet;
+

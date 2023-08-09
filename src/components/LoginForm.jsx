@@ -1,7 +1,6 @@
 function LoginForm() {
   return (
     <div>
-
         {/* Titulo del formulario*/}
         <h2 className="text-4xl logoTitle  text-[#066aff] my-3 text-center">Ingresa Tus DaTos</h2>
         {/* Campo de entrada de correo electronico*/}
@@ -13,7 +12,6 @@ function LoginForm() {
                 <input 
                     id="email"
                     type="text"
-
                     className="mt-2 border-2 border-[#c8c8c8] block w-full p-3 bg-gray-50"
                     placeholder="Ingese Su email@example.com"
                     name="email"
@@ -36,7 +34,6 @@ function LoginForm() {
                     defaultValue={null}
                 />
             </div>
-        
     </div>
   )
 }

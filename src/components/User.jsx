@@ -77,9 +77,8 @@ function User() {
 </button>
 
           </div>
-                
 
-      {/*Seccuib del nombre del usuario */}
+{/*Seccuib del nombre del usuario */}
       <div className="mx-3 relative w-100 text-left  font-semibold
          shadow-md mt-3 rounded-md text-[#066aff] box-border p-3">Nombre: <span className="text-slate-800 font-semibold">{user.username}</span></div>
   {/* Seccion del correo electronico del usuario */}      
@@ -91,6 +90,7 @@ function User() {
          shadow-md mt-3 rounded-md text-[#066aff] box-border p-3">Telefono: <span className="text-slate-800 font-semibold">{user.telefono}</span></div>
          </aside>
     </section>
+
   )
 }
 

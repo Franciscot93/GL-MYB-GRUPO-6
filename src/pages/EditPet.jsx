@@ -1,6 +1,6 @@
 import PetForm from "../components/PetForm";
 import {
- 
+  Form,
   useNavigate,
   useLocation,
   useLoaderData,
@@ -25,7 +25,8 @@ export async function action() {
 
 function EditPet() {
 
-  
+
+  const location = useLocation();
   const mascotaParaEditar = useLoaderData();
   const navigate = useNavigate();
   return (
@@ -37,7 +38,6 @@ function EditPet() {
         >
           Volver
         </button>
-        
       </div>
 
       <section className="shadow-md place-content-center content-center place-items-center flex flex-wrap my-2 mx-3 py-5">

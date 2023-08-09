@@ -1,4 +1,3 @@
-import logo from "../img/Logo2.png";
 import { Link, NavLink, redirect } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useLogin } from "../store/userZustand";
