@@ -82,34 +82,29 @@
       "Imagen": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691511387/miMascotaTuc/hmzlzgu9zmjk1z6ghn0o.gif",
       "mascotas": [
         {
-          "id": "ll1m5aa0tl3dv2ppogo",
-          "mascota": "jonas",
+          "id": "ll375q7k9i8s5uarnm",
+          "mascota": "pepe ",
           "tipo": "perro",
-          "edad": "29",
-          "peso": "123",
-          "file": "",
-          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691457535/miMascotaTuc/i6ear1d6cgjwok9eyhry.gif",
-          "patologias": ""
-        },
-        {
-          "id": "ll2e89hxyodulbxpyt",
-          "mascota": "eugenio",
-          "tipo": "hamster",
-          "edad": "5",
-          "peso": "8",
-          "file": "",
-          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691504707/miMascotaTuc/y53o2v27p8nhlm1y7d2g.gif",
-          "patologias": ""
-        },
-        {
-          "id": "ll2ef9qrsg6s4u26wz",
-          "mascota": "gaspar",
-          "tipo": "gato",
-          "edad": "5",
-          "peso": "8",
-          "file": "",
-          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691505034/miMascotaTuc/m0zmyvgcxdzdtvyjsnpe.gif",
-          "patologias": ""
+          "edad": "2",
+          "peso": "4",
+          "file": [
+            {
+              "fecha": "Wednesday, Aug 9, 2023",
+              "documento": "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691553296/pdfs_MiMascotaTuc/qvejygoy6xpn4wv1s1vl.pdf",
+              "id": "ll375oy0f9tu27ejcke"
+            },
+            {
+              "fecha": "Wednesday, Aug 9, 2023",
+              "documento": "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691553296/pdfs_MiMascotaTuc/suul5ruurvapkv8onkic.pdf",
+              "id": "ll375p2uc3lx3mktqm"
+            },
+            {
+              "fecha": "Wednesday, Aug 9, 2023",
+              "documento": "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691553507/pdfs_MiMascotaTuc/fg9vamk6y0yv86tiir1h.pdf",
+              "id": "ll37a88xjd0n2ujs8fs"
+            }
+          ],
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691553297/miMascotaTuc/kinyashc9t98uppdf2n7.gif"
         }
       ]
     },

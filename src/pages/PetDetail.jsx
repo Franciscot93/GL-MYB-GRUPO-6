@@ -1,22 +1,20 @@
 import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams,useLocation,Link } from 'react-router-dom'
 import { useLogin } from '../store/userZustand'
-
-import { Image } from 'cloudinary-react'
+import Pet from '../components/Pet'
+import imagenFile from "../img/filelogo.png"
 
 
 export default function PetDetail() {
   const navigate=useNavigate()
-  const {DetailPetId}=useParams()
+  const {detailPetId}=useParams()
   const{user,logout,pet}=useLogin()
   
-  
-  
-  console.log(pet)
 
+  const locacion= useLocation()
   return (
 
-    <>
+    <main>
     <div className="flex mb-5 justify-end">
         <button
           onClick={() => navigate(-1)}
@@ -25,15 +23,25 @@ export default function PetDetail() {
           VOLVER
         </button>
       </div>
-    <div className='w-full h-screen flex flex-row flex-wrap'>
+    <div className='shadow-md flex flex-wrap my-2 mx-3  py-5'>
+    <aside className="flex flex-wrap w-full justify-center md:w-2/5 lg:w-2/5 mt-5 ">
+    <h2 className='text-4xl text-[#066aff] text-center w-full logoTitle'>Mascota</h2>
+    <Pet pet={pet}/>
+        </aside>
+    <aside className='flex  justify-center flex-wrap w-full box-border md:w-3/5 lg:3/5 mt-5'>
+      <h2 className='text-4xl text-[#066aff] text-center w-full logoTitle'>Documentacion de Seguimiento</h2>
+      <div className=' flex w-full   justify-center place-content-center  relative p-1'>
       
-
-        <div className='bg-slate-900 hover:bg-red-700 transition-colors duration-500 rounded-lg bg-opacity-70  w-2/4'><div className="relative overflow-hidden flex bg-cover aspect-square justify-center content-center place-content-center place-items-center align-middle text-cent bg-no-repeat">
-    <Image  cloudName='dqr2aiayz'/>
-    </div></div>
-        <div className='bg-indigo-600 rounded-lg w-2/4'><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore libero consequuntur a quis magni quibusdam alias, vel similique consectetur, sunt deleniti ratione corrupti quaerat eum facilis porro accusantium obcaecati minus!</p></div>
+      <ul className='w-full flex items-center flex-col p-1 overflow-scroll'>
+          {pet.file.length>0 ? pet.file?.map(file => (  
+                <li key={file.id}> <div key={file.id} className='text-md my-2 font-semibold flex flex-row'>Fecha:{file.fecha} <Link target='_blank' to={file.documento} ><img src={imagenFile}/></Link> </div></li>
+               )): <h2 className='text-2xl text-slate-800 w-full animate-pulse text-center logoTitle' >No se registran Archivos en tu Mascota</h2>}
+      </ul>
+      </div>
+    </aside>
+          
     </div>
 
-    </>
+    </main>
   )
 }
