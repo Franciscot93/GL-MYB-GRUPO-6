@@ -3,11 +3,44 @@ import Footer from "./Footer";
 import NavBar from "./NavBar";
 import imgHamster from "../img/hamster_gif.gif";
 import imgDog from "../img/max_gif.gif";
+import { useEffect } from "react";
+import { obtenerUsuarios } from "../data/usuarios";
+import { useLogin } from "../store/userZustand";
+
 
 
 
 function Layout() {
   const location = useLocation();
+  const {login,user,setUser}=useLogin()
+  const datos=obtenerUsuarios()
+  
+
+  useEffect(() => {
+    const obtenerDatos = async () => {
+      try {
+        const datos = await obtenerUsuarios();
+        if (localStorage.getItem("email")) {
+          const email = localStorage.getItem("email");
+          if (email) {
+            const user = datos.find((user) => user.email === email);
+            if (user) {
+              login();
+              setUser(user);
+              console.log(user);
+              navigate(`/usuario/perfilDelUsuario/${user.id}`);
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error al obtener usuarios:", error);
+      }
+    };
+
+    obtenerDatos();
+  }, []);
+
+
   return (
     <div className=" md:flex flex flex-col max-w-full min-h-screen bg-[#edf7ff] ">
       {/* Barra de navegacion */}

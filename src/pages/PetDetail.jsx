@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, {  useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useLogin } from "../store/userZustand";
 import Pet from "../components/Pet";
