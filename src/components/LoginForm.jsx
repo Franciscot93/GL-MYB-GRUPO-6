@@ -18,6 +18,7 @@ function LoginForm() {
                     defaultValue={null}
                 />
             </div>
+
             {/*Campo de entrada de contraña */}
             <div className="mb-4 mx-3">
                 <label

@@ -12,7 +12,7 @@ function Layout() {
     <div className=" md:flex flex flex-col max-w-full min-h-screen bg-[#edf7ff] ">
       {/* Barra de navegacion */}
       <NavBar/>
-      {/* Panel lateral */}
+     {/* Panel lateral */}
       <aside
         className="mx-10 relative w-100 text-center  
          shadow-md  rounded-md  py-5"
@@ -32,12 +32,14 @@ function Layout() {
           className=" mx-10 relative w-100 text-center  
          shadow-md mt-2 rounded-md  py-5"
         >
+
           {/* Outlet para renderizar las rutas secundarias */}
             <Outlet/>
         </div>
       </main>
       {/* Pie de pagina */}
       <footer><Footer/></footer>
+
     </div>
   );
 }

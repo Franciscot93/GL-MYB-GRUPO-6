@@ -1,17 +1,14 @@
-import PropTypes from 'prop-types';
-function Error({ children }) {
-  return (
-    <div className="text-center my-4 p-3 bg-red-600 font-bold text-slate-50">
-      {children}
-    </div>
-  );
-}
+function Error({children}) {
 
-Error.propTypes = {
-  children: PropTypes.node.isRequired, // Validación de children como nodo requerido
-};
+     return(   // Contenedor del mensaje de error centrado en el texto
+      <div className="text-center  my-4 p-3 bg-red-600 font-bold text-slate-50">
+        {children} {/* Renderiza el contenido de error proporcionado como hijos */}
+      </div>
 
-export default Error;
+     )
+  }
+  
+  export default Error
 
 
 

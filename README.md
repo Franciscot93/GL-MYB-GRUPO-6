@@ -1,10 +1,11 @@
 
-
 <!--Nuestro README -->
 # Mi Mascota TuC App
 
+
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
 
 
 
@@ -12,6 +13,8 @@
 # Mi Mascota TuC App
 
 Bienvenido a Mi Mascota TuC App, una aplicación para registrar y hacer un seguimiento de las mascotas de tu familia. A través de esta aplicación, podrás administrar la información de tus mascotas y mantener un historial clínico actualizado para su salud y bienestar.
+
+
 
 ## Características
 
@@ -32,6 +35,7 @@ Bienvenido a Mi Mascota TuC App, una aplicación para registrar y hacer un segui
    [en consola]
    npm install
 	
+
 3. Luego levantamos el servidor JSON
 3.2. json-server --watch db.json (si ya lo tenemos instalado usamos este)
 3.1. npm install -g json-server (Si no lo tenemos instalado utilizamos este comando y luego el comando anterior para levantar el servidor)
@@ -41,6 +45,7 @@ luego en terminal despues de
 4. npm run dev
 
 y accedemos al siguiente link... [http://localhost:5173/] <!-- http://localhost:5173/ -->
+
 
 [TECNOLOGIAS-UTILIZADAS]
 
@@ -52,6 +57,7 @@ y accedemos al siguiente link... [http://localhost:5173/] <!-- http://localhost:
 [Contribucion]
 
 Si deseas contribuir a este proyecto, ¡estaremos encantados de recibir tus contribuciones! Puedes crear un "pull request" con tus cambios propuestos.
+
 
 [Autor]
 
@@ -92,13 +98,16 @@ Les agradecemos la oportunidad, el tiempo y el lugar para poder aprender y super
 4. Realiza las modificaciones necesarias en los campos que deseas actualizar.
 5. Una vez que hayas realizado los cambios, presiona el boton "Guardar cambios" para actualizar la informacion de la mascota.
 
+
 	[Que debo hacer si olvido mi contraseña?]
 [Si olvidaste tu contraseña, no te preocupes. Sigue estos pasos para restablecerla:]
+
 
 1. En la pagina de inicio de sesion, haz clic en el enlace "Olvidaste tu contraseña?" 
 2. Se te pedira ingresar la direccion de correo electronico asociada con tu cuenta.
 3. Recibiras un correo electronico con instrucciones para restablecer tu contraseña. Sigue las indicaciones proporcionadas en el correo electornico.
 4. Una vez que hayas cambiado tu contraseña, podras acceder a tu cuenta con la nueva contraseña.
+
 
 	[Como puedo contribuir a este proyecto?]
 [!Nos encantaria que contribuyas al proyecto! Si deseas colaborar, sigue estos pasos:]
@@ -118,4 +127,6 @@ GitHub: Link - [https://github.com/Franciscot93] - Link [https://github.com/Ange
 linkeding: Link - [in/luis-agustin-correa-nu%C3%B1ez-44116a228] - Link [https://www.linkedin.com/in/faciano-angel-9712a2151/] - Link [https://www.linkedin.com/in/francisco-torres-ftp/]
 
 Redes Sociales
+
 Instagram: Link [https://www.instagram.com/agustin_correa01/] - Link [https://www.instagram.com/francisco.t.p/] - Link [https://www.instagram.com/angelfaciano/] - Link (Entidad de capacitacion) [https://www.instagram.com/globallearning.ar/] - Link (Municipalidad de Yerba Buena) [https://www.instagram.com/juventudyempleo/]
+

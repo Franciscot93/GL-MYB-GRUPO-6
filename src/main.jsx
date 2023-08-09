@@ -21,7 +21,9 @@ import EditPet, {
 import PetDetail from "./pages/PetDetail";
 
 import Home from "./pages/Home";
+
 import About from "./pages/About";
+
 
 // Crear enrutador con rutas y elementos correspondientes
 const router = createBrowserRouter([
@@ -33,7 +35,8 @@ const router = createBrowserRouter([
       {
         index: true,
         path: "/",
-        element: <Root />,
+        element: <Home />,
+
       },
       {
         path: "/usuario/nuevo",
@@ -75,15 +78,15 @@ const router = createBrowserRouter([
         action: editPetAction,
       },
       {
-        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/DetailPet/:DetailPetId",
-        element: (<PetDetail />),
+        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/detailPet/:detailPet",
+        element: <ProtectedRoute><PetDetail /></ProtectedRoute>,
       },{
       
 
-        path: "/home",
-        element: <Home />,
+        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/home",
+        element: <ProtectedRoute><Home /></ProtectedRoute>,
       },
-      {
+       {
         path:"/about",
         element:<About/>
       }

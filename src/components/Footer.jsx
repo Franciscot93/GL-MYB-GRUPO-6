@@ -14,6 +14,7 @@ function Footer() {
           {/*Logo del pie de pagina */}
           <img  src={logo} alt="" />
           </section>
+
         {/*Seccion de texto */}
         <section className="text-slate-100 w-1/3 flex-1 flex-wrap m-auto content-center place-content-center place-items-center  justify-center text-center text-sm mx-3 rounded-md">
           {/*Contenido de texto*/}

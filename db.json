@@ -18,13 +18,57 @@
       "Imagen": "",
       "mascotas": [
         {
-          "id": "ll2pnvdp99okwsx549o",
-          "mascota": "Apolo",
+          "id": "ll1u8iqkuymm8qw3hwc",
+          "mascota": "Koki",
           "tipo": "Perro",
-          "edad": "3",
-          "peso": "12",
+          "edad": "12",
+          "peso": "10",
+          "file": [
+            "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691471127/pdfs_MiMascotaTuc/lvkkp0daffm7liue0coc.jpg"
+          ],
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691471126/miMascotaTuc/dqgm1isywphjhpxk7m9i.jpg",
+          "patologias": ""
+        },
+        {
+          "id": "ll1ubp9oa8gi3qpco3v",
+          "mascota": "pipi",
+          "tipo": "gato",
+          "edad": "2",
+          "peso": "13",
+          "file": [
+            "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691471275/pdfs_MiMascotaTuc/wntt3uzw8xnkuq2pyrig.jpg"
+          ],
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691471275/miMascotaTuc/oucx0jjlmdw48equn70t.jpg",
+          "patologias": ""
+        },
+        {
+          "id": "ll1ucr2rwrqo3qr716j",
+          "mascota": "dwa",
+          "tipo": "dww",
+          "edad": "22",
+          "peso": "122",
           "file": "",
-          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691523941/miMascotaTuc/a6hqtaggsgoqughnxqjl.avif",
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691471323/miMascotaTuc/qwpsnnefs0zfsw3twla5.jpg",
+          "patologias": ""
+        },
+        {
+          "id": "ll1ucu3dmjaw0a02f6c",
+          "mascota": "dwa",
+          "tipo": "dww",
+          "edad": "22",
+          "peso": "122",
+          "file": "",
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691471327/miMascotaTuc/vghxithkwhihft6iknk8.jpg",
+          "patologias": ""
+        },
+        {
+          "id": "ll1ucyesoi3afz6mbai",
+          "mascota": "dwa",
+          "tipo": "dww",
+          "edad": "22",
+          "peso": "122",
+          "file": "",
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691471333/miMascotaTuc/vklxkrevmlmk3bzadc4i.jpg",
           "patologias": ""
         }
       ]
@@ -35,16 +79,33 @@
       "telefono": "0303456",
       "email": "aurelio@aurelio.com",
       "password": "1234",
-      "Imagen": "",
+      "Imagen": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691511387/miMascotaTuc/hmzlzgu9zmjk1z6ghn0o.gif",
       "mascotas": [
         {
-          "id": "ll039n188zfsgzjc6oc",
+          "id": "ll375q7k9i8s5uarnm",
           "mascota": "pepe ",
-          "tipo": "hamster",
-          "edad": "",
-          "peso": "",
-          "file": "",
-          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691365361/miMascotaTuc/ecxt3up3sedmnti858ki.gif"
+          "tipo": "perro",
+          "edad": "2",
+          "peso": "4",
+          "file": [
+            {
+              "fecha": "Wednesday, Aug 9, 2023",
+              "documento": "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691553296/pdfs_MiMascotaTuc/qvejygoy6xpn4wv1s1vl.pdf",
+              "id": "ll375oy0f9tu27ejcke"
+            },
+            {
+              "fecha": "Wednesday, Aug 9, 2023",
+              "documento": "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691553296/pdfs_MiMascotaTuc/suul5ruurvapkv8onkic.pdf",
+              "id": "ll375p2uc3lx3mktqm"
+            },
+            {
+              "fecha": "Wednesday, Aug 9, 2023",
+              "documento": "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691553507/pdfs_MiMascotaTuc/fg9vamk6y0yv86tiir1h.pdf",
+              "id": "ll37a88xjd0n2ujs8fs"
+            }
+          ],
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691553297/miMascotaTuc/kinyashc9t98uppdf2n7.gif"
+
         }
       ]
     },
@@ -60,7 +121,7 @@
     {
       "id": 6,
       "username": "francisco",
-      "email": "asdasd@gas.com",
+      "email": "miguel@juan.com",
       "telefono": "123441255",
       "password": "1234",
       "Imagen": "",

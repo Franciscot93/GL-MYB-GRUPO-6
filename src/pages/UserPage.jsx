@@ -3,9 +3,7 @@
 import React, { useEffect } from "react";
 import User from "../components/User";
 import Pet from "../components/Pet";
-
-
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useLogin } from "../store/userZustand";
 import { obtenerDatosUsuario } from "../data/usuarios";
 
@@ -15,6 +13,8 @@ export async function loader({ params }) {
 }
 
 function UserPage() {
+
+  const navigate=useNavigate()
 
    // Obtener informacion del usuario y funcion de cierre de sesion desde el estado global
   const { user, logout,setUser} = useLogin();
@@ -43,18 +43,13 @@ function UserPage() {
       <div className="flex mb-5 justify-end">
 
         <button
-          onClick={() => logout()}
+          onClick={()=>navigate(-1)}
           className="bg-sky-900 px-3 font-bold uppercase py-1 rounded-md text-slate-50 hover:bg-indigo-600 duration-200"
         >
-          Cerrar sesion
+          Volver
         </button>
       </div>
 
-     {/*Seccion de Bienvenida */}
-      <div className='shadow-md  my-2 mx-3 py-5'>
-      <h3 className='text-2xl text-center text-[#066aff]font-semibold'>Bienvenido/a <span className='text-[#066aff]'>{user.username}</span></h3>
-
-    </div>
     {/* Seccion de perfil de usuario y mascotas*/}
       <section className="shadow-md flex flex-wrap my-2 mx-3  py-5"> 
        {/*Seccion de perfil de usuario  */}
@@ -63,16 +58,19 @@ function UserPage() {
         </aside>
         {/* Seccion de lista de mascotas*/}
         <aside className="md:w-3/5 lg:4/5 mt-5 w-full text-center md:h-screen overflow-y-scroll overflow-x-hidden">
-          <h2 className='text-2xl text-center logoTitle text-[#066aff]  border-b-2 border-indigo-700 py-1 mx-3'>TuS MasCotaS </h2>
+          <h2 className='text-4xl text-center logoTitle text-[#066aff]  border-b-2 border-indigo-700 py-1 mx-3'>Tus MascotaS </h2>
+          <div className=' flex w-full relative p-1'>
           {user?.mascotas.length > 0 ? (
-            <ul>
+            <ul className='w-full p-1'>
               {user?.mascotas.map((pet) => (
                 <Pet key={pet.id} pet={pet} />
               ))}
             </ul>
           ) : (
-            <h3 className="text-3xl text-slate-800 logoTitle">NO HAY MASCOTAS</h3>
+            <h3 className="text-3xl w-full animate-pulse text-center text-slate-800 logoTitle">NO HAY MASCOTAS</h3>
           )}
+          </div>
+
         </aside>
       </section>
       {/*Enlace para agregar una nueva mascota */}

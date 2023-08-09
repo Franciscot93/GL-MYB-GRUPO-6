@@ -1,23 +1,24 @@
 import { useLocation, Form, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { editarMascota } from "../data/usuarios";
+import { editarMascota, generarFecha, generarId } from "../data/usuarios";
 import { useLogin } from "../store/userZustand";
 import Axios from "axios";
+
+
 
 function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
   const { setUser } = useLogin();
   const [selectedPic, setSelectedPic] = useState();
   const navigate = useNavigate();
   const { perfilDelUsuarioId, editarMascotaId } = useParams();
-  const[files, setFiles] = useState({array:{}}|['No hay archivos'])
+  const[files,setFiles]=useState({array:{}}|['No hay archivos'])
   const [mascota, setMascota] = useState({
     mascota: "",
     tipo: "",
     edad: "",
     peso: "",
-    file: "",
+    file: {array:{}},
     pic: '',
-    patologias:''
   });
 
   // Estado para almacenar el ID de la mascota que se está editando
@@ -38,12 +39,12 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
 
   const onChangeFile=async(files)=>{
     const urls = [];
-    console.log(files, typeof(files))
     if (files) {
      
       const filesArray=[...files]
 
-       filesArray.forEach(async (pdffile) => {
+
+       const uploadFiles=filesArray.map(async (pdffile) => {
       const formDataFiles = new FormData();
       formDataFiles.append("file", pdffile);
       formDataFiles.append("upload_preset", "pdfs_MiMascotaTuc");
@@ -54,16 +55,16 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
           formDataFiles
         );
         console.log(response.data.secure_url)
-        urls.push(response.data.secure_url);
+        console.log(generarFecha())
+        urls.push({fecha:generarFecha(),documento:response.data.secure_url ,id:generarId()});
       } catch (error) {
         console.error("Error al subir un archivo PDF a Cloudinary:", error);
       }
     });
-  
-    return urls;
-    
-  }}
-<div className="text-xl"></div>
+    await Promise.all(uploadFiles);
+  }
+  return urls;
+}
 
   //funcion de carga de Pic
 
@@ -74,9 +75,7 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
       formDataFiles.append("upload_preset", "pic_mascotas");
       try {
      const response=  await Axios.post(
-      "https://api.cloudinary.com/v1_1/dqr2aiayz/image/upload",formDataFiles
-      
-
+      "https://api.cloudinary.com/v1_1/dqr2aiayz/image/upload?f_auto=webp",formDataFiles
       )
      return response.data.url
          
@@ -92,11 +91,16 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    
     if (mascotaParaEditar) {
-      const pdfUrls = await onChangeFile(files);
-
-      if (pdfUrls) {
-      mascota.file=pdfUrls}
+      const pdfUrls= await onChangeFile(files)
+      
+      if (pdfUrls.length > 0) { 
+        await Promise.all(pdfUrls.map(url => url))
+        
+        mascota.file=mascota.file.concat(pdfUrls)
+      }
+      
 
       const url =  await onChangePic()
       if(url){
@@ -111,10 +115,14 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
       return navigate(`/usuario/perfilDelUsuario/${perfilDelUsuarioId}`);
     } else {
       
-    const pdfUrls = await onChangeFile(files);
 
-    if (pdfUrls) {
-    mascota.file=pdfUrls}
+      const pdfUrls= await onChangeFile(files)
+      
+      if (pdfUrls.length > 0) { 
+        await Promise.all(pdfUrls.map(url => url))
+      
+        mascota.file=pdfUrls
+      }
 
       const url =  await onChangePic()
 
@@ -274,43 +282,3 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
 }
 
 export default PetForm;
-
-
-/*
-  const enfermedades=['Artritis',
-    'Sarna',
-   'Hipotiroidismo',
-    'Insuficiencia renal',
-    'Enfermedad del hígado',
-    'Enfermedad cardíaca',
-    'Cáncer',
-    'Asma',
-    'Infecciones del oído',
-    'Anemia']
-  
-
-
-
- <div className="mb-2 justify-center flex-col flex text-left  place-items-center mx-3">
-          {enfermedades.length > 0 ? (
-            <ul className="flex-row flex">
-              {enfermedades.map((enfermedad,index) => (
-                <li className="text-xl flex text-slate-800" key={index}>
-                <label
-              className="text-indigo-950 font-semibold text-xl"
-              htmlFor={enfermedad}
-              />{enfermedad}
-                <input 
-                type="checkbox"
-                name={enfermedad}
-                
-              /></li>
-              ))}
-            </ul>
-          ) : (
-            <h3 className="text-3xl text-slate-800 logoTitle">NO HAY MASCOTAS</h3>
-          )}
-          </div>
-
-*/
-

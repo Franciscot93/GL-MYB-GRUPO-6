@@ -25,6 +25,7 @@ export async function action() {
 
 function EditPet() {
 
+
   const location = useLocation();
   const mascotaParaEditar = useLoaderData();
   const navigate = useNavigate();
@@ -36,12 +37,6 @@ function EditPet() {
           className="bg-sky-700 px-3 font-bold uppercase py-1 rounded-md text-slate-50 hover:bg-indigo-600 duration-200"
         >
           Volver
-        </button>
-        <button
-          onClick={() => logout()}
-          className="bg-red-700 px-3 font-bold uppercase py-1 rounded-md text-slate-50 hover:bg-red-500 duration-200"
-        >
-          Cerrar sesion
         </button>
       </div>
 

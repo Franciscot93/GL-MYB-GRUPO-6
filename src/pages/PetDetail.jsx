@@ -1,15 +1,20 @@
 import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams,useLocation,Link } from 'react-router-dom'
 import { useLogin } from '../store/userZustand'
+import Pet from '../components/Pet'
+import imagenFile from "../img/filelogo.png"
+
 
 export default function PetDetail() {
   const navigate=useNavigate()
-  const params=useParams()
-  const{user,logout}=useLogin()
-  console.log( params)
+  const {detailPetId}=useParams()
+  const{user,logout,pet}=useLogin()
+  
+
+  const locacion= useLocation()
   return (
 
-    <>
+    <main>
     <div className="flex mb-5 justify-end">
         <button
           onClick={() => navigate(-1)}
@@ -18,13 +23,25 @@ export default function PetDetail() {
           VOLVER
         </button>
       </div>
-    <div className='w-full h-screen flex flex-row flex-wrap'>
+    <div className='shadow-md flex flex-wrap my-2 mx-3  py-5'>
+    <aside className="flex flex-wrap w-full justify-center md:w-2/5 lg:w-2/5 mt-5 ">
+    <h2 className='text-4xl text-[#066aff] text-center w-full logoTitle'>Mascota</h2>
+    <Pet pet={pet}/>
+        </aside>
+    <aside className='flex  justify-center flex-wrap w-full box-border md:w-3/5 lg:3/5 mt-5'>
+      <h2 className='text-4xl text-[#066aff] text-center w-full logoTitle'>Documentacion de Seguimiento</h2>
+      <div className=' flex w-full   justify-center place-content-center  relative p-1'>
       
-
-        <div className='bg-slate-900 hover:bg-red-700 transition-colors duration-500 rounded-lg bg-opacity-70 h-2/4 w-2/4'><iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d270855.5378832847!2d-65.38893438069496!3d-26.878962790335002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sveterinarias%20tucuman!5e0!3m2!1ses-419!2sar!4v1691035540871!5m2!1ses-419!2sar"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-        <div className='bg-indigo-600 rounded-lg w-2/4'><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore libero consequuntur a quis magni quibusdam alias, vel similique consectetur, sunt deleniti ratione corrupti quaerat eum facilis porro accusantium obcaecati minus!</p></div>
+      <ul className='w-full flex items-center flex-col p-1 overflow-scroll'>
+          {pet.file.length>0 ? pet.file?.map(file => (  
+                <li key={file.id}> <div key={file.id} className='text-md my-2 font-semibold flex flex-row'>Fecha:{file.fecha} <Link target='_blank' to={file.documento} ><img src={imagenFile}/></Link> </div></li>
+               )): <h2 className='text-2xl text-slate-800 w-full animate-pulse text-center logoTitle' >No se registran Archivos en tu Mascota</h2>}
+      </ul>
+      </div>
+    </aside>
+          
     </div>
 
-    </>
+    </main>
   )
 }
