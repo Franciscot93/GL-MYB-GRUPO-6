@@ -26,8 +26,7 @@ function NewPet() {
     >
       Volver
     </button>
-    
-   
+
   </div>
 
     {/* Seccion de formulario para agregar nueva mascota */}

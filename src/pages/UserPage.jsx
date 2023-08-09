@@ -3,8 +3,6 @@
 import React, { useEffect } from "react";
 import User from "../components/User";
 import Pet from "../components/Pet";
-
-
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useLogin } from "../store/userZustand";
 import { obtenerDatosUsuario } from "../data/usuarios";
@@ -15,7 +13,9 @@ export async function loader({ params }) {
 }
 
 function UserPage() {
+
   const navigate=useNavigate()
+
    // Obtener informacion del usuario y funcion de cierre de sesion desde el estado global
   const { user, logout,setUser} = useLogin();
 
@@ -50,7 +50,6 @@ function UserPage() {
         </button>
       </div>
 
-    
     {/* Seccion de perfil de usuario y mascotas*/}
       <section className="shadow-md flex flex-wrap my-2 mx-3  py-5"> 
        {/*Seccion de perfil de usuario  */}
@@ -71,6 +70,7 @@ function UserPage() {
             <h3 className="text-3xl w-full animate-pulse text-center text-slate-800 logoTitle">NO HAY MASCOTAS</h3>
           )}
           </div>
+
         </aside>
       </section>
       {/*Enlace para agregar una nueva mascota */}

@@ -5,17 +5,14 @@ import imgHamster from "../img/hamster_gif.gif";
 import imgDog from "../img/max_gif.gif";
 
 
+
 function Layout() {
   const location = useLocation();
   return (
-
-    
-
     <div className=" md:flex flex flex-col max-w-full min-h-screen bg-[#edf7ff] ">
       {/* Barra de navegacion */}
       <NavBar/>
-
-      {/* Panel lateral */}
+     {/* Panel lateral */}
       <aside
         className="mx-10 relative w-100 text-center  
          shadow-md  rounded-md  py-5"
@@ -25,12 +22,10 @@ function Layout() {
           Mi Mascota TuC
         </h1>   
         {/*Subtitulo con el nombre del grupo */}
-
         <h2 className="text-3xl mt-5 text-slate-800 font-medium "><img className="inline-flex" src={imgHamster} alt="" /> 
          GL-MYB-<span className="text-[#0050f0] ">Grupo 6 </span><img src={imgDog} className="inline-flex"/>
         </h2>
       </aside>
-
       {/* Contenido principal */}
       <main className="w-100  mt-5">
         <div
@@ -40,12 +35,8 @@ function Layout() {
 
           {/* Outlet para renderizar las rutas secundarias */}
             <Outlet/>
-            
-
         </div>
       </main>
-
-
       {/* Pie de pagina */}
       <footer><Footer/></footer>
 

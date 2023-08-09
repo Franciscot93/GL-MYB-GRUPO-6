@@ -94,6 +94,7 @@ function User() {
         <div
           className="mx-3 relative font-semibold text-[#066aff] w-100 text-left  
 
+
          shadow-md mt-3 rounded-md  box-border p-3"
         >
           E-mail:{" "}
@@ -109,7 +110,9 @@ function User() {
         </div>
       </aside>
     </section>
+
   );
+
 }
 
 export default User;

@@ -1,12 +1,12 @@
-import logo from "../img/Logo2.png";
 import { Link, NavLink, redirect } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useLogin } from "../store/userZustand";
+import logo from "../img/Logo2.png"
 function NavBar() {
   const { isLogged, user, logout, pet } = useLogin();
   const [valueButton, setValueButton] = useState("Iniciar Sesion");
   const [navMobile,setNavMobile]=useState(false)
-
+// Manejo del menu movil
   const handleNav=()=>{
     if(navMobile){
       setNavMobile(false)
@@ -14,7 +14,7 @@ function NavBar() {
     else{
       setNavMobile(true)
     }
-  }
+  };
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 640) { // 768px is the md breakpoint in Tailwind CSS
@@ -45,7 +45,7 @@ function NavBar() {
             />
           </a>
         </div>
-        <div onClick={()=>handleNav()} className="sm:hidden m-auto ">
+        <div onClick={handleNav} className="sm:hidden m-auto ">
           
       <button className={`relative ${navMobile? 'group':'group-only:'}`}>
         <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
@@ -79,7 +79,7 @@ function NavBar() {
           <div className="flex  justify-center items-center content-center flex-1 m-auto">
             <Link
               to={"/usuario/login"}
-              onClick={isLogged ? logout() : null}
+              onClick={isLogged ? logout : null}
               className={
                 isLogged
                   ? "inline-flex rounded-lg items-center font-medium hover:bg-[#EF9F9F] transition-colors duration-300 bg-red-600 border-0 py-1 px-3 "
