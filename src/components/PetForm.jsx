@@ -3,13 +3,14 @@ import {
   Form,
   useParams,
   useNavigate,
-  redirect,
+  
 } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { editarMascota, generarFecha, generarId } from "../data/usuarios";
 import { useLogin } from "../store/userZustand";
 import Axios from "axios";
 import gatoError from "../img/cat-error.png";
+import precaucion from "../img/triangle.png"
 
 function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
   const { setUser } = useLogin();
@@ -31,6 +32,28 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
     edad: false,
     peso: false,
   });
+  const [navMobile, setNavMobile] = useState(false);
+  const handleNav = () => {
+    if (navMobile) {
+      setNavMobile(false);
+    } else {
+      setNavMobile(true);
+    }
+  };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 380) {
+        // 768px is the md breakpoint in Tailwind CSS
+        setNavMobile(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const [erroresForm, setErroresForm] = useState(false);
   useEffect(() => {
@@ -135,7 +158,7 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
         const edadRegex = /^[0-9]{1,2}$/;
         alertas.edad = edadRegex.test(Number(value.trim()))
           ? ""
-          : "Si existe debe tener una edad, en valores numericos y de uno o dos digitos";
+          : "Ingresa solo valores numericos y de uno o dos digitos 😾";
         break;
       case "peso":
         const pesoRegex = /^[0-9]{1,5}$/;
@@ -238,11 +261,11 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
             defaultValue={mascotaParaEditar?.mascota}
           />
           {campoAlertas.mascota ? (
-            <div className="font-semibold text-red-600 h-[1.5em]">
-              {campoAlertas.mascota}
+            <div className="font-semibold p-1 my-4 text-red-600 h-[1.5em]">
+              {navMobile?campoAlertas.mascota: <img src={precaucion} />}
             </div>
           ) : (
-            <div className="h-[1.5em]"> </div>
+            <div className=" p-1 my-4 h-[1.5em]"> </div>
           )}
         </div>
 
@@ -265,11 +288,11 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
             defaultValue={mascotaParaEditar?.tipo}
           />
           {campoAlertas.tipo ? (
-            <div className=" font-semibold text-red-600 h-[1.5em]">
-              {campoAlertas.tipo}
+            <div className=" font-semibold p-1 my-4 text-red-600 h-[1.5em]">
+              {navMobile?campoAlertas.tipo: <img src={precaucion} />}
             </div>
           ) : (
-            <div className="h-[1.5em]"> </div>
+            <div className="p-1 my-4 h-[1.5em]"> </div>
           )}
         </div>
 
@@ -288,17 +311,17 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
             onKeyUp={(e) => validarCampo(e)}
             id="edad"
             type="text"
-            className="mb-5 block w-full p-3 rounded-md bg-gray-50"
+            className="mb-1 block w-full p-3 rounded-md bg-gray-50"
             placeholder="¿Cuantos años tiene?"
             name="edad"
             defaultValue={mascotaParaEditar?.edad}
           />
           {campoAlertas.edad ? (
-            <div className=" font-semibold text-red-600 h-[1.5em]">
-              {campoAlertas.edad}
+            <div className=" font-semibold p-1 mb-4 text-red-600 h-[1.5em]">
+              {navMobile?campoAlertas.edad: <img src={precaucion} />}
             </div>
           ) : (
-            <div className="h-[1.5em]"> </div>
+            <div className="p-1 mb-4 h-[1.5em]"> </div>
           )}
         </div>
 
@@ -321,11 +344,11 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
             defaultValue={mascotaParaEditar?.peso}
           />
           {campoAlertas.peso ? (
-            <div className=" font-semibold text-red-600 h-[1.5em]">
-              {campoAlertas.peso}
+            <div className="p-1 my-4 font-semibold text-red-600 h-[1.5em]">
+              {navMobile?campoAlertas.peso: <img src={precaucion} />}
             </div>
           ) : (
-            <div className="h-[1.5em]"> </div>
+            <div className="p-1 my-4 h-[1.5em]"> </div>
           )}
         </div>
 

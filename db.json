@@ -141,17 +141,6 @@
             "array": {}
           },
           "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691683133/miMascotaTuc/zjtamkqn2b2jlgqttsht.gif"
-        },
-        {
-          "id": "ll5d908tkt5j1ej0cx8",
-          "mascota": "pepe ",
-          "tipo": "perro",
-          "edad": "1",
-          "peso": "8",
-          "file": {
-            "array": {}
-          },
-          "pic": ""
         }
       ]
     },

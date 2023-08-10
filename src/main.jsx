@@ -17,7 +17,7 @@ import EditPet, {
   loader as editPetLoader,
   action as editPetAction,
 } from "./pages/EditPet";
- 
+
 import PetDetail from "./pages/PetDetail";
 
 import Home from "./pages/Home";
@@ -25,34 +25,31 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import ErrorPage from "./pages/ErrorPage";
 
-
 // Crear enrutador con rutas y elementos correspondientes
 const router = createBrowserRouter([
-
   {
     path: "/",
     element: <Layout />,
-    errorElement:<ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
         path: "/",
         element: <Home />,
-        errorElement:<ErrorPage/>
-
+        errorElement: <ErrorPage />,
       },
       {
         path: "/usuario/nuevo",
         element: <NewUser />,
         action: NuevoUsuarioAction,
-        errorElement:<ErrorPage/>
+        errorElement: <ErrorPage />,
       },
       {
         path: "/usuario/login",
         element: <Login />,
         action: loginAction,
         loader: loginLoader,
-        errorElement:<ErrorPage/>
+        errorElement: <ErrorPage />,
       },
       {
         path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId",
@@ -60,9 +57,8 @@ const router = createBrowserRouter([
           <ProtectedRoute>
             <UserPage />
           </ProtectedRoute>
-          
         ),
-        errorElement:<ErrorPage/>
+        errorElement: <ErrorPage />,
       },
       {
         path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/nuevaMascota",
@@ -71,9 +67,8 @@ const router = createBrowserRouter([
             <NewPet />
           </ProtectedRoute>
         ),
-        
-        errorElement:<ErrorPage/>
-       
+
+        errorElement: <ErrorPage />,
       },
       {
         path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/editarMascota/:editarMascotaId",
@@ -84,30 +79,39 @@ const router = createBrowserRouter([
         ),
         loader: editPetLoader,
         action: editPetAction,
-        errorElement:<ErrorPage/>
+        errorElement: <ErrorPage />,
       },
       {
         path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/detailPet/:detailPet",
-        element: <ProtectedRoute><PetDetail /></ProtectedRoute>,
-        errorElement:<ErrorPage/>
-      },{
-      
-
-        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/home",
-        element: <ProtectedRoute><Home /></ProtectedRoute>,
+        element: (
+          <ProtectedRoute>
+            <PetDetail />
+          </ProtectedRoute>
+        ),
+        errorElement: <ErrorPage />,
       },
-       {
-        path:"/about",
-        element:<About/>,
-        errorElement:<ErrorPage/>
-      }
-      
+      {
+        path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/home",
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/about",
+        element: <About />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/veterinariasCercanas",
+        element: <Root />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>

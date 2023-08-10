@@ -1,4 +1,6 @@
-function LoginForm() {
+import { Link } from "react-router-dom";
+
+function LoginForm() { 
   return (
     <div>
       {/* Titulo del formulario*/}
@@ -38,7 +40,11 @@ function LoginForm() {
           defaultValue={null}
         />
       </div>
+
+      <Link to={'/errorPage'}><p className="text-[#066aff] font-semibold text-sm">¿Olvidaste tu contraseña?</p></Link>
     </div>
+
+    
   );
 }
 

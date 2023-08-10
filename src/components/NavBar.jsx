@@ -1,10 +1,9 @@
-import { Link, NavLink, redirect } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useLogin } from "../store/userZustand";
 import logo from "../img/Logo2.png";
 function NavBar() {
   const { isLogged, user, logout, pet } = useLogin();
-  const [valueButton, setValueButton] = useState("Iniciar Sesion");
   const [navMobile, setNavMobile] = useState(false);
   // Manejo del menu movil
   const handleNav = () => {
@@ -35,15 +34,15 @@ function NavBar() {
       {/* Contenedor principal de la barra de navegacion */}
       <div className=" w-full flex bg-gradient-to-r from-[#48b0ff] to-[#0d3c9b] flex-wrap  md:flex-row justify-between">
         {/*Logo */}
-        <div className=" relative  md:w-1/3 box-border hover:animate-bounce m-auto ">
+        <div className=" relative  md:w-1/3 box-border translate-y-0.5 hover:animate-bounce m-auto ">
           {/*Enlace al inicio con el logo */}
 
-          <a className=" bg-opacity-90 flex-wrap flex title-font items-center text-gray-900 mb-2">
+          <Link to={'/'} className=" bg-opacity-90 flex-wrap flex title-font items-center text-gray-900 mb-2">
             <img
               className=" delay-150 hover:cursor-pointer h-3/5  duration-500"
               src={logo}
             />
-          </a>
+          </Link>
         </div>
         <div onClick={handleNav} className="sm:hidden m-auto ">
           <button className={`relative ${navMobile ? "group" : "group-only:"}`}>

@@ -1,9 +1,24 @@
 import { useLogin } from "../store/userZustand";
 import { eliminarMascotas } from "../data/usuarios";
-import { redirect, useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { Image } from "cloudinary-react";
+import { useRef } from "react";
 
 function Pet({ pet }) {
+  const petRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (petRef.current) {
+      petRef.current.classList.add("hover:shadow-2xl");
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (petRef.current) {
+      petRef.current.classList.remove("hover:shadow-2xl");
+    }
+  };
+
   // Obteniendo el usuario actual desde el estado global
   const { user, setUser, eliminarMascota, setPet } = useLogin();
   // Iniciar la funcion de navegacion
@@ -14,7 +29,12 @@ function Pet({ pet }) {
   };
   const locacion = useLocation();
   return (
-    <div className="md:flex  lg:max-w-full lg:max-h-[18rem] mt-3 rounded-lg bg-transparent shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mx-1 box-content">
+    <div
+      ref={petRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="md:flex hover:scale-105 duration-500 lg:max-w-full lg:max-h-[18rem] mt-4 rounded-lg bg-transparent shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mx-1 box-content"
+    >
       <div className="relative flex w-full md:w-1/3  overflow-hidden md:flex  aspect-square justify-center content-center place-content-center place-items-center align-middle text-cent bg-no-repeat">
         <Image
           cloudName="dqr2aiayz"

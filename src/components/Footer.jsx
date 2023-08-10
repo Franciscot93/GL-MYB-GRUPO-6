@@ -2,6 +2,7 @@ import logo from "../img/LogoFooter.png";
 import twitter from "../img/tw.svg";
 import facebook from "../img/fb.svg";
 import instagram from "../img/ig.svg";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -10,7 +11,7 @@ function Footer() {
       {/* Seccion del logotipo */}
       <section className="text-slate-100 w-1/3 flex-wrap m-auto flex-1  text-sm mx-3 rounded-md ">
         {/*Logo del pie de pagina */}
-        <img src={logo} alt="" />
+        <Link to={"/"}><img src={logo} alt="logo MiMascotaTuc en footer" /></Link>
       </section>
 
       {/*Seccion de texto */}
