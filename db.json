@@ -44,7 +44,6 @@
           "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691603309/miMascotaTuc/ekbspnstridd29ghlyi3.gif"
         }
       ]
-
     },
     {
       "id": 3,
@@ -100,7 +99,6 @@
             }
           ],
           "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691553297/miMascotaTuc/kinyashc9t98uppdf2n7.gif"
-
         },
         {
           "id": "ll4uj1iofgl5vbjc2zn",
@@ -132,8 +130,28 @@
             "array": {}
           },
           "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691660427/miMascotaTuc/njhgfyjmp2amledza3if.gif"
-
-
+        },
+        {
+          "id": "ll5cfhh3fliiq0b18m7",
+          "mascota": "jonas",
+          "tipo": "perro",
+          "edad": "2",
+          "peso": "2",
+          "file": {
+            "array": {}
+          },
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691683133/miMascotaTuc/zjtamkqn2b2jlgqttsht.gif"
+        },
+        {
+          "id": "ll5d908tkt5j1ej0cx8",
+          "mascota": "pepe ",
+          "tipo": "perro",
+          "edad": "1",
+          "peso": "8",
+          "file": {
+            "array": {}
+          },
+          "pic": ""
         }
       ]
     },

@@ -58,7 +58,7 @@ function UserPage() {
         </aside>
         {/* Seccion de lista de mascotas*/}
         <aside className="md:w-3/5 lg:4/5 mt-5 w-full text-center md:h-screen overflow-y-scroll overflow-x-hidden">
-          <h2 className='text-4xl text-center logoTitle `text-[#066aff]`  border-b-2 border-indigo-700 py-1 mx-3'>Tus MascotaS </h2>
+          <h2 className='text-4xl text-center logoTitle text-[#066aff]  border-b-2 border-indigo-700 py-1 mx-3'>Tus Mascotas </h2>
           <div className=' flex w-full relative p-1'>
           {user?.mascotas.length > 0 ? (
             <ul className='w-full p-1'>
