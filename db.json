@@ -6,6 +6,10 @@
       "telefono": 1381983,
       "email": "karen@juan.com",
       "password": "1234",
+<<<<<<< HEAD
+      "Imagen": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691581458/miMascotaTuc/tq7qhbbuanupf6blnoa4.jpg",
+      "mascotas": []
+=======
       "Imagen": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691603224/miMascotaTuc/y4ng0daqoxryu4onifsu.gif",
       "mascotas": [
         {
@@ -44,6 +48,7 @@
           "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691603309/miMascotaTuc/ekbspnstridd29ghlyi3.gif"
         }
       ]
+>>>>>>> main
     },
     {
       "id": 3,
@@ -63,48 +68,6 @@
             "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691471127/pdfs_MiMascotaTuc/lvkkp0daffm7liue0coc.jpg"
           ],
           "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691471126/miMascotaTuc/dqgm1isywphjhpxk7m9i.jpg",
-          "patologias": ""
-        },
-        {
-          "id": "ll1ubp9oa8gi3qpco3v",
-          "mascota": "pipi",
-          "tipo": "gato",
-          "edad": "2",
-          "peso": "13",
-          "file": [
-            "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691471275/pdfs_MiMascotaTuc/wntt3uzw8xnkuq2pyrig.jpg"
-          ],
-          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691471275/miMascotaTuc/oucx0jjlmdw48equn70t.jpg",
-          "patologias": ""
-        },
-        {
-          "id": "ll1ucr2rwrqo3qr716j",
-          "mascota": "dwa",
-          "tipo": "dww",
-          "edad": "22",
-          "peso": "122",
-          "file": "",
-          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691471323/miMascotaTuc/qwpsnnefs0zfsw3twla5.jpg",
-          "patologias": ""
-        },
-        {
-          "id": "ll1ucu3dmjaw0a02f6c",
-          "mascota": "dwa",
-          "tipo": "dww",
-          "edad": "22",
-          "peso": "122",
-          "file": "",
-          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691471327/miMascotaTuc/vghxithkwhihft6iknk8.jpg",
-          "patologias": ""
-        },
-        {
-          "id": "ll1ucyesoi3afz6mbai",
-          "mascota": "dwa",
-          "tipo": "dww",
-          "edad": "22",
-          "peso": "122",
-          "file": "",
-          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691471333/miMascotaTuc/vklxkrevmlmk3bzadc4i.jpg",
           "patologias": ""
         }
       ]
@@ -141,7 +104,6 @@
             }
           ],
           "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691553297/miMascotaTuc/kinyashc9t98uppdf2n7.gif"
-
         }
       ]
     },

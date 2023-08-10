@@ -1,7 +1,7 @@
 import logo from "../img/LogoFooter.png"
-import twitter from "../img/tw.svg"
-import facebook from "../img/fb.svg"
-import instagram from "../img/ig.svg"
+// import twitter from "../img/tw.png"
+// import facebook from "../img/fb.png"
+// import instagram from "../img/ig.png"
 
 function Footer() {
   return (
@@ -20,13 +20,13 @@ function Footer() {
           {/*Contenido de texto*/}
           © 2023 MiMascotaTuc. Todos los derechos no reservados.
 </section>
-        {/* Seccion de redes sociales con logos*/}
+        {/* Seccion de redes sociales con logos */}
         <section className="   text-slate-100 w-1/3 flex flex-row m-auto flex-wrap gap-3 flex-1 text-sm mx-3 justify-end text-center rounded-md ">
           {/*Seccion de redes Sociales*/}
 
-          <img className="bg-[url('../img/tw.png')] w-8 h-8" src={twitter} alt="twitter"/>
-          <img className="bg-[url('../img/fb.png')] w-8 h-8" src={facebook} alt="facebook"/>
-          <img className="bg-[url('../img/ig.png')] w-8 h-8" src={instagram} alt="instagram"/>
+          {/* <img className=" w-8 h-8" src={twitter} alt=""/>
+          <img className=" w-8 h-8" src={facebook} alt=""/>
+          <img className=" w-8 h-8" src={instagram} alt=""/> */}
 
           {/*Contenido de redes sociales */}
           </section>
