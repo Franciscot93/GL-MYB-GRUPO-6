@@ -1,65 +1,76 @@
-import { useLocation, Form, useParams, useNavigate, redirect } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import {
+  useLocation,
+  Form,
+  useParams,
+  useNavigate,
+  
+} from "react-router-dom";
+import { useState, useEffect } from "react";
 import { editarMascota, generarFecha, generarId } from "../data/usuarios";
 import { useLogin } from "../store/userZustand";
 import Axios from "axios";
-import gatoError from "../img/cat-error.png"
-
-
+import gatoError from "../img/cat-error.png";
+import precaucion from "../img/triangle.png"
 
 function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
   const { setUser } = useLogin();
   const [selectedPic, setSelectedPic] = useState();
   const navigate = useNavigate();
   const { perfilDelUsuarioId, editarMascotaId } = useParams();
-  const[files,setFiles]=useState({array:{}}|['No hay archivos'])
+  const [files, setFiles] = useState({ array: {} } | ["No hay archivos"]);
   const [mascota, setMascota] = useState({
     mascota: "",
     tipo: "",
     edad: "",
     peso: "",
-    file: {array:{}},
-    pic: '',
+    file: { array: {} },
+    pic: "",
   });
   const [campoAlertas, setCampoAlertas] = useState({
     mascota: false,
     tipo: false,
     edad: false,
     peso: false,
-  })
-  const mascotaRef=useRef(null|mascotaParaEditar?.mascota)
-  const tipoRef=useRef(null|mascotaParaEditar?.tipo)
-  const edadRef=useRef(null|mascotaParaEditar?.edad)
-  const pesoRef=useRef(null|mascotaParaEditar?.peso)
+  });
+  const [navMobile, setNavMobile] = useState(false);
+  const handleNav = () => {
+    if (navMobile) {
+      setNavMobile(false);
+    } else {
+      setNavMobile(true);
+    }
+  };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 380) {
+        // 768px is the md breakpoint in Tailwind CSS
+        setNavMobile(false);
+      }
+    };
 
-const[erroresForm,setErroresForm]=useState({
-  mascota: mascotaRef?.current ,
-    tipo: tipoRef?.current ,
-    edad: edadRef?.current ,
-    peso: pesoRef?.current ,
-})
-useEffect(()=>{
-  if(mascotaParaEditar){
-  const alertas = { ...campoAlertas }
-  alertas.mascota=''
-  alertas.tipo=''
-  alertas.edad=''
-  alertas.peso=''
+    window.addEventListener("resize", handleResize);
 
-  setCampoAlertas(alertas)}
-},[mascotaParaEditar])
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-const handleBlur = (e) => {
-  const { name, value } = e.target;
-  setErroresForm((prevErroresForm) => ({
-    ...prevErroresForm,
-    [name]: value,
-  }))
-  
-};
+  const [erroresForm, setErroresForm] = useState(false);
+  useEffect(() => {
+    if (mascotaParaEditar) {
+      const alertas = { ...campoAlertas };
+      alertas.mascota = "";
+      alertas.tipo = "";
+      alertas.edad = "";
+      alertas.peso = "";
+
+      setCampoAlertas(alertas);
+    }
+  }, [mascotaParaEditar]);
+
   // Estado para almacenar el ID de la mascota que se está editando
   const [mascotaIdEditando, setMascotaIdEditando] = useState(null);
-  
+
   useEffect(() => {
     if (mascotaParaEditar) {
       setMascota(mascotaParaEditar);
@@ -68,40 +79,40 @@ const handleBlur = (e) => {
   }, [mascotaParaEditar]);
 
   const handleChange = (event) => {
-    
     const { name, value } = event.target;
 
     setMascota({ ...mascota, [name]: value });
   };
 
-  const onChangeFile=async(files)=>{
+  const onChangeFile = async (files) => {
     const urls = [];
     if (files) {
-     
-      const filesArray=[...files]
+      const filesArray = [...files];
 
+      const uploadFiles = filesArray.map(async (pdffile) => {
+        const formDataFiles = new FormData();
+        formDataFiles.append("file", pdffile);
+        formDataFiles.append("upload_preset", "pdfs_MiMascotaTuc");
 
-       const uploadFiles=filesArray.map(async (pdffile) => {
-      const formDataFiles = new FormData();
-      formDataFiles.append("file", pdffile);
-      formDataFiles.append("upload_preset", "pdfs_MiMascotaTuc");
-  
-      try {
-        const response = await Axios.post(
-          "https://api.cloudinary.com/v1_1/dqr2aiayz/image/upload",
-          formDataFiles
-        );
-        console.log(response.data.secure_url)
-        console.log(generarFecha())
-        urls.push({fecha:generarFecha(),documento:response.data.secure_url ,id:generarId()});
-      } catch (error) {
-        console.error("Error al subir un archivo PDF a Cloudinary:", error);
-      }
-    });
-    await Promise.all(uploadFiles);
-  }
-  return urls;
-}
+        try {
+          const response = await Axios.post(
+            "https://api.cloudinary.com/v1_1/dqr2aiayz/image/upload",
+            formDataFiles
+          );
+
+          urls.push({
+            fecha: generarFecha(),
+            documento: response.data.secure_url,
+            id: generarId(),
+          });
+        } catch (error) {
+          console.error("Error al subir un archivo PDF a Cloudinary:", error);
+        }
+      });
+      await Promise.all(uploadFiles);
+    }
+    return urls;
+  };
 
   //funcion de carga de Pic
 
@@ -111,11 +122,11 @@ const handleBlur = (e) => {
       formDataFiles.append("file", selectedPic);
       formDataFiles.append("upload_preset", "pic_mascotas");
       try {
-     const response=  await Axios.post(
-      "https://api.cloudinary.com/v1_1/dqr2aiayz/image/upload?f_auto=webp",formDataFiles
-      )
-     return response.data.url
-         
+        const response = await Axios.post(
+          "https://api.cloudinary.com/v1_1/dqr2aiayz/image/upload?f_auto=webp",
+          formDataFiles
+        );
+        return response.data.url;
       } catch (error) {
         console.error("Error al subir la imagen a Cloudinary:", error);
         return null;
@@ -125,72 +136,67 @@ const handleBlur = (e) => {
     return null;
   };
 
+  const validarCampo = (e) => {
+    const { name, value } = e.target;
+    const alertas = { ...campoAlertas };
 
+    switch (name) {
+      case "mascota":
+        const mascotaRegex = /^[A-Za-z]{2,15}$/;
+        alertas.mascota = mascotaRegex.test(value.trim())
+          ? ""
+          : "No parece un nombre... 🤔Solo Letras (2-15)";
 
-
-const validarCampo = (e) => {
-  const { name, value } = e.target;
-  const alertas = { ...campoAlertas };
-
-  switch (name) {
-    case 'mascota':
-      const mascotaRegex = /^[A-Za-z]{2,15}$/
-      alertas.mascota = mascotaRegex.test(value.trim()) ? '' : 'No parece un nombre... 🤔Solo Letras (2-15)'
-      console.log(erroresForm.mascota)
-      break;
-    case 'tipo':
-      const tipoRegex = /^[A-Za-z]{2,15}$/
-      alertas.tipo = tipoRegex.test(value.trim()) ?  '' : 'De verdad es una mascota?🤔 Solo Letras (2-15) '
-      break;
-    case 'edad':
-      const edadRegex = /^[0-9]{1,2}$/;
-      alertas.edad = edadRegex.test(Number(value.trim())) ?  '' : 'Si existe debe tener una edad, en valores numericos y de uno o dos digitos'
-      break;
-    case 'peso':
-      const pesoRegex=/^[0-9]{1,5}$/;
-      alertas.peso = pesoRegex.test(Number(value.trim())) ?  '' : 'Es un peso extraño, en valores numericos y de uno a 5 digitos.'
-      break;
-    default:
-      break;
-  }
-  setCampoAlertas(alertas);
-  
-     
-};
-
-
-  
+        break;
+      case "tipo":
+        const tipoRegex = /^[A-Za-z]{2,15}$/;
+        alertas.tipo = tipoRegex.test(value.trim())
+          ? ""
+          : "De verdad es una mascota?🤔 Solo Letras (2-15) ";
+        break;
+      case "edad":
+        const edadRegex = /^[0-9]{1,2}$/;
+        alertas.edad = edadRegex.test(Number(value.trim()))
+          ? ""
+          : "Ingresa solo valores numericos y de uno o dos digitos 😾";
+        break;
+      case "peso":
+        const pesoRegex = /^[0-9]{1,5}$/;
+        alertas.peso = pesoRegex.test(Number(value.trim()))
+          ? ""
+          : "Es un peso extraño, en valores numericos y de uno a 5 digitos.";
+        break;
+      default:
+        break;
+    }
+    setCampoAlertas(alertas);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-  
-    
 
-    if (mascotaParaEditar) {       
-      
-      if(Object.values(campoAlertas).some((alerta) => alerta !== '') ){
-        console.log(campoAlertas)
-      return
+    if (mascotaParaEditar) {
+      if (Object.values(campoAlertas).some((alerta) => alerta !== "")) {
+        setErroresForm(true);
+        return;
       }
-      const pdfUrls= await onChangeFile(files)
-      
-      
-      if (pdfUrls.length > 0) { 
-        await Promise.all(pdfUrls.map(url => url))
-        
-        if (mascota.file.length>0){mascota.file=mascota.file.concat(pdfUrls)}
-        else{
-          mascota.file=pdfUrls
+      setErroresForm(false);
+      const pdfUrls = await onChangeFile(files);
+
+      if (pdfUrls.length > 0) {
+        await Promise.all(pdfUrls.map((url) => url));
+
+        if (mascota.file.length > 0) {
+          mascota.file = mascota.file.concat(pdfUrls);
+        } else {
+          mascota.file = pdfUrls;
         }
       }
 
-      
-
-      const url =  await onChangePic()
-      if(url){
-        console.log(url)
-        mascota.pic=url}
+      const url = await onChangePic();
+      if (url) {
+        mascota.pic = url;
+      }
       await editarMascota(
         perfilDelUsuarioId,
         mascotaIdEditando,
@@ -199,44 +205,35 @@ const validarCampo = (e) => {
       );
       return navigate(`/usuario/perfilDelUsuario/${perfilDelUsuarioId}`);
     } else {
-      
-      if(Object.values(campoAlertas).some((alerta) => alerta !== '') ){
-        console.log(campoAlertas)
-      return
+      if (Object.values(campoAlertas).some((alerta) => alerta !== "")) {
+        setErroresForm(true);
+        return;
+      }
+      setErroresForm(false);
+      const pdfUrls = await onChangeFile(files);
+
+      if (pdfUrls.length > 0) {
+        await Promise.all(pdfUrls.map((url) => url));
+
+        mascota.file = pdfUrls;
       }
 
-      const pdfUrls= await onChangeFile(files)
-      
-      if (pdfUrls.length > 0) { 
-        await Promise.all(pdfUrls.map(url => url))
-      
-        mascota.file=pdfUrls
+      const url = await onChangePic();
+
+      if (url) {
+        mascota.pic = url;
       }
-
-      const url =  await onChangePic()
-
-      if(url){
-        console.log(url)
-       mascota.pic=url}
       await handleGuardarMascota(mascota);
 
       return navigate(`/usuario/perfilDelUsuario/${perfilDelUsuarioId}`);
     }
-
-  
-    
-     
-
   };
 
   const location = useLocation();
   return (
     // Contenedor principal del formulario
-      
-    <div className=" content-center w-full box-border ">
-      {Object.values(campoAlertas).some((alerta) => alerta !== '') ? <div className="flex justify-center font-semibold text-red-600">🚨 Los campos de Mascota,
-      tipo,edad y peso son necesarios.<img src={gatoError} /></div> : null}
 
+    <div className=" content-center w-full box-border ">
       <h2 className="mb-2 text-4xl logoTitle text-center  text-indigo-950 border-b-2 border-indigo-700 pb-3">
         {location.pathname ===
         `/usuario/perfilDelUsuario/${perfilDelUsuarioId}/editarMascota/${editarMascotaId}`
@@ -246,7 +243,6 @@ const validarCampo = (e) => {
 
       {/* Campos de entrada para los detalles de la mascota */}
       <Form method="POST" noValidate onSubmit={(e) => handleSubmit(e)}>
-      
         <div className="my-2 box-border justify-center flex-col flex  place-items-center mx-3">
           <label
             className="text-indigo-950 text-left font-semibold text-xl"
@@ -256,20 +252,24 @@ const validarCampo = (e) => {
           </label>
           <input
             onChange={(e) => handleChange(e)}
-            onKeyUp={(e)=>validarCampo(e)}
+            onKeyUp={(e) => validarCampo(e)}
             id="mascota"
             type="text"
-            ref={mascotaRef}
-            onBlur={(e)=>{handleBlur(e)}}
             className=" block w-full rounded-md p-3 bg-gray-50"
             placeholder="Nombre de la mascota"
             name="mascota"
             defaultValue={mascotaParaEditar?.mascota}
           />
-          {campoAlertas.mascota ? (<div className="font-semibold text-red-600 h-[1.5em]">{campoAlertas.mascota}</div>): <div className="h-[1.5em]">{' '}</div>}
+          {campoAlertas.mascota ? (
+            <div className="font-semibold p-1 my-4 text-red-600 h-[1.5em]">
+              {navMobile?campoAlertas.mascota: <img src={precaucion} />}
+            </div>
+          ) : (
+            <div className=" p-1 my-4 h-[1.5em]"> </div>
+          )}
         </div>
-        
-          {/*... Campo de entrada adicional para tipo */}
+
+        {/*... Campo de entrada adicional para tipo */}
         <div className=" my-2 justify-center flex-col flex  place-items-center mx-3">
           <label
             className="text-indigo-950 font-semibold text-xl"
@@ -279,19 +279,23 @@ const validarCampo = (e) => {
           </label>
           <input
             onChange={(e) => handleChange(e)}
-            onKeyUp={(e)=>validarCampo(e)}
+            onKeyUp={(e) => validarCampo(e)}
             id="tipo"
             type="text"
-            ref={tipoRef}
-            onBlur={(e)=>{handleBlur(e)}}
             className="block w-full rounded-md  p-3 bg-gray-50"
             placeholder="¿Que clase de mascota es?"
             name="tipo"
             defaultValue={mascotaParaEditar?.tipo}
           />
-          {campoAlertas.tipo ? (<div className=" font-semibold text-red-600 h-[1.5em]">{campoAlertas.tipo}</div>): <div className="h-[1.5em]">{' '}</div>}
+          {campoAlertas.tipo ? (
+            <div className=" font-semibold p-1 my-4 text-red-600 h-[1.5em]">
+              {navMobile?campoAlertas.tipo: <img src={precaucion} />}
+            </div>
+          ) : (
+            <div className="p-1 my-4 h-[1.5em]"> </div>
+          )}
         </div>
-        
+
         {/*... Campo de entrada adicional para edad */}
         <div className="my-2 justify-center flex-col flex  place-items-center mx-3">
           <label
@@ -301,20 +305,26 @@ const validarCampo = (e) => {
             Edad:
           </label>
           <input
-            onChange={(e) => handleChange(e)}
-            onKeyUp={(e)=>validarCampo(e)}
+            onChange={(e) => {
+              handleChange(e);
+            }}
+            onKeyUp={(e) => validarCampo(e)}
             id="edad"
-            ref={edadRef}
-            onBlur={(e)=>{handleBlur(e)}}
             type="text"
-            className="mb-5 block w-full p-3 rounded-md bg-gray-50"
+            className="mb-1 block w-full p-3 rounded-md bg-gray-50"
             placeholder="¿Cuantos años tiene?"
             name="edad"
             defaultValue={mascotaParaEditar?.edad}
           />
-          {campoAlertas.edad ? (<div className=" font-semibold text-red-600 h-[1.5em]">{campoAlertas.edad}</div>): <div className="h-[1.5em]">{' '}</div>}
+          {campoAlertas.edad ? (
+            <div className=" font-semibold p-1 mb-4 text-red-600 h-[1.5em]">
+              {navMobile?campoAlertas.edad: <img src={precaucion} />}
+            </div>
+          ) : (
+            <div className="p-1 mb-4 h-[1.5em]"> </div>
+          )}
         </div>
-        
+
         {/*... Campo de entrada adicional para peso */}
         <div className="my-2 justify-center flex-col flex  place-items-center mx-3">
           <label
@@ -325,19 +335,23 @@ const validarCampo = (e) => {
           </label>
           <input
             onChange={(e) => handleChange(e)}
-            onKeyUp={(e)=>validarCampo(e)}
+            onKeyUp={(e) => validarCampo(e)}
             id="peso"
-            ref={pesoRef}
-            onBlur={(e)=>{handleBlur(e)}}
             type="text"
             className="mb-5 block w-full p-3 rounded-md bg-gray-50"
             placeholder="¿Cuanto amor posee?"
             name="peso"
             defaultValue={mascotaParaEditar?.peso}
           />
-         {campoAlertas.peso ? (<div className=" font-semibold text-red-600 h-[1.5em]">{campoAlertas.peso}</div>): <div className="h-[1.5em]">{' '}</div>}
+          {campoAlertas.peso ? (
+            <div className="p-1 my-4 font-semibold text-red-600 h-[1.5em]">
+              {navMobile?campoAlertas.peso: <img src={precaucion} />}
+            </div>
+          ) : (
+            <div className="p-1 my-4 h-[1.5em]"> </div>
+          )}
         </div>
-        
+
         {/*... Campo de entrada adicional para documentos */}
         <div className="my-2 justify-center flex-col flex  place-items-center mx-3">
           <label
@@ -362,7 +376,6 @@ const validarCampo = (e) => {
             className="text-indigo-950 font-semibold text-xl"
             htmlFor="pic"
           >
-          
             Pic:
           </label>
           <input
@@ -370,16 +383,19 @@ const validarCampo = (e) => {
             id="pic"
             type="file"
             accept="image/*"
-            
             className="mt-2 block w-full p-2 rounded-md bg-gray-50"
             name="pic"
           />
-
-          </div>
+        </div>
         {/*... previsualizacion de la imagen de mascota */}
-      { selectedPic ? <img className="aspect-square w-32" alt="Preview" height="60" src={URL.createObjectURL(selectedPic)} /> : null }
-         
-        
+        {selectedPic ? (
+          <img
+            className="aspect-square w-32"
+            alt="Preview"
+            height="60"
+            src={URL.createObjectURL(selectedPic)}
+          />
+        ) : null}
 
         {/*... boton envio de form */}
         <div className="mb-2  justify-center flex-col place-items-center mx-3">
@@ -392,49 +408,20 @@ const validarCampo = (e) => {
                 ? "Guardar cambios"
                 : "Nueva Mascota"
             }
-            
           />
         </div>
-
-        
+        {Object.values(campoAlertas).some((alerta) => alerta !== "") &&
+        erroresForm ? (
+          <div className="flex h-[2em] justify-center font-semibold text-red-600">
+            🚨 Los campos de Mascota, tipo,edad y peso son necesarios.
+            <img src={gatoError} />
+          </div>
+        ) : (
+          <div className="h-[1.5em]"></div>
+        )}
       </Form>
     </div>
   );
 }
 
 export default PetForm;
-
-
-
-
-
-/* const validacionMascota= (mascota)=>{
-  console.log(mascota)
-  const errores= []
-  const usernameRegex = /^[A-Za-z]{2,15}$/;
-  const edadRegex = /^[0-9]{1,2}$/;
-  const pesoRegex = /^(\d{1,5}(\.\d{0,1})?)?$/;
-
-  if(!usernameRegex.test(mascota.mascota.trim())){
-    errores.push('Es una mascota no un robot. Introduce letras (minimo 2 letras y maximo 15)')
-    console.log((mascota.mascota))
-  }
-  if(!usernameRegex.test(mascota.tipo.trim())){
-    errores.push('El campo edad solo letras. (minimo 2 digito y maximo 15)')
-    console.log((mascota.tipo))
-  }
-  if(!edadRegex.test((mascota.edad.trim()))){
-    errores.push('El campo edad solo recibe numeros. (minimo 1 digito y maximo 2)')
-    console.log((mascota.edad))
-  }
-  if(!pesoRegex.test((mascota.peso.trim()))){
-    errores.push('El campo peso solo recibe numeros. (minimo 1 digito y maximo 5)')
-    console.log((mascota.peso))
-  }
- 
-
-    if(errores.length){
-      return  errores
-    }
- 
-} */
