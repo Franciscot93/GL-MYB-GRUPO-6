@@ -1,7 +1,7 @@
 import logo from "../img/LogoFooter.png"
-import twitter from "../img/tw.svgtwitter"
-import facebook from "../img/fb.svgtwifacebooktter"
-import instagram from "../img/ig.svgtwifaceinstagrambookttefacebookinstagramr"
+import twitter from "../img/tw.svg"
+import facebook from "../img/fb.svg"
+import instagram from "../img/ig.svg"
 
 function Footer() {
   return (
