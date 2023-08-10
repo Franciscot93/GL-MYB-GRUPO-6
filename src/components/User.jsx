@@ -110,9 +110,7 @@ function User() {
         </div>
       </aside>
     </section>
-
   );
-
 }
 
 export default User;

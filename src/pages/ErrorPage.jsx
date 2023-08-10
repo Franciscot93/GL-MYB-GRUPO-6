@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-function ErrorPage() {
+function ErrorPage({ children }) {
   const navigate = useNavigate();
   return (
     <section className="bg-white dark:bg-gray-900 ">
@@ -17,7 +17,7 @@ function ErrorPage() {
               <span className="font-bold">!!!...</span>
             </h1>
             <p className="mt-4 text-gray-500 dark:text-gray-400">
-              Algo ha salido mal{" "}
+              Algo ha salido mal {children}
             </p>
 
             <div className="flex items-center w-full mt-6 gap-x-3 shrink-0 sm:w-auto">
@@ -29,7 +29,7 @@ function ErrorPage() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="currentColor"
                   className="w-5 h-5 rtl:rotate-180"
                 >
