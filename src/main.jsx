@@ -72,6 +72,7 @@ const router = createBrowserRouter([
             <NewPet />
           </ProtectedRoute>
         ),
+        
         errorElement:<ErrorPage/>
        
       },

@@ -24,9 +24,11 @@ function Footer() {
         <section className="   text-slate-100 w-1/3 flex flex-row m-auto flex-wrap gap-3 flex-1 text-sm mx-3 justify-end text-center rounded-md ">
           {/*Seccion de redes Sociales*/}
 
-          {/* <img className=" w-8 h-8" src={twitter} alt=""/>
-          <img className=" w-8 h-8" src={facebook} alt=""/>
-          <img className=" w-8 h-8" src={instagram} alt=""/> */}
+
+          <img className=" w-8 h-8" src={twitter} alt="twitter"/>
+          <img className=" w-8 h-8" src={facebook} alt="facebook"/>
+          <img className=" w-8 h-8" src={instagram} alt="instagram"/>
+
 
           {/*Contenido de redes sociales */}
           </section>

@@ -27,7 +27,7 @@ function EditPet() {
 
 
   const location = useLocation();
-  const mascotaParaEditar = useLoaderData();
+  const mascotaParaEditar = useLoaderData()||null;
   const navigate = useNavigate();
   return (
     <main className="content-center place-content-center">
