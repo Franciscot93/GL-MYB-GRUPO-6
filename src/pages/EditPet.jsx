@@ -1,10 +1,5 @@
 import PetForm from "../components/PetForm";
-import {
-  Form,
-  useNavigate,
-  useLocation,
-  useLoaderData,
-} from "react-router-dom";
+import { useNavigate, useLocation, useLoaderData } from "react-router-dom";
 import { obtenerDatosUsuario } from "../data/usuarios";
 
 export async function loader({ params }) {
@@ -15,19 +10,14 @@ export async function loader({ params }) {
   );
 
   return mascotaParaEditar;
-
 }
 export async function action() {
-
-  
   return null;
 }
 
 function EditPet() {
-
-
   const location = useLocation();
-  const mascotaParaEditar = useLoaderData()||null;
+  const mascotaParaEditar = useLoaderData() || null;
   const navigate = useNavigate();
   return (
     <main className="content-center place-content-center">
@@ -41,13 +31,9 @@ function EditPet() {
       </div>
 
       <section className="shadow-md place-content-center content-center place-items-center flex flex-wrap my-2 mx-3 py-5">
-        
-          <PetForm mascotaParaEditar={mascotaParaEditar} />
-          
-        
+        <PetForm mascotaParaEditar={mascotaParaEditar} />
       </section>
     </main>
-
   );
 }
 

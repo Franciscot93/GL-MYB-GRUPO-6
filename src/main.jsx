@@ -9,7 +9,7 @@ import Login, {
   loader as loginLoader,
 } from "./pages/Login";
 import NewUser, { action as NuevoUsuarioAction } from "./pages/NewUser";
-import UserPage, { loader as loaderUser } from "./pages/UserPage";
+import UserPage from "./pages/UserPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import NewPet from "./pages/NewPet";
 
@@ -62,7 +62,6 @@ const router = createBrowserRouter([
           </ProtectedRoute>
           
         ),
-        loader: loaderUser,
         errorElement:<ErrorPage/>
       },
       {
