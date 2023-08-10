@@ -2,11 +2,11 @@ import image from '../img/MiMascotaTuc.jpeg'
 
 const About = () => {
   return (
-    <main className='w-full flex'>
+    <main className='w-full gap flex flex-wrap'>
     <div className="aspect-square w-1/2 rounded-md flex flex-col transition-transform duration-300 hover:transform hover:scale-110 items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${image})`, filter: 'grayscale(100%)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    '@media (max-width: 768px)': {
+    '@media (maxWidth: 768px)': {
       backgroundSize: 'contain',}}}>
        </div>
     <div className="w-1/2 p-6 bg-transparent rounded shadow-md transition-transform duration-300 hover:transform hover:scale-110  ">

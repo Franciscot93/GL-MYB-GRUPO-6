@@ -4,13 +4,15 @@ import { useLogin } from "../store/userZustand"
 import { guardarMascotas} from "../data/usuarios"
 
 
+
+
 function NewPet() {
   const navigate = useNavigate();
  
-  const { logout, user,setUser } = useLogin();
+  const { user,setUser } = useLogin();
 
   const handleGuardarMascota = async (mascota) => {
-    console.log(mascota)
+    
     await guardarMascotas(user.id, mascota, setUser);}
 
     
@@ -34,7 +36,7 @@ function NewPet() {
 
 
   
-  <PetForm handleGuardarMascota={ handleGuardarMascota} />
+  <PetForm  handleGuardarMascota={ handleGuardarMascota} />
   
 
 

@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import imgHamster from "../img/hamster_gif.gif";
@@ -14,6 +14,7 @@ function Layout() {
   const location = useLocation();
   const {login,user,setUser}=useLogin()
   const datos=obtenerUsuarios()
+  const navigate=useNavigate()
   
 
   useEffect(() => {
