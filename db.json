@@ -6,8 +6,49 @@
       "telefono": 1381983,
       "email": "karen@juan.com",
       "password": "1234",
+<<<<<<< HEAD
       "Imagen": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691581458/miMascotaTuc/tq7qhbbuanupf6blnoa4.jpg",
       "mascotas": []
+=======
+      "Imagen": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691603224/miMascotaTuc/y4ng0daqoxryu4onifsu.gif",
+      "mascotas": [
+        {
+          "id": "ll40x1915s99bbrsiwy",
+          "mascota": "eugenio",
+          "tipo": "hamster",
+          "edad": "1",
+          "peso": "123",
+          "file": [
+            {
+              "fecha": "Wednesday, Aug 9, 2023",
+              "documento": "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691603278/pdfs_MiMascotaTuc/y01pormiykxej3p4zj91.pdf",
+              "id": "ll40x0j7q064tn8v1f"
+            }
+          ],
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691603279/miMascotaTuc/sz75mzvcfl68yzknuxtd.gif"
+        },
+        {
+          "id": "ll40xoqjo13b5q6j1nr",
+          "mascota": "gaspar",
+          "tipo": "gato",
+          "edad": "3",
+          "peso": "8",
+          "file": [
+            {
+              "fecha": "Wednesday, Aug 9, 2023",
+              "documento": "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691608424/pdfs_MiMascotaTuc/bi7aqopuzhwjyqoblrph.pdf",
+              "id": "ll43zbehxi381k1gfmq"
+            },
+            {
+              "fecha": "Wednesday, Aug 9, 2023",
+              "documento": "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691608424/pdfs_MiMascotaTuc/qc9z078jg8mbt1s0bt3j.pdf",
+              "id": "ll43zbgu86i321rhp9i"
+            }
+          ],
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691603309/miMascotaTuc/ekbspnstridd29ghlyi3.gif"
+        }
+      ]
+>>>>>>> main
     },
     {
       "id": 3,
@@ -78,11 +119,43 @@
     {
       "id": 6,
       "username": "francisco",
-      "email": "miguel@juan.com",
       "telefono": "123441255",
+      "email": "miguel@juan.com",
       "password": "1234",
-      "Imagen": "",
-      "mascotas": []
+      "Imagen": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691602697/miMascotaTuc/jqqtd6qqoecqftovx2zl.gif",
+      "mascotas": [
+        {
+          "id": "ll3uq41l3lzghwhadj6",
+          "mascota": "pepe ",
+          "tipo": "cocodrilo",
+          "edad": "3",
+          "peso": "105",
+          "file": [
+            {
+              "fecha": "Wednesday, Aug 9, 2023",
+              "documento": "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691592877/pdfs_MiMascotaTuc/ukkz6lwbvnjrchs5symn.pdf",
+              "id": "ll3uq2gchh0l4niesuf"
+            },
+            {
+              "fecha": "Wednesday, Aug 9, 2023",
+              "documento": "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691592878/pdfs_MiMascotaTuc/bnxanyb4ma6zedx2v7jt.pdf",
+              "id": "ll3uq2v942rzfupz7lq"
+            }
+          ],
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691592879/miMascotaTuc/peyz1gpb09uaysnjf5wy.gif"
+        },
+        {
+          "id": "ll40t3pzbu03t4k7oj",
+          "mascota": "fito",
+          "tipo": "gato",
+          "edad": "14",
+          "peso": "8",
+          "file": {
+            "array": {}
+          },
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691603095/miMascotaTuc/g6gjzuimidn2vnxap2wv.gif"
+        }
+      ]
     },
     {
       "id": 7,

@@ -23,6 +23,7 @@ import PetDetail from "./pages/PetDetail";
 import Home from "./pages/Home";
 
 import About from "./pages/About";
+import ErrorPage from "./pages/ErrorPage";
 
 
 // Crear enrutador con rutas y elementos correspondientes
@@ -31,23 +32,27 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement:<ErrorPage/>,
     children: [
       {
         index: true,
         path: "/",
         element: <Home />,
+        errorElement:<ErrorPage/>
 
       },
       {
         path: "/usuario/nuevo",
         element: <NewUser />,
         action: NuevoUsuarioAction,
+        errorElement:<ErrorPage/>
       },
       {
         path: "/usuario/login",
         element: <Login />,
         action: loginAction,
         loader: loginLoader,
+        errorElement:<ErrorPage/>
       },
       {
         path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId",
@@ -55,8 +60,10 @@ const router = createBrowserRouter([
           <ProtectedRoute>
             <UserPage />
           </ProtectedRoute>
+          
         ),
         loader: loaderUser,
+        errorElement:<ErrorPage/>
       },
       {
         path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/nuevaMascota",
@@ -64,7 +71,8 @@ const router = createBrowserRouter([
           <ProtectedRoute>
             <NewPet />
           </ProtectedRoute>
-        )
+        ),
+        errorElement:<ErrorPage/>
        
       },
       {
@@ -76,10 +84,12 @@ const router = createBrowserRouter([
         ),
         loader: editPetLoader,
         action: editPetAction,
+        errorElement:<ErrorPage/>
       },
       {
         path: "/usuario/perfilDelUsuario/:perfilDelUsuarioId/detailPet/:detailPet",
         element: <ProtectedRoute><PetDetail /></ProtectedRoute>,
+        errorElement:<ErrorPage/>
       },{
       
 
@@ -88,7 +98,8 @@ const router = createBrowserRouter([
       },
        {
         path:"/about",
-        element:<About/>
+        element:<About/>,
+        errorElement:<ErrorPage/>
       }
       
     ],

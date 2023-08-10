@@ -98,7 +98,10 @@ function PetForm({ mascotaParaEditar, handleGuardarMascota }) {
       if (pdfUrls.length > 0) { 
         await Promise.all(pdfUrls.map(url => url))
         
-        mascota.file=mascota.file.concat(pdfUrls)
+        if (mascota.file.length>0){mascota.file=mascota.file.concat(pdfUrls)}
+        else{
+          mascota.file=pdfUrls
+        }
       }
       
 
