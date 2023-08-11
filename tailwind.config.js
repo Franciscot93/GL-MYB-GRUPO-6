@@ -1,3 +1,4 @@
+import plugin from 'tailwindcss/plugin'
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html',
@@ -6,36 +7,43 @@ export default {
     extend: {
 
       colors: {
-        'tacha': {
-          '50': '#fbf9f1',
-          '100': '#f6f2de',
-          '200': '#ece1bc',
-          '300': '#e0cc91',
-          '400': '#d4b268',
-          '500': '#c99b46',
-          '600': '#bb853b',
-          '700': '#9c6a32',
-          '800': '#7d542f',
-          '900': '#664728',
-          '950': '#362314',
+        'bright-turquoise': {
+          '50': '#effbff',
+          '100': '#dff5ff',
+          '200': '#b7eeff',
+          '300': '#77e2ff',
+          '400': '#2fd4ff',
+          '500': '#0ec8fb',
+          '600': '#009bd0',
+          '700': '#007ba8',
+          '800': '#01688b',
+          '900': '#085572',
+          '950': '#05374c',
       },
-      'saffron-mango': {
-        '50': '#fff9eb',
-        '100': '#fdefc8',
-        '200': '#fcdb8b',
-        '300': '#fac657',
-        '400': '#f8ac27',
-        '500': '#f28a0e',
-        '600': '#d66609',
-        '700': '#b2450b',
-        '800': '#903510',
-        '900': '#772c10',
-        '950': '#441504',
-    },
-
       }
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addUtilities, theme }) => {
+      const neonUtilities = {}
+      const colors = theme('colors')
+
+      for (const color in colors) {
+        if(typeof colors[color] === 'object' ) {
+          const color1 = colors[color]['400']
+          const color2 = colors[color]['600']
+          
+          neonUtilities[`.neon-${color}`] = {
+            boxShadow: ` 0 0 5px ${color1}, 0 0 10px ${color2}`
+          }
+           
+       
+        }
+      }
+
+      console.log('addUtilities')
+      addUtilities(neonUtilities)
+    })
+  ],
 }
 
