@@ -30,7 +30,7 @@ function NavBar() {
 
   return (
     // Seccion de la barra de navegacion
-    <section className="border-opacity-25">
+    <section className="border-opacity-25 neon-blue">
       {/* Contenedor principal de la barra de navegacion */}
       <div className=" w-full flex bg-gradient-to-r from-[#48b0ff] to-[#0d3c9b] flex-wrap  md:flex-row justify-between">
         {/*Logo */}

@@ -4,10 +4,11 @@ import facebook from "../img/fb.svg";
 import instagram from "../img/ig.svg";
 import { Link } from "react-router-dom";
 
+
 function Footer() {
   return (
     // Contenedor principal del pie de pagina
-    <div className="gap-1 justify-between flex-row relative flex-wrap items-center py-2 mt-10 bg-[#0e265d] flex  ">
+    <div className="gap-1 justify-between flex-row relative flex-wrap items-center py-2 mt-10 bg-[#0e265d] flex neon-blue ">
       {/* Seccion del logotipo */}
       <section className="text-slate-100 w-1/3 flex-wrap m-auto flex-1  text-sm mx-3 rounded-md ">
         {/*Logo del pie de pagina */}

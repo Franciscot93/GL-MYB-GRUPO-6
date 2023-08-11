@@ -44,12 +44,12 @@ function Layout() {
       {/* Panel lateral */}
       <aside
         className="mx-10 relative w-100 text-center  
-         shadow-md  rounded-md  py-5"
+         shadow-md  rounded-md  py-5 neon-blue "
       >
         {/* Titulo del sitio*/}
-        <h1 className=" logoTitle text-6xl text-slate-800">Mi Mascota TuC</h1>
+        <h1 className=" logoTitle text-6xl text-slate-800 ">Mi Mascota TuC</h1>
         {/*Subtitulo con el nombre del grupo */}
-        <h2 className="text-3xl mt-5 text-slate-800 font-medium ">
+        <h2 className="text-3xl mt-5 text-slate-800 font-medium  ">
           <img className="inline-flex" src={imgHamster} alt="" />
           GL-MYB-<span className="text-[#0050f0] ">Grupo 6 </span>
           <img src={imgDog} className="inline-flex" />
