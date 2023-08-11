@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Layout from "./components/Layout";
-import Root from "./pages/Root";
 import Login, {
   action as loginAction,
   loader as loginLoader,
@@ -102,10 +101,6 @@ const router = createBrowserRouter([
         path: "/about",
         element: <About />,
         errorElement: <ErrorPage />,
-      },
-      {
-        path: "/veterinariasCercanas",
-        element: <Root />,
       },
     ],
   },

@@ -236,6 +236,15 @@
       "email": "juancoder@outlook.com",
       "password": "1234eeeE.#",
       "mascotas": []
+    },
+    {
+      "username": "federico",
+      "password": "sssS1234.#",
+      "repetirPassword": "sssS1234.#",
+      "email": "fede@fede.com",
+      "telefono": "123123123",
+      "mascotas": [],
+      "id": 12
     }
   ]
 }
