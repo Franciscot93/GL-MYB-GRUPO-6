@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-function ErrorPage({ children }) {
+function ErrorPage() {
   const navigate = useNavigate();
   return (
     <section className="bg-white dark:bg-gray-900 ">
@@ -17,7 +17,7 @@ function ErrorPage({ children }) {
               <span className="font-bold">!!!...</span>
             </h1>
             <p className="mt-4 text-gray-500 dark:text-gray-400">
-              Algo ha salido mal {children}
+              Algo ha salido mal
             </p>
 
             <div className="flex items-center w-full mt-6 gap-x-3 shrink-0 sm:w-auto">
