@@ -51,19 +51,22 @@
       "telefono": "31983913",
       "email": "josue@juan.com",
       "password": "1234",
-      "Imagen": "",
+      "Imagen": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1692043192/miMascotaTuc/rm2nrgb41pccc2tz5af8.jpg",
       "mascotas": [
         {
-          "id": "ll1u8iqkuymm8qw3hwc",
-          "mascota": "Koki",
-          "tipo": "Perro",
-          "edad": "12",
-          "peso": "10",
+          "id": "llbarvinl0syxb45je",
+          "mascota": "Puas",
+          "tipo": "Erizo",
+          "edad": "1",
+          "peso": "1",
           "file": [
-            "https://res.cloudinary.com/dqr2aiayz/image/upload/v1691471127/pdfs_MiMascotaTuc/lvkkp0daffm7liue0coc.jpg"
+            {
+              "fecha": "Monday, Aug 14, 2023",
+              "documento": "https://res.cloudinary.com/dqr2aiayz/image/upload/v1692043125/pdfs_MiMascotaTuc/c0zz9odqwnpziaqpytls.pdf",
+              "id": "llbasfk130d024ykj8u"
+            }
           ],
-          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1691471126/miMascotaTuc/dqgm1isywphjhpxk7m9i.jpg",
-          "patologias": ""
+          "pic": "http://res.cloudinary.com/dqr2aiayz/image/upload/v1692043126/miMascotaTuc/vvmm8qvs6oj1e9xkacbs.avif"
         }
       ]
     },
